@@ -9,7 +9,12 @@
 <body>
 </html>
 
+<div id="header">
+    <?php include ('navbar.php'); ?>
+</div>
 
-<?php include ('navbar.php'); ?>
+<div id="contenu_accueil">
+
+</div>
 
 </body>

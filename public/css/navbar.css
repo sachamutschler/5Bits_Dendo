@@ -1,15 +1,18 @@
 #navbar {
     display: flex;
     justify-content: center;
-    background:black;
+    background: #161616;
+    margin:auto;
 }
 
 .navbar_link {
     padding:15px;
     color: white;
     text-decoration: none;
+    border-bottom: 3px solid #161616;
 }
 
 .navbar_link:hover {
-    border-bottom: 2px solid #1AE5F1;
+    border-bottom: 3px solid #1AE5F1;
+    color : #1AE5F1;
 }

@@ -1,4 +1,10 @@
 body {
     margin:0px;
     font-family:arial;
+    background: #161616;
+}
+
+#header {
+    height: 80px;
+    display: flex;
 }
