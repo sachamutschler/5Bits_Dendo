@@ -1,0 +1,15 @@
+#navbar {
+    display: flex;
+    justify-content: center;
+    background:black;
+}
+
+.navbar_link {
+    padding:15px;
+    color: white;
+    text-decoration: none;
+}
+
+.navbar_link:hover {
+    border-bottom: 2px solid #1AE5F1;
+}
