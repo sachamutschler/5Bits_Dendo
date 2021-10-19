@@ -1,10 +1,28 @@
 body {
     margin:0px;
     font-family:arial;
-    background: #161616;
+    background: #2d2929;
 }
 
 #header {
     height: 80px;
     display: flex;
+    background: #161616;
+
+}
+
+#contenu_page {
+    margin: auto;
+    margin-left: 150px;
+    margin-right: 150px;
+    min-height: 800px;
+    background: #fffff0;
+}
+
+.titre_page {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Dancing Script', cursive;
+    color: #1AE5F1;
 }
