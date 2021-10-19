@@ -1,0 +1,71 @@
+Hisorique
+	ID 			INT AI
+	ID_commande		INT
+	ID_compte_client	INT
+	date		
+	
+
+Panier
+	ID 			INT AI
+	ID_produit		INT
+	quantite		INT(4)
+	
+
+Produit
+	ID 			INT AI
+	reference		VARCHAR(255)
+	designation		VARCHAR(255)
+	poids			INT(4)
+	taille			INT(3)
+	couleur			VARCHAR(50)
+	taille_roue		INT(3)
+	matière_cadre		VARCHAR(50)
+	type_suspension		VARCHAR(50)
+	type_frein		VARCHAR(50)
+	stock			INT(4)
+	prix			INT(6)
+	image			VARCHAR(255)
+
+Commande
+	ID			INT AI
+	ID_compte_client	INT
+	transporteur		VARCHAR(255)
+	code_colis		VARCHAR(255)
+	poids			INT(4)
+	taille			INT(3)
+	etat			VARCHAR(25)
+
+Ligne_commande
+	ID			INT AI
+	ID_commande		INT
+	quantite		INT(4)
+	montant_unite		INT(4)
+	montant_total		INT(6)
+	reference_produit	VARCHAR(255)
+	designation_produit	VARCHAR(255)
+
+Compte_client
+	ID			INT AI
+	identifiant		VARCHAR(55)
+	mot_de_passe		VARCHAR(255)
+	nom			VARCHAR(255)
+	prenom			VARCHAR(255)
+	mail			VARCHAR(255)
+	telephone_port		INT(25)
+	telephone_fixe		INT(25)
+	adresse_1		VARCHAR(255)
+	adresse_2		VARCHAR(255)
+	ville			VARCHAR(255)
+	code_postal		INT(10)
+	pays			VARCHAR(255)
+	code_validation		VARCHAR(255)
+	etat			VARCAHR(255)
+	
+Promo
+	ID			INT AI
+	code			VARCHAR(255)
+	reduction		DECIMAL(2.2)
+	duree_validite		TIME
+	date_debut		DATETIME
+	date_fin		DATETIME
+	
