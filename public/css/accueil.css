@@ -69,20 +69,11 @@
     padding: 10px;
 }
 
-
-/* .article_accueil:hover {
-    opacity: 0.3;
-}
-
-.article_accueil:hover .bouton_produit_accueil {
-    opacity: 1;
-} */
-
 .bouton_produit_accueil {
     padding: 10px;
     padding-left: 25px;
     padding-right: 25px;
-    background: #06ced1;
+    background: #eac013;
     color: white;
     text-decoration: none;
     opacity: 0;
@@ -103,6 +94,6 @@
     opacity: 1;
 }
 
-.bouton_cache {
-    width: -webkit-fill-available;
+.bouton_produit_accueil:hover {
+    background:#bb990f;
 }
