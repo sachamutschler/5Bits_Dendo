@@ -6,8 +6,15 @@
 <body>
 </html>
 
+<div id="header">
+    <?php include ('navbar.php'); ?>
+    <link href="public/css/accueil.css" rel="stylesheet">
+</div>
 
-<?php include ('navbar.php'); ?>
+<div class="contenu">
+    <h1 class="titre_page">Dendo Jitensha</h1>
+</div>
+
 <?php include ('footer.php'); ?>
 
 </body>
