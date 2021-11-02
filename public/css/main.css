@@ -3,6 +3,7 @@ body {
     font-family:arial;
     background: #2d2929;
     background-image: url("../images/background.jpg");
+    background-attachment: fixed;
     background-repeat: no-repeat;
 }
 
