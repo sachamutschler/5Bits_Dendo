@@ -32,3 +32,9 @@
 .lien_footer:hover{
     text-decoration: underline;
 }
+.newsletter h3{
+    margin-left: auto;
+}
+.newsletter{
+    width: 50%;
+}
