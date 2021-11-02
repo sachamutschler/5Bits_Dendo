@@ -12,7 +12,7 @@
 </div>
 
 <div class="contenu">
-    <h1 class="titre_page">Dendo jitensha</h1>
+    <h1 class="titre_page">Dendo Jitensha</h1>
 </div>
 
 </body>
