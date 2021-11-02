@@ -2,6 +2,8 @@ body {
     margin:0px;
     font-family:arial;
     background: #2d2929;
+    background-image: url("../images/background.jpg");
+    background-repeat: no-repeat;
 }
 
 #header {

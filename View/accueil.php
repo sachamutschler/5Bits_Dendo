@@ -11,7 +11,7 @@
 </div>
 
 <div id="contenu_accueil">
-
+    <p>didi</p>
 </div>
 
 </body>
