@@ -15,4 +15,6 @@
     <h1 class="titre_page">Dendo Jitensha</h1>
 </div>
 
+<?php include ('footer.php'); ?>
+
 </body>
