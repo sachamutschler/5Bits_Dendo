@@ -37,6 +37,11 @@
 .article_accueil img {
     max-width: -webkit-fill-available;
     margin-top: 20px;
+    opacity: 1;
+    display: block;
+    height: auto;
+    transition: .5s ease;
+    backface-visibility: hidden;
 }
 
 .article_accueil h3 {
@@ -65,19 +70,15 @@
 }
 
 
-.article_accueil:hover {
+/* .article_accueil:hover {
     opacity: 0.3;
 }
 
 .article_accueil:hover .bouton_produit_accueil {
     opacity: 1;
-}
+} */
 
 .bouton_produit_accueil {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     padding: 10px;
     padding-left: 25px;
     padding-right: 25px;
@@ -85,5 +86,23 @@
     color: white;
     text-decoration: none;
     opacity: 0;
+    transition: .5s ease;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
 }
 
+.bouton_cache:hover .image {
+    opacity: 0.5;
+}
+
+.bouton_cache:hover .bouton_produit_accueil {
+    opacity: 1;
+}
+
+.bouton_cache {
+    width: -webkit-fill-available;
+}
