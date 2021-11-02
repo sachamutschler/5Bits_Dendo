@@ -8,10 +8,11 @@
 
 <div id="header">
     <?php include ('navbar.php'); ?>
+    <link href="public/css/accueil.css" rel="stylesheet">
 </div>
 
-<div id="contenu_accueil">
-    <p>didi</p>
+<div class="contenu">
+    <h1 class="titre_page">Dendo jitensha</h1>
 </div>
 
 </body>

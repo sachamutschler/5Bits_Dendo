@@ -10,7 +10,9 @@
     <?php include ('navbar.php'); ?>
 </div>
 
-<h1 class="titre_page">Nos produits</h1>
+<div class="contenu">
+    <h1 class="titre_page">Nos produits</h1>
+</div>
 
 <div id="contenu_page">
 

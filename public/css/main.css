@@ -22,9 +22,17 @@ body {
 }
 
 .titre_page {
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
+    padding-top: 20px;
+    padding-left: 20px;
     font-family: 'Dancing Script', cursive;
     color: #1AE5F1;
+}
+
+.contenu {
+    width: 90%;
+    background: rgba(0,0,0,0.8);
+    margin: auto;
+    height: max-content;
+    min-height: 700px;
+    margin-top: 80px;
 }
