@@ -14,8 +14,5 @@
     <h1 class="titre_page">Nos produits</h1>
 </div>
 
-<div id="contenu_page">
-
-</div>
 
 </body>
