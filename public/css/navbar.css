@@ -13,6 +13,8 @@
 }
 
 .navbar_link:hover {
-    border-bottom: 3px solid #1AE5F1;
     color : #1AE5F1;
+    border-bottom: 2px solid #1AE5F1;
+    text-decoration: none !important;
+    color: white;
 }
