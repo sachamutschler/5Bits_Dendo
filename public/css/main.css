@@ -1,4 +1,38 @@
 body {
     margin:0px;
     font-family:arial;
+    background: #2d2929;
+    background-image: url("../images/background.jpg");
+    background-repeat: no-repeat;
+}
+
+#header {
+    height: 80px;
+    display: flex;
+    background: #161616;
+
+}
+
+#contenu_page {
+    margin: auto;
+    margin-left: 150px;
+    margin-right: 150px;
+    min-height: 800px;
+    background: #fffff0;
+}
+
+.titre_page {
+    padding-top: 20px;
+    padding-left: 20px;
+    font-family: 'Dancing Script', cursive;
+    color: #eac013;
+}
+
+.contenu {
+    width: 90%;
+    background: rgba(0,0,0,0.8);
+    margin: auto;
+    height: max-content;
+    min-height: 700px;
+    margin-top: 80px;
 }

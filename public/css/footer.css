@@ -4,10 +4,10 @@
 .footer{
     display: flex;
 }
-p{
+.footer p{
     color: white;
 }
-h3{
+.footer h3{
     color: white;
     margin-left: 40px;
 }
