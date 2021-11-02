@@ -1,5 +1,5 @@
 body {
-    margin:0px;
+    margin:auto;
     font-family:arial;
     background: #2d2929;
     background-image: url("../images/background.jpg");
@@ -42,3 +42,4 @@ p {
     margin-block-start: 0;
     margin-block-end: 0;
 }
+

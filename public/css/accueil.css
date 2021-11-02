@@ -126,9 +126,11 @@
 }
 
 #icones_accueil {
-    background-image: url("../images/accueil_2.jpg");
+    background-image: url("../images/accueil/accueil_2.jpg");
     background-repeat: no-repeat;
     width:100%;
     height:1080px;
     margin-top: 20px;
 }
+
+

@@ -18,3 +18,7 @@
     text-decoration: none !important;
     color: white;
 }
+
+#icone_menu {
+    display:none;
+}
