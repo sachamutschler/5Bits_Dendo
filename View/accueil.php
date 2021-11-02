@@ -1,13 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <link href="public/css/main.css" rel="stylesheet">
-    <link href="public/css/navbar.css" rel="stylesheet">
-    <link href="public/css/footer.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-
-
-    <title>Example</title>
+    <?php include ('head.php'); ?>
 </head>
 <body>
 </html>
