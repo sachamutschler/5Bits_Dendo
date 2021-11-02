@@ -39,13 +39,13 @@
 }
 
 .article_accueil h3 {
-    width: calc(50% - 20px);
+    width: calc(40% - 20px);
     padding:10px;
     margin-right: auto;
 }
 
 .article_accueil h4 {
-    width: calc(50% - 20px);
+    width: calc(60% - 20px);
     padding:10px;
     margin-left: auto;
     text-align: right;
