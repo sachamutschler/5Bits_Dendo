@@ -95,11 +95,11 @@
     text-align: center;
 }
 
-.bouton_cache:hover .image {
+.article_accueil:hover .article_container {
     opacity: 0.5;
 }
 
-.bouton_cache:hover .bouton_produit_accueil {
+.article_accueil:hover .bouton_produit_accueil {
     opacity: 1;
 }
 
