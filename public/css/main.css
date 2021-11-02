@@ -36,3 +36,8 @@ body {
     min-height: 700px;
     margin-top: 80px;
 }
+
+p {
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
