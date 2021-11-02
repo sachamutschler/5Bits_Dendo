@@ -1,0 +1,15 @@
+#presentation {
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#presentation p {
+    width: calc(50% - 40px);
+    padding: 20px;
+}
+
+#presentation img {
+    width: calc(50% - 40px);
+    padding: 20px;
+}
