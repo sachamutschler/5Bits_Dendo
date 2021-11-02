@@ -34,7 +34,7 @@
 }
 
 .article_accueil img {
-    max-width: -webkit-fill-available;
+    max-width: 100%;
     margin-top: 20px;
     opacity: 1;
     display: block;
