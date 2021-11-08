@@ -1,6 +1,6 @@
 .panier{
     background-color: white;
-    height: 55%;
+    height: 65%;
     display: flex;
     margin-left: 5%;
     margin-right: 5%;
@@ -10,7 +10,7 @@
     border-radius: 30px;
 }
 .imagePanier{
-    width: 50%;
+    width: 60%;
 }
 .quantity{
     display: flex;
