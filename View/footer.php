@@ -28,7 +28,7 @@
             <label>
                 <input type="text" name="newsletter" class="newsletter_text">
             </label>
-            <button type="submit">Envoyer</button>
+            <button type="submit" class="btn_newsletter">Envoyer</button>
         </form>
     </div>
     
