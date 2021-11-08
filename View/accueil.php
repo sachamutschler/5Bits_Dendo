@@ -4,7 +4,6 @@
     <?php include ('head.php'); ?>
 </head>
 <body>
-</html>
 
 <div id="header">
     <?php include ('navbar.php'); ?>
@@ -63,11 +62,42 @@
     </div>
 
     <div id="icones_accueil">
+        <div class="icones_accueil_liste">
+            <div class="une_icone">
+                <img src="public/images/accueil/icone_velo.png" alt="icone_velo">
+                <p>Des vélos de qualité artisanale</p>
+            </div>
+            <div class="une_icone">
+                <img src="public/images/accueil/icone_outils.png" alt="icone_velo">
+                <p>Un atelier de réparation dernier cri</p>
+            </div>
+            <div class="une_icone">
+                <img src="public/images/accueil/icone_service.png" alt="icone_velo">
+                <p>Un problème ? Contactez nous !</p>
+            </div>
+        </div>
 
+        <div class="icones_accueil_liste">
+            <div class="une_icone">
+                <p>Une démarche écologique</p>
+                <img src="public/images/accueil/icone_nature.png" alt="icone_velo">
+            </div>
+            <div class="une_icone">
+                <p>Des vélos sur mesure !</p>
+                <img src="public/images/accueil/icone_metre.png" alt="icone_velo">
+            </div>
+            <div class="une_icone">
+                <p>Optimisés pour les performances</p>
+                <img src="public/images/accueil/icone_performance.png" alt="icone_velo">
+            </div>
+        </div>
     </div>
 
 </div>
 
 <?php include ('footer.php'); ?>
 
+<?php include ('public/js/navbar.php'); ?>
 </body>
+
+</html>

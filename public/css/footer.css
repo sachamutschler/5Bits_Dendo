@@ -20,7 +20,7 @@
 }
 .text_desc{
     margin-left: 40px;
-    width: 40%;
+    width: 80%;
 }
 .copyright {
     text-align:center;
@@ -37,4 +37,36 @@
 }
 .newsletter{
     width: 50%;
+    padding-right: 5%;
 }
+.newsletter_text{
+    width: 70%;
+    height: 25px;
+}
+.btn_newsletter{
+    height: 31px;
+}
+.About{
+    width: 40%;
+}
+.services{
+    width: 40%;
+    padding-left: 5%;
+}
+.footer_desc{
+    width: 75%;
+}
+
+@media screen and (max-width: 900px) {
+     .newsletter{
+     display: none;
+    }
+    .footer_desc{
+        width: 90%;
+    }
+  }
+  @media screen and (max-width: 600px) {
+   .footer_desc{
+       display: none;
+   }
+ }
