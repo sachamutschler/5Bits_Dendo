@@ -2,30 +2,31 @@
     position: relative;
         left: 22px;
 }
-td {
-    color: white;
-    border: 1px solid white;
-    padding: 10px;
-}
-table {
-    margin: 20px;
-}
 
-td:hover {
-    color: black;
-    border: 1px solid white;
-    background-color: #eac013;
-}
+/*catégories*/
 .colonnes_container {
     display: flex;
     flex-direction: row;
-
 }
 .colonne_gauche {
     width: 200px;
     height: 100%;
 }
+table {
+    margin: 20px;
+}
+td {
+    color: white;
+    border: 1px solid white;
+    padding: 10px;
+}
+td:hover {
+    color: black;
+    border: 1px solid white;
+    background-color: #eac013;
+}
 
+/*Articles*/
 .colonne_droite {
     width: 75%;
 }
@@ -34,7 +35,6 @@ td:hover {
     flex-wrap: wrap;
     justify-content: center;
 }
-
 .article_produits {
     width: calc(20% - 20px);
     padding: 10px;
@@ -42,7 +42,6 @@ td:hover {
     margin:10px;
     position: relative;
 }
-
 .article_container {
     display: flex;
     flex-wrap: wrap;
@@ -58,13 +57,11 @@ td:hover {
     transition: .5s ease;
     backface-visibility: hidden;
 }
-
 .article_produits h3 {
     width: calc(40% - 20px);
     padding:10px;
     margin-right: auto;
 }
-
 .article_produits h4 {
     width: calc(60% - 20px);
     padding:10px;
@@ -72,11 +69,9 @@ td:hover {
     text-align: right;
     color:#ff9e00;
 }
-
 .article_produits h4 strike {
     color:red;
 }
-
 .article_produits p {
     text-overflow: ellipsis;
     overflow: hidden;
@@ -84,20 +79,12 @@ td:hover {
     padding: 10px;
 }
 
-.bouton_produit, .bouton {
+.bouton_produit {
     padding: 10px;
     padding-left: 25px;
     padding-right: 25px;
     color: white;
     text-decoration: none;
-}
-
-.bouton {
-    background:#0eb2ba;
-}
-
-.bouton:hover {
-    background: #0b8e94;
 }
 
 .bouton_produit {
@@ -122,14 +109,6 @@ td:hover {
 
 .bouton_produit:hover {
     background:#bb990f;
-}
-
-#texte_presentation {
-    flex-wrap: wrap;
-    display: flex;
-    padding: 20px;
-    width: calc(50% - 40px);
-    margin-bottom: auto;
 }
 
 #accueil_2 {
@@ -179,8 +158,7 @@ td:hover {
         width: 100%;
     }
     .colonnes_container {
-        justify-content: center;
-        
+        justify-content: center;  
     }
 
 }
