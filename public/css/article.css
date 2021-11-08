@@ -1,0 +1,31 @@
+.panier{
+    background-color: white;
+    height: 55%;
+    display: flex;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 2%;
+    margin-top: 2%;
+    border: solid black;
+    border-radius: 30px;
+}
+.imagePanier{
+    width: 50%;
+}
+.quantity{
+    display: flex;
+    flex-direction: column;
+    margin-top: 30%;
+}
+.t_panier{
+    font-size: 25px;
+    margin-top: 10%;
+}
+.panier_livraison{
+    margin-top: 20%;
+    background-color: cadetblue;
+    width: 125%;
+}
+.delete_panier{
+    margin-top: 15%;
+}
