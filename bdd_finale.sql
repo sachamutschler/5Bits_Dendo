@@ -1,4 +1,4 @@
-```mysql
+
 CREATE TABLE Produit(
     idProduit INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     reference VARCHAR(255) DEFAULT NULL,
@@ -13,7 +13,7 @@ CREATE TABLE Produit(
     stock INT(4) DEFAULT NULL,
     prix INT(6) DEFAULT NULL,
     image VARCHAR(255) DEFAULT NULL
-)
+);
 
 CREATE TABLE Promo(
     idPromo INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
@@ -23,7 +23,7 @@ CREATE TABLE Promo(
     date_debut DATETIME DEFAULT NULL,
     date_fin DATETIME DEFAULT NULL,
     idProduit INT NOT NULL
-)
+);
 
 CREATE TABLE Commande(
     idCommande INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
@@ -33,7 +33,8 @@ CREATE TABLE Commande(
     taille INT(3) DEFAULT NULL,
     etat VARCHAR(25) DEFAULT NULL,
     idCompte_client INT NOT NULL
-)
+);
+
 CREATE TABLE Ligne_commande(
     idLigne_commande INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     quantite INT(4) DEFAULT NULL,
@@ -43,20 +44,20 @@ CREATE TABLE Ligne_commande(
     designation_produit VARCHAR (255) DEFAULT NULL,
     idCommande INT NOT NULL,
     idProduit INT NOT NULL
-    )
+);
 
 CREATE TABLE Historique(
     idHistorique INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    date DATETIME CURRENT_TIMESTAMP,
+    date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     idLigne_commande INT NOT NULL,
-    idCompte_client INT NOT NULL,
-    )
+    idCompte_client INT NOT NULL
+);
 
 CREATE TABLE Panier(
     idPanier INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     quantite INT (4) DEFAULT NULL,
-    idProduit INT NOT NULL,
-    )
+    idProduit INT NOT NULL
+);
 
 CREATE TABLE Compte_client(
     idCompte_client INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
@@ -74,5 +75,4 @@ CREATE TABLE Compte_client(
     pays VARCHAR(255) NOT NULL,
     code_validation VARCHAR(255) DEFAULT NULL,
     etat VARCHAR(255) DEFAULT NULL
-    )
-```
+);
