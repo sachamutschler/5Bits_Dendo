@@ -2,7 +2,7 @@ Hisorique
 	ID 			INT AI
 	ID_commande		INT
 	ID_compte_client	INT
-	date		
+	date			DATETIME
 	
 
 Panier
@@ -10,6 +10,18 @@ Panier
 	ID_produit		INT
 	quantite		INT(4)
 	
+Categorie
+	ID			INT AI
+	nom			VARCHAR(50)
+
+SousCategorie
+	ID			INT AI
+	nom			VARCHAR(50)
+	ID_categorie		INT
+
+categorie_produit
+	ID_categorie		INT
+	ID_produit		INT
 
 Produit
 	ID 			INT AI
@@ -25,6 +37,7 @@ Produit
 	stock			INT(4)
 	prix			INT(6)
 	image			VARCHAR(255)
+	electrique		BOOLEAN(1)
 
 Commande
 	ID			INT AI
@@ -62,7 +75,8 @@ Compte_client
 	etat			VARCAHR(255)
 	
 Promo
-	ID			INT AI
+	ID
+	ID_article		INT			INT AI
 	code			VARCHAR(255)
 	reduction		DECIMAL(2.2)
 	duree_validite		TIME
