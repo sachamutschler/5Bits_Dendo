@@ -7,20 +7,20 @@
 
 <div class="w-100 conteneur-form">
 <form action="" method="post" name="contact-form" class="contact-form w-50">
-    <h2>Formulaire de contact : </h2>
+    <h2 id="titre">Formulaire de contact : </h2>
     <div>
-        <label for="exampleFormControlInput1" class="objet-form">Objet :</label>
+        <label for="exampleFormControlInput1" class="objet-form" id="objet">Objet :</label>
         <input class="form-control" type="text" placeholder="Default input" aria-label="default input example" name="objet">
         <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label" >Adresse email :</label>
+            <label for="exampleFormControlInput1" class="form-label" id="addresse_mail">Adresse email :</label>
             <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" name="email">
         </div>
         <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label">Descriptif de la demande :</label>
+            <label for="exampleFormControlTextarea1" class="form-label" id="desc">Descriptif de la demande :</label>
             <textarea class="form-control description" id="exampleFormControlTextarea1" rows="3" name="description"></textarea>
         </div>
 
-        <button type="submit" name="button" class="btn btn-primary">Envoyer</button>
+        <button type="submit" name="button" class="btn btn-primary" id="btn">Envoyer</button>
         <div class = "g-recaptcha" data-sitekey = "site_key"></div>
 
         <?php 

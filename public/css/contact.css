@@ -1,11 +1,12 @@
 .conteneur-form{
     border: 2px solid black;
-    background-color: antiquewhite;
+    background-color: gray;
     border-radius: 10px;
     width: 70%;
     margin-left: 15%;
     margin-top: 3%;
     margin-bottom: 3%;
+    color: white;
 }
 .form-control{
     width: 40%;
@@ -13,4 +14,16 @@
 }
 .description{
     height: 70!important;
+}
+#titre{
+    text-align: center;
+}
+#objet{
+    margin-left: 23%;
+}
+#addresse_mail{
+    margin-left: 23%;
+}
+#desc{
+    margin-left: 23%;
 }
