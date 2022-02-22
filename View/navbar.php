@@ -5,4 +5,5 @@
     <a class="navbar_link" href="#">Contact</a>
     <a class="navbar_link" href="#">Qui sommes nous ?</a>
     <a class="navbar_link" href="#">Mon compte</a>
+    <a class="navbar_link" href="#">Se connecter</a>
 </div>

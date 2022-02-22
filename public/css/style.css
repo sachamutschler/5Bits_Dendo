@@ -1,0 +1,13 @@
+.fond_accueil{
+    background: url(img/fond.jpg);
+    height: 480px;
+}
+form
+{
+    text-align:center;
+}
+
+.tchat{
+    border: solid slateblue;
+    width: 50%;
+}
