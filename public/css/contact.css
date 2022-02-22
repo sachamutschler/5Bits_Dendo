@@ -1,0 +1,16 @@
+.conteneur-form{
+    border: 2px solid black;
+    background-color: antiquewhite;
+    border-radius: 10px;
+    width: 70%;
+    margin-left: 15%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+}
+.form-control{
+    width: 40%;
+    height: 35;
+}
+.description{
+    height: 70!important;
+}
