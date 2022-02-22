@@ -1,78 +1,150 @@
+drop table if exists categorie;
+create table categorie
+(
+    idCategorie  int auto_increment
+        primary key,
+    nom          varchar(255) not null,
+    idCategorie2 int          null
+)
+    charset = utf8mb4;
 
-CREATE TABLE Produit(
-    idProduit INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    reference VARCHAR(255) DEFAULT NULL,
-    designation VARCHAR(255) DEFAULT NULL,
-    poids INT(4) DEFAULT NULL,
-    taille INT(5) DEFAULT NULL,
-    couleur VARCHAR(50) DEFAULT NULL,
-    taille_roue INT(3) DEFAULT NULL,
-    matiere_cadre VARCHAR(50) DEFAULT NULL,
-    type_suspension VARCHAR(50) DEFAULT NULL,
-    type_frein VARCHAR(50) DEFAULT NULL,
-    stock INT(4) DEFAULT NULL,
-    prix INT(6) DEFAULT NULL,
-    image VARCHAR(255) DEFAULT NULL
+drop table if exists commande;
+create table commande
+(
+    idCommande      int auto_increment
+        primary key,
+    date            datetime default CURRENT_TIMESTAMP not null,
+    transporteur    varchar(255)                       null,
+    code_colis      varchar(255)                       null,
+    poids           int(4)                             null,
+    taille          int(3)                             null,
+    etat            varchar(25)                        null,
+    idCompte_client int                                not null
+)
+    charset = utf8mb4;
+
+drop table if exists compte_client;
+create table compte_client
+(
+    idCompte_client int auto_increment
+        primary key,
+    identifiant     varchar(255)             not null,
+    mot_de_passe    varchar(255)             not null,
+    nom             varchar(255)             not null,
+    prenom          varchar(255)             not null,
+    mail            varchar(255)             not null,
+    telephone_port  varchar(25)                  not null,
+    telephone_fixe  varchar(25)                  null,
+    adresse_1       varchar(255)             not null,
+    adresse_2       varchar(255)             null,
+    ville           varchar(255)             not null,
+    code_postal     varchar(60)              not null,
+    pays            varchar(255)             not null,
+    code_validation varchar(255)             null,
+    etat            varchar(255) default '0' null
+)
+    charset = utf8mb4;
+
+drop table if exists ligne_commande;
+create table ligne_commande
+(
+    idLigne_commande    int auto_increment
+        primary key,
+    quantite            int(4)       null,
+    montant_unite       int(4)       null,
+    montant_total       int(6)       null,
+    reference_produit   varchar(255) null,
+    designation_produit varchar(255) null,
+    idCommande          int          not null,
+    idProduit           int          not null
+)
+    charset = utf8mb4;
+
+drop table if exists panier;
+create table panier
+(
+    idPanier  int auto_increment
+        primary key,
+    quantite  int(4) null,
+    idProduit int    not null
+)
+    charset = utf8mb4;
+
+drop table if exists produit;
+create table produit
+(
+    idProduit       int auto_increment
+        primary key,
+    reference       varchar(255)         null,
+    designation     varchar(255)         null,
+    poids           int(4)               null,
+    taille          int(5)               null,
+    couleur         varchar(50)          null,
+    taille_roue     int(3)               null,
+    matiere_cadre   varchar(50)          null,
+    type_suspension varchar(50)          null,
+    type_frein      varchar(50)          null,
+    stock           int(4)               null,
+    prix            int(6)               null,
+    image           varchar(255)         null,
+    electrique      tinyint(1) default 0 not null,
+    idCategorie     int                  not null
+)
+    charset = utf8mb4;
+
+drop table if exists promo;
+create table promo
+(
+    idPromo        int auto_increment
+        primary key,
+    code           varchar(255) null,
+    reduction      decimal(2)   null,
+    duree_validite time         null,
+    date_debut     datetime     null,
+    date_fin       datetime     null,
+    idProduit      int          not null
+)
+    charset = utf8mb4;
+
+drop table if exists taxonomie;
+create table taxonomie
+(
+    idTaxonomie int auto_increment
+        primary key,
+    nom         varchar(50) not null
 );
 
-CREATE TABLE Promo(
-    idPromo INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    code VARCHAR(255) DEFAULT NULL,
-    reduction DECIMAL(2) DEFAULT NULL,
-    duree_validite TIME DEFAULT NULL,
-    date_debut DATETIME DEFAULT NULL,
-    date_fin DATETIME DEFAULT NULL,
-    idProduit INT NOT NULL
+drop table if exists taxonomie_produit;
+create table taxonomie_produit
+(
+    idTaxonomie int not null,
+    idProduit   int null
 );
 
-CREATE TABLE Commande(
-    idCommande INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    transporteur VARCHAR(255) DEFAULT NULL,
-    code_colis VARCHAR(255) DEFAULT NULL,
-    poids INT(4) DEFAULT NULL,
-    taille INT(3) DEFAULT NULL,
-    etat VARCHAR(25) DEFAULT NULL,
-    idCompte_client INT NOT NULL
-);
+create index taxonomie_produit_produit_idProduit_fk
+    on taxonomie_produit (idProduit);
 
-CREATE TABLE Ligne_commande(
-    idLigne_commande INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    quantite INT(4) DEFAULT NULL,
-    montant_unite INT(4) DEFAULT NULL,
-    montant_total INT(6) DEFAULT NULL,
-    reference_produit VARCHAR (255) DEFAULT NULL,
-    designation_produit VARCHAR (255) DEFAULT NULL,
-    idCommande INT NOT NULL,
-    idProduit INT NOT NULL
-);
+create index taxonomie_produit_taxonomie_idTaxonomie_fk
+    on taxonomie_produit (idTaxonomie);
 
-CREATE TABLE Historique(
-    idHistorique INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    idLigne_commande INT NOT NULL,
-    idCompte_client INT NOT NULL
-);
+create index promo_produit_idProduit_fk
+    on promo (idProduit);
 
-CREATE TABLE Panier(
-    idPanier INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    quantite INT (4) DEFAULT NULL,
-    idProduit INT NOT NULL
-);
+create index produit_categorie_idCategorie_fk
+    on produit (idCategorie);
 
-CREATE TABLE Compte_client(
-    idCompte_client INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    identifiant VARCHAR (255) NOT NULL,
-    mot_de_passe VARCHAR (255) NOT NULL,
-    nom VARCHAR(255) NOT NULL,
-    prenom VARCHAR (255) NOT NULL,
-    mail VARCHAR (255) NOT NULL,
-    telephone_port INT(25) NOT NULL,
-    telephone_fixe INT(25) DEFAULT NULL,
-    adresse_1 VARCHAR(255) NOT NULL,
-    adresse_2 VARCHAR (255) DEFAULT NULL,
-    ville VARCHAR(255) NOT NULL,
-    code_postal VARCHAR(60) NOT NULL,
-    pays VARCHAR(255) NOT NULL,
-    code_validation VARCHAR(255) DEFAULT NULL,
-    etat VARCHAR(255) DEFAULT NULL
-);
+create index panier_produit_idProduit_fk
+    on panier (idProduit);
+
+create index ligne_commande_commande_idCommande_fk
+    on ligne_commande (idCommande);
+
+create index ligne_commande_produit_idProduit_fk
+    on ligne_commande (idProduit);
+
+create index commande_compte_client_idCompte_client_fk
+    on commande (idCompte_client);
+
+create index categorie_categorie_idCategorie_fk
+    on categorie (idCategorie2);
+
