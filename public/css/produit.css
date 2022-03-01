@@ -1,0 +1,39 @@
+.div_produit {
+    display: flex;
+    margin: 20px;
+    background: white;
+    border-radius: 5px;
+}
+
+.div_produit img {
+    padding: 10px;
+    width: calc(60% - 20px);
+}
+
+.div_produit #caracteristiques {
+    padding: 10px;
+    width: calc(40% - 20px);
+    display: flex;
+    flex-direction: column;
+}
+
+#prix {
+    background: white;
+    height: fit-content;
+    color:#20738d;
+}
+
+
+#prix strike {
+    color: #d92626;
+}
+
+
+.caracteristiques_element {
+    margin-left: auto;
+    padding: 5px;
+}
+
+.xdebug-var-dump {
+    background: white;
+}
