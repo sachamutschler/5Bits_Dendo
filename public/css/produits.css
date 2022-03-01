@@ -15,12 +15,12 @@
 table {
     margin: 20px;
 }
-td {
+button {
     color: white;
     border: 1px solid white;
     padding: 10px;
 }
-td:hover {
+button:hover {
     color: black;
     border: 1px solid white;
     background-color: #eac013;
