@@ -1,0 +1,354 @@
+-- phpMyAdmin SQL Dump
+-- version 5.0.2
+-- https://www.phpmyadmin.net/
+--
+-- Hôte : 127.0.0.1:3306
+-- Généré le : mar. 01 mars 2022 à 15:26
+-- Version du serveur :  5.7.31
+-- Version de PHP : 7.4.9
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de données : `dendo`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `carac_couleur`
+--
+
+DROP TABLE IF EXISTS `carac_couleur`;
+CREATE TABLE IF NOT EXISTS `carac_couleur` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `couleur` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `carac_couleur`
+--
+
+INSERT INTO `carac_couleur` (`id`, `couleur`) VALUES
+(1, 'Bleu'),
+(2, 'Rouge'),
+(3, 'Vert'),
+(4, 'Noir'),
+(5, 'Gris'),
+(6, 'Violet'),
+(7, 'Jaune'),
+(8, 'Orange'),
+(9, 'Gris'),
+(10, 'Rose');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `carac_matiere_cadre`
+--
+
+DROP TABLE IF EXISTS `carac_matiere_cadre`;
+CREATE TABLE IF NOT EXISTS `carac_matiere_cadre` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `matiere` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `carac_matiere_cadre`
+--
+
+INSERT INTO `carac_matiere_cadre` (`id`, `matiere`) VALUES
+(1, 'Aluminium'),
+(2, 'Carbone');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `carac_taille_cadre`
+--
+
+DROP TABLE IF EXISTS `carac_taille_cadre`;
+CREATE TABLE IF NOT EXISTS `carac_taille_cadre` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `taille` varchar(3) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `carac_taille_cadre`
+--
+
+INSERT INTO `carac_taille_cadre` (`id`, `taille`) VALUES
+(1, 'XS'),
+(2, 'S'),
+(3, 'M'),
+(4, 'L'),
+(5, 'XL');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `carac_taille_roues`
+--
+
+DROP TABLE IF EXISTS `carac_taille_roues`;
+CREATE TABLE IF NOT EXISTS `carac_taille_roues` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `taille` tinyint(4) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `carac_taille_roues`
+--
+
+INSERT INTO `carac_taille_roues` (`id`, `taille`) VALUES
+(2, 12),
+(3, 14),
+(4, 16),
+(5, 18),
+(6, 20),
+(7, 22),
+(8, 24),
+(9, 26),
+(10, 28),
+(11, 29);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `categorie`
+--
+
+DROP TABLE IF EXISTS `categorie`;
+CREATE TABLE IF NOT EXISTS `categorie` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `categorie`
+--
+
+INSERT INTO `categorie` (`id`, `nom`) VALUES
+(1, 'VTT'),
+(2, 'Ville'),
+(3, 'Route');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `commande`
+--
+
+DROP TABLE IF EXISTS `commande`;
+CREATE TABLE IF NOT EXISTS `commande` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `transporteur` varchar(255) DEFAULT NULL,
+  `code_colis` varchar(255) DEFAULT NULL,
+  `poids` int(4) DEFAULT NULL,
+  `taille` int(3) DEFAULT NULL,
+  `etat` varchar(25) DEFAULT NULL,
+  `id_compte_client` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `commande_compte_client_idCompte_client_fk` (`id_compte_client`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `compte_client`
+--
+
+DROP TABLE IF EXISTS `compte_client`;
+CREATE TABLE IF NOT EXISTS `compte_client` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `identifiant` varchar(255) NOT NULL,
+  `mot_de_passe` varchar(255) NOT NULL,
+  `nom` varchar(255) NOT NULL,
+  `prenom` varchar(255) NOT NULL,
+  `mail` varchar(255) NOT NULL,
+  `telephone_port` varchar(25) NOT NULL,
+  `telephone_fixe` varchar(25) DEFAULT NULL,
+  `adresse_1` varchar(255) NOT NULL,
+  `adresse_2` varchar(255) DEFAULT NULL,
+  `ville` varchar(255) NOT NULL,
+  `code_postal` varchar(60) NOT NULL,
+  `pays` varchar(255) NOT NULL,
+  `code_validation` varchar(255) DEFAULT NULL,
+  `etat` varchar(255) DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `ligne_commande`
+--
+
+DROP TABLE IF EXISTS `ligne_commande`;
+CREATE TABLE IF NOT EXISTS `ligne_commande` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `quantite` int(4) DEFAULT NULL,
+  `montant_unite` int(4) DEFAULT NULL,
+  `montant_total` int(6) DEFAULT NULL,
+  `reference_produit` varchar(255) DEFAULT NULL,
+  `designation_produit` varchar(255) DEFAULT NULL,
+  `id_commande` int(11) NOT NULL,
+  `id_produit` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `ligne_commande_commande_idCommande_fk` (`id_commande`),
+  KEY `ligne_commande_produit_idProduit_fk` (`id_produit`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `panier`
+--
+
+DROP TABLE IF EXISTS `panier`;
+CREATE TABLE IF NOT EXISTS `panier` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `quantite` int(4) DEFAULT NULL,
+  `id_produit` int(11) NOT NULL,
+  `id_compte_client` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `panier_produit_idProduit_fk` (`id_produit`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `produit`
+--
+
+DROP TABLE IF EXISTS `produit`;
+CREATE TABLE IF NOT EXISTS `produit` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `reference` varchar(255) DEFAULT NULL,
+  `designation` varchar(255) DEFAULT NULL,
+  `poids` int(4) DEFAULT NULL,
+  `stock` int(4) DEFAULT NULL,
+  `prix` int(6) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `electrique` tinyint(1) NOT NULL DEFAULT '0',
+  `reduction` decimal(4,2) NOT NULL,
+  `id_categorie` int(11) NOT NULL,
+  `id_carac_couleur` int(11) NOT NULL,
+  `id_carac_matiere_cadre` int(11) NOT NULL,
+  `id_carac_taille_cadre` int(11) NOT NULL,
+  `id_carac_taille_roues` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `produit_categorie_idCategorie_fk` (`id_categorie`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `produit`
+--
+
+INSERT INTO `produit` (`id`, `reference`, `designation`, `poids`, `stock`, `prix`, `image`, `electrique`, `reduction`, `id_categorie`, `id_carac_couleur`, `id_carac_matiere_cadre`, `id_carac_taille_cadre`, `id_carac_taille_roues`) VALUES
+(1, 'VEL_AL_ROU_ROS_24_L', 'Vélo de route Rose pour homme. 24 pouces, taille L.', 5, 82, 1200, 'VEL_AL_ROU_ROS_24_L', 0, '0.00', 3, 10, 1, 4, 8),
+(2, 'VEL_AL_ROU_ROS_20_M', 'Vélo de route Rose pour homme. 20 pouces, taille M.', 4, 154, 1090, 'VEL_AL_ROU_ROS_20_M', 0, '0.00', 3, 10, 1, 3, 6),
+(3, 'VEL_AL_ROU_ORA_28_M', 'Vélo de route Orange pour homme et femme. 28 pouces, taille L.', 4, 154, 1290, 'VEL_AL_ROU_ORA_28_L', 0, '0.00', 3, 8, 1, 4, 10),
+(4, 'VEL_CA_ROU_NOI_26_M', 'Vélo de route Noir pour homme et femme. 26 pouces, taille L.', 6, 114, 1290, 'VEL_CA_ROU_NOI_26_M', 0, '10.00', 3, 4, 2, 3, 9),
+(5, 'VEL_AL_ROU_JAU_12_XS', 'Vélo de route Jaune pour enfant. 12 pouces, taille XS.', 4, 331, 800, 'VEL_AL_ROU_JAU_12_XS', 0, '20.00', 3, 7, 1, 1, 2),
+(6, 'VEL_AL_ROU_JAU_18_S', 'Vélo de route Jaune pour enfant et femme. 18 pouces, taille S.', 5, 54, 900, 'VEL_AL_ROU_JAU_18_XS', 0, '15.00', 3, 7, 1, 2, 5);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `promo`
+--
+
+DROP TABLE IF EXISTS `promo`;
+CREATE TABLE IF NOT EXISTS `promo` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `code` varchar(255) DEFAULT NULL,
+  `reduction` tinyint(4) DEFAULT NULL,
+  `date_debut` datetime DEFAULT NULL,
+  `date_fin` datetime DEFAULT NULL,
+  `montant_min` int(11) DEFAULT '0',
+  `id_categorie` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `promo_produit_idProduit_fk` (`montant_min`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `promo`
+--
+
+INSERT INTO `promo` (`id`, `code`, `reduction`, `date_debut`, `date_fin`, `montant_min`, `id_categorie`) VALUES
+(1, 'ROUTE10', 10, '2022-03-03 00:00:00', '2022-05-31 23:59:59', 1000, 3),
+(2, 'ROUTE20', 20, '2022-03-03 00:00:00', '2022-05-31 23:59:59', 2000, 3),
+(3, 'HAPPYMARCH', 15, '2022-03-01 00:00:00', '2022-03-31 23:59:59', 1500, NULL),
+(4, 'DESTOCKAGE', 20, '2022-03-03 00:00:00', '2022-07-31 23:59:59', 5000, NULL),
+(5, 'VILLE15', 15, '2022-03-03 00:00:00', '2022-05-31 23:59:59', 1000, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `taxonomie`
+--
+
+DROP TABLE IF EXISTS `taxonomie`;
+CREATE TABLE IF NOT EXISTS `taxonomie` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `taxonomie`
+--
+
+INSERT INTO `taxonomie` (`id`, `nom`) VALUES
+(1, 'homme'),
+(2, 'femme'),
+(3, 'enfant');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `taxonomie_produit`
+--
+
+DROP TABLE IF EXISTS `taxonomie_produit`;
+CREATE TABLE IF NOT EXISTS `taxonomie_produit` (
+  `id_taxonomie` int(11) NOT NULL,
+  `id_produit` int(11) NOT NULL,
+  KEY `taxonomie_produit_produit_idProduit_fk` (`id_produit`),
+  KEY `taxonomie_produit_taxonomie_idTaxonomie_fk` (`id_taxonomie`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `taxonomie_produit`
+--
+
+INSERT INTO `taxonomie_produit` (`id_taxonomie`, `id_produit`) VALUES
+(1, 1),
+(1, 3),
+(2, 3),
+(1, 2),
+(1, 4),
+(2, 4),
+(3, 5),
+(3, 5),
+(2, 5);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
