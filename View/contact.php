@@ -6,21 +6,30 @@
 ?>
 
 <div class="w-100 conteneur-form">
+
 <form action="" method="post" name="contact-form" class="contact-form w-50">
+
+
     <h2 id="titre">Formulaire de contact : </h2>
+
+
     <div>
-        <label for="exampleFormControlInput1" class="objet-form" id="objet">Objet :</label>
-        <input class="form-control" type="text" placeholder="Default input" aria-label="default input example" name="objet">
-        <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label" id="addresse_mail">Adresse email :</label>
-            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" name="email">
+        <div class="">
+            <div>
+                <input class="form-control" type="text" placeholder="Objet" aria-label="default input example" name="objet">
+            </div>
+            <div class="mb-3">
+                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Adresse mail" name="email">
+            </div>
         </div>
+        
         <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label" id="desc">Descriptif de la demande :</label>
-            <textarea class="form-control description" id="exampleFormControlTextarea1" rows="3" name="description"></textarea>
+            <textarea class="form-control description" id="exampleFormControlTextarea1" rows="3" name="description" placeholder="Description"></textarea>
         </div>
 
         <button type="submit" name="button" class="btn btn-primary" id="btn">Envoyer</button>
+
+        
         <div class = "g-recaptcha" data-sitekey = "site_key"></div>
 
         <?php 
