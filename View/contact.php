@@ -9,9 +9,9 @@
 
 <form action="" method="post" name="contact-form" class="contact-form w-50">
 
-
-    <h2 id="titre">Contactez nous ! </h2>
-
+    <div class="div_titre">
+        <h2 id="titre">Contactez nous ! </h2>
+    </div>
 
     <div>
         <div class="conteneur_contact1">
