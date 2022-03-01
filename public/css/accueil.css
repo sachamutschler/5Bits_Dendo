@@ -12,6 +12,7 @@
 #presentation img {
     width: calc(50% - 40px);
     padding: 20px;
+    height: fit-content;
 }
 
 #articles_accueil {
@@ -78,6 +79,7 @@
 
 .bouton {
     background:#0eb2ba;
+    border-radius: 3px;
 }
 
 #presentation .bouton {
@@ -98,6 +100,7 @@
     -ms-transform: translate(-50%, -50%);
     text-align: center;
     background: #eac013;
+    border-radius: 3px;
 }
 
 .article_accueil:hover .article_container {
@@ -175,7 +178,7 @@
 /* mode tablette */
 @media screen and (max-width: 960px) {
     #presentation img, #texte_presentation {
-        width:100%;
+        width:calc(100% - 40px);
     }
 
     #articles_accueil {
