@@ -10,24 +10,24 @@
 <form action="" method="post" name="contact-form" class="contact-form w-50">
 
 
-    <h2 id="titre">Formulaire de contact : </h2>
+    <h2 id="titre">Contactez nous ! </h2>
 
 
     <div>
-        <div class="">
-            <div>
+        <div class="conteneur_contact1">
+            <div class="div_form div_form1">
                 <input class="form-control" type="text" placeholder="Objet" aria-label="default input example" name="objet">
             </div>
-            <div class="mb-3">
+            <div class="div_form">
                 <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Adresse mail" name="email">
             </div>
         </div>
         
-        <div class="mb-3">
+        <div class="cont_desc">
             <textarea class="form-control description" id="exampleFormControlTextarea1" rows="3" name="description" placeholder="Description"></textarea>
         </div>
 
-        <button type="submit" name="button" class="btn btn-primary" id="btn">Envoyer</button>
+        <button type="submit" name="button" class="btn" id="btn">Envoyer</button>
 
         
         <div class = "g-recaptcha" data-sitekey = "site_key"></div>

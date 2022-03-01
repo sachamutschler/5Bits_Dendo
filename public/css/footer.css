@@ -1,6 +1,8 @@
 .cont_footer{
     background-color: black;
     margin-top: 0%;
+    bottom: 0;
+    position:absolute;
 }
 .footer{
     display: flex;
