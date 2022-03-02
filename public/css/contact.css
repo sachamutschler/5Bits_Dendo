@@ -33,6 +33,19 @@
 .div_titre{
     padding-top: 1%;
 }
+.cont_btn{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-top: 5%;
+}
+.btn{
+    width: 15%;
+    border-radius: 0px;
+    height: 30px;
+    background-color: white;
+    color: gray;
+}
 
 
 #titre{

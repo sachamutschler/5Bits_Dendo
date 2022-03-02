@@ -27,8 +27,10 @@
             <textarea class="form-control description" id="exampleFormControlTextarea1" rows="3" name="description" placeholder="Description"></textarea>
         </div>
 
-        <button type="submit" name="button" class="btn" id="btn">Envoyer</button>
+        <div class="cont_btn">
+            <button type="submit" name="button" class="btn" id="btn">Envoyer</button>
 
+        </div>
         
         <div class = "g-recaptcha" data-sitekey = "site_key"></div>
 
