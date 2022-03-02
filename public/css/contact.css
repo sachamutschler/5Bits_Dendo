@@ -1,20 +1,53 @@
 .conteneur-form{
-    border: 2px solid black;
-    background-color: gray;
-    border-radius: 10px;
+
+    background-color: black;
     width: 70%;
     margin-left: 15%;
     margin-top: 3%;
     margin-bottom: 3%;
     color: white;
+    height: 50%;
 }
 .form-control{
-    width: 40%;
+    width: 100%;
     height: 35;
 }
 .description{
     height: 70!important;
+    width: 95%!important;
 }
+.cont_desc{
+    margin-left: 5%;
+    margin-top: 5%;
+}
+.conteneur_contact1{
+    display: flex;
+    margin-left: 5%;
+}
+.div_form{
+    width: 45%;
+}
+.div_form1{
+    margin-right: 5%;
+}
+.div_titre{
+    padding-top: 1%;
+}
+.cont_btn{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-top: 5%;
+}
+.btn{
+    width: 15%;
+    border-radius: 0px;
+    height: 30px;
+    background-color: white;
+    color: gray;
+}
+
+
 #titre{
     text-align: center;
 }

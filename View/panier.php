@@ -13,7 +13,7 @@
         <label class="t_panier">Quantité : </label>
         <label class="t_panier">Prix : </label>
         <input type="button" value="Supprimer" name="supprimer" class="delete_panier">
-        <input type="button" value="Choisir ma livraison" name="livraison_panier" class="panier_livraison">
+        <a href="https://buy.stripe.com/test_8wMdRba3LdAN5KUdQR"><input type="button" value="Paiement" name="livraison_panier" class="panier_livraison"></a>
 
     </form> 
     </div>
