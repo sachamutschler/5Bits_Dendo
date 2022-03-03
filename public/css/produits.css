@@ -138,14 +138,16 @@ td:hover {
         display: none;
         justify-content: center;
     }
+
     .colonne_droite {
         width: 100%;
     }
+
     .colonnes_container {
         justify-content: center;
-    
-    }
 
+    }
+}
 @media only screen and (max-width: 600px) {
     .article_produits {
         width: 80%;
@@ -160,5 +162,4 @@ td:hover {
     .colonnes_container {
         justify-content: center;  
     }
-
 }

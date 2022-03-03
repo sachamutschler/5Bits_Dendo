@@ -27,7 +27,7 @@ body {
 .titre_page {
     padding-top: 20px;
     padding-left: 20px;
-    font-family: 'Dancing Script', cursive;
+    font-family: 'Smooch Sans', sans-serif;
     color: #eac013;
 }
 
@@ -38,6 +38,7 @@ body {
     height: max-content;
     min-height: 700px;
     margin-top: 80px;
+    border-radius: 5px;
 }
 
 p {
