@@ -61,15 +61,19 @@
 }
 
 @media screen and (max-width: 900px) {
-     .newsletter{
-     display: none;
-    }
+    
     .footer_desc{
         width: 90%;
+    }
+    .cont_footer{
+        width: 100%;
     }
   }
   @media screen and (max-width: 600px) {
    .footer_desc{
        display: none;
    }
+   .cont_footer{
+    width: 100%;
+    }
  }

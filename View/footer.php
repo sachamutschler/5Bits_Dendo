@@ -22,15 +22,6 @@
         <p class="text_desc">Praesent sed lobortis mi. Suspendisse vel placerat ligula. Vivamus ac sem lacus. Ut vehicula rhoncus elementum. Etiam quis tristique lectus. Aliquam in arcu eget velit pulvinar dictum vel in justo.</p>
 
     </div>
-    <div class="newsletter">
-        <h3>Newsletter</h3>
-        <form action="" method="post">
-            <label>
-                <input type="text" name="newsletter" class="newsletter_text">
-            </label>
-            <button type="submit" class="btn_newsletter">Envoyer</button>
-        </form>
-    </div>
     
 </footer>
 <div>
