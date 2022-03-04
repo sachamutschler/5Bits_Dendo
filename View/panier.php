@@ -12,7 +12,7 @@
     <div class="cont_panier2">
         <?php
 
-            for ($i=0; $i < 2; $i++) { 
+            for ($i=0; $i < $compteur_velo; $i++) { 
                 require('produit-panier.php');
             }
 
