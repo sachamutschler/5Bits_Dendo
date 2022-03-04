@@ -8,17 +8,21 @@
     border-radius: 15px;
     padding-top: 1%;
     overflow: auto;
+    display: flex;
+}
+.cont_panier2{
+    width: 60%;
+    margin-left: 10%;
+    margin-right: 5%;
 }
 .panier{
     background-color: white;
     height: 30%;
     display: flex;
-    margin-left: 10%;
-    margin-right: 5%;
     margin-bottom: 2%;
     margin-top: 2%;
     border: solid black;
-    width: 80%;
+    width: 100%;
     justify-content: space-between;
 }
 .imagePanier{
@@ -36,8 +40,6 @@
 .panier_livraison{
     margin-top: 2%;
     background-color: white;
-    width: 15%;
-    height: 7%;
 }
 .cont_buy{
     text-align: center;
@@ -48,4 +50,15 @@
 }
 .text_panier{
     margin-right: 10%;
+}
+.total_buy{
+    width: 20%;
+    background-color: white;
+    height: 30%;
+    margin-top: 10%;
+}
+.cont_total{
+    text-align: center;
+    height: 50%;
+    padding-top: 10%;
 }
