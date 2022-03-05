@@ -12,6 +12,9 @@
     <div class="cont_panier2">
         <?php
 
+            $quantité = 'SELECT quantite FROM `panier`';
+
+
             for ($i=0; $i < 4; $i++) { 
                 require('produit-panier.php');
             }
