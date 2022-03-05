@@ -1,3 +1,4 @@
+<!-- 
 <div class="cont_footer">
 
 <footer class="footer">
@@ -29,5 +30,5 @@
 </div>
 
 
-</div>
+</div> -->
 <script src = 'https: //www.google.com/recaptcha/api.js' différé asynchrone></script>

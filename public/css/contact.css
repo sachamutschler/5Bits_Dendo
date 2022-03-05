@@ -7,13 +7,14 @@
     margin-bottom: 3%;
     color: white;
     height: 50%;
+    padding-bottom: 5%;
 }
 .form-control{
     width: 100%;
-    height: 35;
+    height: 35px;
 }
 .description{
-    height: 70!important;
+    height: 70px!important;
     width: 95%!important;
 }
 .cont_desc{
