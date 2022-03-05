@@ -1,148 +1,172 @@
+<?php
+function connexionBase($nomBase)
+{
+    $servername="localhost";
+    $username="root";
+    $password="";
+    try {
+        $db = new PDO("mysql:host=$servername;dbname=$nomBase", $username, $password);
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    }
+    catch(PDOException $e) {
+        echo "Error of connection: " .$e->getMessage();
+        die();
+    }
+    return $db;
+}
+?>
+
+html:5
+
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <?php include ('head.php'); ?>
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <?php include ('head.php'); ?>
+    </head>
+    <body>
+        <div id="header">
+            <link href="public/css/produits.css" rel="stylesheet">
+            <?php include ('navbar.php'); ?>
+        </div>
+        <div class="contenu">
+            <h1 class="titre_page">Nos produits</h1>
+                <input class=recherche type=text name="recherche" placeholder="Recherche..."><label for="recherche"></label>
+                    <div class="colonnes_container">
+                        <div class="colonne_gauche">
+                            <!-- Boutons de tri + requêtage -->
+                            <table>
+                                 <?php $db = connexionBase('dendo2');
+                                    #Récupération des noms dans les tables pour créer les listes déroulantes
+                                    $listeCategories = $db->query("select id, nom_categorie FROM categorie");
+                                    $listeCategories = $listeCategories->fetchAll();
+                                    $listeCouleurs = $db->query("select id, couleur FROM carac_couleur");
+                                    $listeCouleurs = $listeCouleurs->fetchAll();
+                                    $listeTaxonomies = $db->query("select id, nom_taxonomie FROM taxonomie");
+                                    $listeTaxonomies = $listeTaxonomies->fetchAll();
+                                    ?>
+                                <tr>
+                                    <!-- Formulaire de tri -->
+                                    <form method="get">
+                                        <label for="categorie">Type vélo:</label>
+                                        <select name="categorie" id="categorie">
+                                            <option value="">--- Choisir un type de vélo ---</option>
+                                            <option type="submit" value="%" name="categorie">Tout</option>
+                                            <?php foreach ($listeCategories as $itemCategorie){
+                                                echo '<option type="submit" value="'.$itemCategorie['id'].'" name="'.$itemCategorie['nom_categorie'].'">'.$itemCategorie['nom_categorie'].'</option>';
+                                            }?>
+                                        </select>
+                                        <label for="couleur">Couleur vélo:</label>
+                                        <select name="couleur" id="couleur">
+                                            <option value="">--- Choisir une couleur ---</option>
+                                            <option type="submit" value="%" name="couleur">Tout</option>
+                                            <?php foreach ($listeCouleurs as $itemCouleur){
+                                                echo '<option type="submit" value="'.$itemCouleur['id'].'" name="'.$itemCouleur['couleur'].'">'.$itemCouleur['couleur'].'</option>';
+                                            }?>
+                                        </select>
+                                        <label for="taxonomie">Genre:</label>
+                                        <select name="taxonomie" id="taxonomie">
+                                            <option value="">--- Choisir genre ---</option>
+                                            <option type="submit" value="%" name="taxonomie">Tout</option>
+                                            <?php foreach ($listeTaxonomies as $itemTaxonomie){
+                                                echo '<option type="submit" value="'.$itemTaxonomie['id'].'" name="'.$itemTaxonomie['nom_taxonomie'].'">'.$itemTaxonomie['nom_taxonomie'].'</option>';
+                                            }?>
+                                        </select>
+                                        <button type="submit">Lancer la recherche</button>
+                                    </form>
+
+                                <?php $db = connexionBase('dendo2');
+                                    $requeteC = $db->query("select id, nom_categorie FROM categorie");
+                                    $requeteC = $requeteC->fetchAll();
+                                    echo '<tr>
+                                            <form method="get">
+                                               <button type="submit" value="%" name="categorie">Tout</button>
+                                            </form>
+                                           </tr>';
+                                    foreach ($requeteC as $itemC){
+                                        echo'<tr>
+                                                <form method="get">
+                                                    <button type="submit" value="'.$itemC['id'].'" name="categorie">'.$itemC['nom_categorie'].'</button>
+                                                </form>
+                                             </tr>';
+                                    }
+                                    ?>
+                            </table>
+                            <table>
+                                <?php $db = connexionBase('dendo2');
+                                $requeteT = $db->query("select id, nom_taxonomie FROM taxonomie");
+                                $requeteT = $requeteT->fetchAll();
+                                echo '<tr>
+                                            <form method="get">
+                                               <button type="submit" value="%" name="taxonomie">Tout</button>
+                                            </form>
+                                           </tr>';
+                                foreach ($requeteT as $itemT){
+                                    echo'<tr>
+                                                <form method="get">
+                                                    <button type="submit" value="'.$itemT['id'].'" name="taxonomie">'.$itemT['nom_taxonomie'].'</button>
+                                                </form>
+                                             </tr>';
+                                }
+                                ?>
+                            </table>
+
+                        </div>
+                        <div class="colonne_droite">
+                            <div id="articles_produits">
+                                <?php
+                                    #Préparation d'une requête incluant, de base, tous les produits disponibles
+                                    $preparationRequete = "SELECT DISTINCT nom_produit FROM produit";
+                                    #Concaténation avec un complément si recherche plus affinée
+                                    if(isset($_GET)) {
+                                        $preparationRequete .= " INNER JOIN categorie c on p.id_categorie = c.id
+                                                                 INNER JOIN carac_couleur cc on p.id_carac_couleur = cc.id
+                                                                 INNER JOIN carac_couleur cc on p.id_carac_couleur = cc.id
+                                                                 INNER JOIN taxonomie_produit tp on p.id = tp.id_produit
+                                                                 INNER JOIN taxonomie t on tp.id_taxonomie = t.id";
+                                    }
+                                    if (isset($GET['categorie']) !=0){
+                                        $preparationRequete .= " WHERE p.id_categorie LIKE :categorie";
+                                    }
+                                    if (isset($GET['couleur']) !=0){
+                                        $preparationRequete .= " WHERE p.id_carac_couleur LIKE :couleur";
+                                    }
+                                    if (isset($GET['taxonomie']) !=0){
+                                        $preparationRequete .= " WHERE tp.id_taxonomie LIKE :taxonomie";
+                                    }
+
+                                    $requeteFinale = $db->prepare($preparationRequete);
+
+                                    #Injection des éléments de l'URL dans la requête
+                                    $requeteFinale->bindValue('categorie', $categorie);
+                                    $requeteFinale->bindValue('couleur', $couleur);
+                                    $requeteFinale->bindValue('taxonomie', $taxonomie);
+
+                                    #Exécution de la requête préparée et création du tableau PHP contenant chaque élément
+                                    $requeteFinale->execute();
+                                    $requeteFinale = $requeteFinale->fetchAll();
+                                    foreach ($requeteFinale as $itemRequete){
+                                        echo'<div class="article_produits">
+                                            <div class="article_container">';
+                                        ?>
+                                                <img class="image" src="<?= $itemRequete['image']; ?>.png" alt="image_produit">
+                                                <h3><?= $itemRequete['nom_produit']; ?></h3>
+                                                <h4><?php if($itemRequete['reduction_produit'] != 0){
+                                                            $prixSpecial = $itemRequete['prix']/100*(100-$itemRequete['reduction_produit']);
+                                                            echo $prixSpecial.'€ <strike>'.$itemRequete['prix'].'€</strike>';
+                                                        }else{
+                                                            echo $itemRequete['prix'].'€';
+                                                        }?>
+                                                </h4>
+                                                <p><? = $itemRequete['reduction'] ?></p>
+                                            </div>
+                                            <a class="bouton_produit" href="#">EN SAVOIR PLUS</a>
+                                        </div>
+                                    <?php }?>
+
+                            </div>
+                        </div>
+                    </div>
+        </div>
+    </body>
 </html>
-
-<div id="header">
-    <?php include ('navbar.php'); ?>
-    <link href="public/css/produits.css" rel="stylesheet">
-</div>
-
-<div class="contenu">
-<h1 class="titre_page">Nos produits</h1>
-<input class=recherche type=text name="recherche" placeholder="Recherche..."><label for="recherche"></label>
-<div class="colonnes_container">
-<div class="colonne_gauche">
-    <table>
-        <tr><td>Electrique</td></tr>
-        <tr><td>Ville</td></tr>
-        <tr><td>VTT</td></tr>
-        <tr><td>Homme</td></tr>
-        <tr><td>Femme</td></tr>
-        <tr><td>Enfant</td></tr>
-        <tr><td>Personnalisable</td></tr>
-        <tr><td>Meilleures ventes</td></tr>
-        <tr><td>Trier par prix</td></tr>
-    </table>
-</div>
-<div class="colonne_droite">
-    <div id="articles_produits">
-        <div class="article_produits">
-            <div class="article_container">
-                <img class="image" src="public/images/produits/image_produits_1.png" alt="produit_1">
-                <h3>Yatama</h3>
-                <h4>1099 € <strike>1199€</strike></h4>
-                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-            </div>
-            <a class="bouton_produit" href="#">Yatama</a>
-        </div>
-        <div class="article_produits">
-            <div class="article_container">
-                <img class="image" src="public/images/produits/image_produits_2.png" alt="produit_2">
-                <h3>Naganamo</h3>
-                <h4>1199 € <strike>1299€</strike></h4>
-                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-            </div>
-            <a class="bouton_produit" href="#">Naganamo</a>
-        </div>
-        <div class="article_produits">
-            <div class="article_container">
-                <img class="image" src="public/images/produits/image_produits_3.png" alt="produit_3">
-                <h3>Syanumi</h3>
-                <h4>1049 € <strike>1199€</strike></h4>
-                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-            </div>
-            <a class="bouton_produit" href="#">Syanumi</a>
-        </div>
-        <div class="article_produits">
-            <div class="article_container">
-                <img class="image" src="public/images/produits/image_produits_3.png" alt="produit_4">
-                <h3>Mamabobo</h3>
-                <h4>1199 € <strike>1299€</strike></h4>
-                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-            </div>
-            <a class="bouton_produit" href="#">Mamabobo</a>
-        </div>
-        <div class="article_produits">
-            <div class="article_container">
-                <img class="image" src="public/images/produits/image_produits_1.png" alt="produit_1">
-                <h3>Hiroshima</h3>
-                <h4>1399 € <strike>1499€</strike></h4>
-                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-            </div>
-            <a class="bouton_produit" href="#">Hiroshima</a>
-        </div>
-        <div class="article_produits">
-            <div class="article_container">
-                <img class="image" src="public/images/produits/image_produits_2.png" alt="produit_2">
-                <h3>Ninjagumi</h3>
-                <h4>1499 € <strike>1599€</strike></h4>
-                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-            </div>
-            <a class="bouton_produit" href="#">Ninjagumi</a>
-        </div>
-        <div class="article_produits">
-            <div class="article_container">
-                <img class="image" src="public/images/produits/image_produits_3.png" alt="produit_3">
-                <h3>Mangavelo</h3>
-                <h4>1099 € <strike>1299€</strike></h4>
-                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-            </div>
-            <a class="bouton_produit" href="#">Mangavelo</a>
-        </div>
-        <div class="article_produits">
-            <div class="article_container">
-                <img class="image" src="public/images/produits/image_produits_3.png" alt="produit_4">
-                <h3>Sushiresto</h3>
-                <h4>1099 € <strike>1299€</strike></h4>
-                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-            </div>
-            <a class="bouton_produit" href="#">Sushiresto</a>
-        </div>
-        <div class="article_produits">
-            <div class="article_container">
-                <img class="image" src="public/images/produits/image_produits_1.png" alt="produit_1">
-                <h3>Velonuma</h3>
-                <h4>1099 € <strike>1299€</strike></h4>
-                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-            </div>
-            <a class="bouton_produit" href="#">Velonuma</a>
-        </div>
-        <div class="article_produits">
-            <div class="article_container">
-                <img class="image" src="public/images/produits/image_produits_2.png" alt="produit_2">
-                <h3>Osaka</h3>
-                <h4>1099 € <strike>1299€</strike></h4>
-                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-            </div>
-            <a class="bouton_produit" href="#">Osaka</a>
-        </div>
-        <div class="article_produits">
-            <div class="article_container">
-                <img class="image" src="public/images/produits/image_produits_3.png" alt="produit_3">
-                <h3>Monfuji</h3>
-                <h4>1099 € <strike>1299€</strike></h4>
-                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-            </div>
-            <a class="bouton_produit" href="#">Monfuji</a>
-        </div>
-        <div class="article_produits">
-            <div class="article_container">
-                <img class="image" src="public/images/produits/image_produits_3.png" alt="produit_4">
-                <h3>Tokyo</h3>
-                <h4>1099 € <strike>1299€</strike></h4>
-                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-            </div>
-            <a class="bouton_produit" href="#">Tokyo</a>
-        </div>
-        
-    </div>
-</div>
-</div>
-</div>
-
-    
-</body>
