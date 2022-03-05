@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : sam. 05 mars 2022 à 13:45
+-- Généré le : sam. 05 mars 2022 à 14:42
 -- Version du serveur : 5.7.36
 -- Version de PHP : 7.4.26
 
@@ -80,7 +80,7 @@ INSERT INTO `carac_matiere_cadre` (`id`, `matiere`) VALUES
 DROP TABLE IF EXISTS `carac_taille_cadre`;
 CREATE TABLE IF NOT EXISTS `carac_taille_cadre` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `taille` varchar(3) NOT NULL,
+  `taille_cadre` varchar(3) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
@@ -88,7 +88,7 @@ CREATE TABLE IF NOT EXISTS `carac_taille_cadre` (
 -- Déchargement des données de la table `carac_taille_cadre`
 --
 
-INSERT INTO `carac_taille_cadre` (`id`, `taille`) VALUES
+INSERT INTO `carac_taille_cadre` (`id`, `taille_cadre`) VALUES
 (1, 'XS'),
 (2, 'S'),
 (3, 'M'),
@@ -104,7 +104,7 @@ INSERT INTO `carac_taille_cadre` (`id`, `taille`) VALUES
 DROP TABLE IF EXISTS `carac_taille_roues`;
 CREATE TABLE IF NOT EXISTS `carac_taille_roues` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `taille` tinyint(4) NOT NULL,
+  `taille_roues` tinyint(4) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
@@ -112,7 +112,7 @@ CREATE TABLE IF NOT EXISTS `carac_taille_roues` (
 -- Déchargement des données de la table `carac_taille_roues`
 --
 
-INSERT INTO `carac_taille_roues` (`id`, `taille`) VALUES
+INSERT INTO `carac_taille_roues` (`id`, `taille_roues`) VALUES
 (2, 12),
 (3, 14),
 (4, 16),
@@ -133,7 +133,7 @@ INSERT INTO `carac_taille_roues` (`id`, `taille`) VALUES
 DROP TABLE IF EXISTS `categorie`;
 CREATE TABLE IF NOT EXISTS `categorie` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nom` varchar(255) NOT NULL,
+  `nom_categorie` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
@@ -141,7 +141,7 @@ CREATE TABLE IF NOT EXISTS `categorie` (
 -- Déchargement des données de la table `categorie`
 --
 
-INSERT INTO `categorie` (`id`, `nom`) VALUES
+INSERT INTO `categorie` (`id`, `nom_categorie`) VALUES
 (1, 'VTT'),
 (2, 'Ville'),
 (3, 'Route');
@@ -177,7 +177,7 @@ CREATE TABLE IF NOT EXISTS `compte_client` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `identifiant` varchar(255) NOT NULL,
   `mot_de_passe` varchar(255) NOT NULL,
-  `nom` varchar(255) NOT NULL,
+  `nom_client` varchar(255) NOT NULL,
   `prenom` varchar(255) NOT NULL,
   `mail` varchar(255) NOT NULL,
   `telephone_port` varchar(25) NOT NULL,
@@ -239,14 +239,14 @@ DROP TABLE IF EXISTS `produit`;
 CREATE TABLE IF NOT EXISTS `produit` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `reference` varchar(255) DEFAULT NULL,
-  `nom` varchar(30) DEFAULT NULL,
+  `nom_produit` varchar(30) DEFAULT NULL,
   `designation` varchar(255) DEFAULT NULL,
   `poids` int(4) DEFAULT NULL,
   `stock` int(4) DEFAULT NULL,
   `prix` int(6) DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL,
   `electrique` tinyint(1) NOT NULL DEFAULT '0',
-  `reduction` decimal(4,2) NOT NULL,
+  `reduction_produit` decimal(4,2) NOT NULL,
   `id_categorie` int(11) NOT NULL,
   `id_carac_couleur` int(11) NOT NULL,
   `id_carac_matiere_cadre` int(11) NOT NULL,
@@ -261,13 +261,13 @@ CREATE TABLE IF NOT EXISTS `produit` (
 -- Déchargement des données de la table `produit`
 --
 
-INSERT INTO `produit` (`id`, `reference`, `nom`, `designation`, `poids`, `stock`, `prix`, `image`, `electrique`, `reduction`, `id_categorie`, `id_carac_couleur`, `id_carac_matiere_cadre`, `id_carac_taille_cadre`, `id_carac_taille_roues`, `accueil`) VALUES
+INSERT INTO `produit` (`id`, `reference`, `nom_produit`, `designation`, `poids`, `stock`, `prix`, `image`, `electrique`, `reduction_produit`, `id_categorie`, `id_carac_couleur`, `id_carac_matiere_cadre`, `id_carac_taille_cadre`, `id_carac_taille_roues`, `accueil`) VALUES
 (1, 'VEL_AL_ROU_ROS_24_L', 'Sakura', 'Vélo de route Rose pour homme. 24 pouces, taille L.', 5, 82, 1200, 'VEL_AL_ROU_ROS_24_L', 0, '0.00', 3, 10, 1, 4, 8, 1),
 (2, 'VEL_AL_ROU_ROS_20_M', 'Sakura', 'Vélo de route Rose pour homme. 20 pouces, taille M.', 4, 154, 1090, 'VEL_AL_ROU_ROS_20_M', 0, '0.00', 3, 10, 1, 3, 6, 0),
 (3, 'VEL_AL_ROU_ORA_28_M', 'Yumamoto', 'Vélo de route Orange pour homme et femme. 28 pouces, taille L.', 4, 154, 1290, 'VEL_AL_ROU_ORA_28_L', 0, '0.00', 3, 8, 1, 4, 10, 1),
 (4, 'VEL_CA_ROU_NOI_26_M', 'Kyoto', 'Vélo de route Noir pour homme et femme. 26 pouces, taille L.', 6, 114, 1290, 'VEL_CA_ROU_NOI_26_M', 0, '10.00', 3, 4, 2, 3, 9, 0),
 (5, 'VEL_AL_ROU_JAU_12_XS', 'Osaka', 'Vélo de route Jaune pour enfant. 12 pouces, taille XS.', 4, 331, 800, 'VEL_AL_ROU_JAU_12_XS', 0, '20.00', 3, 7, 1, 1, 2, 1),
-(6, 'VEL_AL_ROU_JAU_18_S', 'Fukuoka', 'Vélo de route Jaune pour enfant et femme. 18 pouces, taille S.', 5, 54, 900, 'VEL_AL_ROU_JAU_18_XS', 0, '15.00', 3, 7, 1, 2, 5, 0);
+(6, 'VEL_AL_ROU_JAU_18_S', 'Osaka', 'Vélo de route Jaune pour enfant et femme. 18 pouces, taille S.', 5, 54, 900, 'VEL_AL_ROU_JAU_18_XS', 0, '15.00', 3, 7, 1, 2, 5, 0);
 
 -- --------------------------------------------------------
 
@@ -308,7 +308,7 @@ INSERT INTO `promo` (`id`, `code`, `reduction`, `date_debut`, `date_fin`, `monta
 DROP TABLE IF EXISTS `taxonomie`;
 CREATE TABLE IF NOT EXISTS `taxonomie` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nom` varchar(50) NOT NULL,
+  `nom_taxonomie` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
@@ -316,7 +316,7 @@ CREATE TABLE IF NOT EXISTS `taxonomie` (
 -- Déchargement des données de la table `taxonomie`
 --
 
-INSERT INTO `taxonomie` (`id`, `nom`) VALUES
+INSERT INTO `taxonomie` (`id`, `nom_taxonomie`) VALUES
 (1, 'homme'),
 (2, 'femme'),
 (3, 'enfant');
