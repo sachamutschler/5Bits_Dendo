@@ -1,7 +1,16 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <?php include ('head.php'); ?>
+</head>
+
+<body>
+
+<div id="header">
+    <?php include ('navbar.php'); ?>
+</div>
 <?php
     session_start();
-    include ('navbar.php');
-    include ('head.php');
     include ('post_contact.php');
 ?>
 
@@ -57,3 +66,5 @@
     include ('footer.php');
     
 ?>
+
+</body>

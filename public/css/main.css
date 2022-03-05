@@ -31,6 +31,7 @@ body {
     color: #eac013;
 }
 
+/* padding bottom à changer si tu changes la hauteur du footer */
 .contenu {
     width: 90%;
     background: rgba(0,0,0,0.8);
