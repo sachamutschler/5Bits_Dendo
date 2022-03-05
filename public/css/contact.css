@@ -61,3 +61,22 @@
 #desc{
     margin-left: 23%;
 }
+
+
+@media screen and (max-width: 600px) {
+    
+    .conteneur_contact1{
+        display: block;
+        margin-bottom: 5%;
+    }
+    .div_form{
+        margin-bottom: 5%;
+        width: 90%;
+    }
+    .description{
+        width: 90%!important;
+    }
+    .btn{
+        width: 65px;
+    }
+}
