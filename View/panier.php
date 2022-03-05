@@ -12,7 +12,7 @@
     <div class="cont_panier2">
         <?php
 
-            for ($i=0; $i < 2; $i++) { 
+            for ($i=0; $i < 4; $i++) { 
                 require('produit-panier.php');
             }
             $total= 0 + intval($res['prix']*$i);
