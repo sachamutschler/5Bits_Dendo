@@ -42,7 +42,7 @@ if(isset($_GET['id_produit'])) {
         </div>
     <?php
 
-    var_dump($produit);
+//    var_dump($produit);
 
     ?>
 
