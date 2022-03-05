@@ -31,9 +31,6 @@
 
 
 </div> -->
-<?php
-include_once('../Model/connexion_bdd.php');
-?>
 
 
 <script src = 'https: //www.google.com/recaptcha/api.js' différé asynchrone></script>

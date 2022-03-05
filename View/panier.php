@@ -11,6 +11,7 @@
 <div class="cont_panier">
     <div class="cont_panier2">
         <?php
+            include('Model/connexion_bdd.php');
 
             $quantité = 'SELECT quantite FROM `panier`';
 
