@@ -22,45 +22,36 @@
         <img src="public/images/accueil/accueil_1.jpg" alt="accueil_1">
     </div>
 
+    <?php include ('Model/connexion_articles_accueil.php');
+
+    if(isset($produits_accueil)) { ?>
     <h1 class="titre_page">Produits</h1>
-    <div id="articles_accueil">
-        <div class="article_accueil">
-            <div class="article_container">
-                <img class="image" src="public/images/accueil/image_accueil_1.png" alt="produit_accueil_1">
-                <h3>Produit 1</h3>
-                <h4>1099 € <strike>1299€</strike></h4>
-                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-            </div>
-            <a class="bouton_produit_accueil" href="#">Produit 1</a>
+        <div id="articles_accueil">
+        <?php for($i=0; $i<count($produits_accueil); $i++) {
+            if($produits_accueil[$i]['accueil'] == 1) {
+               ?>
+                <div class="article_accueil">
+                    <div class="article_container">
+                        <img class="image" src="public/images/produits/<?php echo($produits_accueil[$i]['image']) ?>" alt="produit_accueil_1">
+                        <h3><?php echo($produits_accueil[$i]['nom']) ?></h3>
+                        <?php if($produits_accueil[$i]['reduction'] != 0) {
+                            ?><h4><?php echo($produits_accueil[$i]['prix']  * (1 - ($produits_accueil[$i]['reduction'] / 100) )) ?> € <strike><?php echo($produits_accueil[$i]['prix']) ?> €</strike></h4><?php
+                        }
+                        else {
+                            ?><h4><?php echo($produits_accueil[$i]['prix']) ?> €</h4><?php
+                        }
+                        ?>
+                        <p><?php echo($produits_accueil[$i]['designation']) ?></p>
+                    </div>
+                    <a target="_blank" class="bouton_produit_accueil" href="produit.php?id_produit=<?php echo($produits_accueil[$i]['id']) ?>">Page produit</a>
+                </div>
+            <?php
+            }
+        } ?>
         </div>
-        <div class="article_accueil">
-            <div class="article_container">
-                <img class="image" src="public/images/accueil/image_accueil_2.png" alt="produit_accueil_2">
-                <h3>Produit 3</h3>
-                <h4>799 € <strike>999€</strike></h4>
-                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-            </div>
-            <a class="bouton_produit_accueil" href="#">Produit 2</a>
-        </div>
-        <div class="article_accueil">
-            <div class="article_container">
-                <img class="image" src="public/images/accueil/image_accueil_3.png" alt="produit_accueil_3">
-                <h3>Produit 3</h3>
-                <h4>1599 € <strike>1799€</strike></h4>
-                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-            </div>
-            <a class="bouton_produit_accueil" href="#">Produit 3</a>
-        </div>
-        <div class="article_accueil">
-            <div class="article_container">
-                <img class="image" src="public/images/accueil/image_accueil_4.png" alt="produit_accueil_4">
-                <h3>Produit 4</h3>
-                <h4>999 € <strike>1199€</strike></h4>
-                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-            </div>
-            <a class="bouton_produit_accueil" href="#">Produit 4</a>
-        </div>
-    </div>
+   <?php } ?>
+
+
 
     <div id="icones_accueil">
         <div class="icones_accueil_liste">
