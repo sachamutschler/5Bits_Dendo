@@ -16,10 +16,12 @@ function connexionBase($nomBase)
 }
 ?>
 
+html:5
 
 <!DOCTYPE html>
 <html lang="fr">
     <head>
+        <meta charset="UTF-8">
         <?php include ('head.php'); ?>
     </head>
     <body>
@@ -35,21 +37,39 @@ function connexionBase($nomBase)
                             <!-- Boutons de tri + requêtage -->
                             <table>
                                 <?php $db = connexionBase('dendo');
-                                    $requete = $db->query("select idCategorie, nom FROM categorie");
-                                    $requete = $requete->fetchAll();
+                                    $requeteC = $db->query("select id, nom FROM categorie");
+                                    $requeteC = $requeteC->fetchAll();
                                     echo '<tr>
                                             <form method="get">
                                                <button type="submit" value="%" name="categorie">Tout</button>
                                             </form>
                                            </tr>';
-                                    foreach ($requete as $item){
+                                    foreach ($requeteC as $itemC){
                                         echo'<tr>
                                                 <form method="get">
-                                                    <button type="submit" value="'.$item['idCategorie'].'" name="categorie">'.$item['nom'].'</button>
+                                                    <button type="submit" value="'.$itemC['id'].'" name="categorie">'.$itemC['nom'].'</button>
                                                 </form>
                                              </tr>';
                                     }
                                     ?>
+                            </table>
+                            <table>
+                                <?php $db = connexionBase('dendo');
+                                $requeteT = $db->query("select id, nom FROM taxonomie");
+                                $requeteT = $requeteT->fetchAll();
+                                echo '<tr>
+                                            <form method="get">
+                                               <button type="submit" value="%" name="taxonomie">Tout</button>
+                                            </form>
+                                           </tr>';
+                                foreach ($requeteT as $itemT){
+                                    echo'<tr>
+                                                <form method="get">
+                                                    <button type="submit" value="'.$itemT['id'].'" name="taxonomie">'.$itemT['nom'].'</button>
+                                                </form>
+                                             </tr>';
+                                }
+                                ?>
                             </table>
 
                         </div>
@@ -58,30 +78,66 @@ function connexionBase($nomBase)
                                 <?php if (isset($_GET['categorie']) !=0){
                                         $categorie  = $_GET['categorie'];
                                     } else {
-                                        $categorie = "%";}
-                                    $requete2 = $db->prepare("select * FROM produit p
-                                                                INNER JOIN taxonomie_produit tp on p.idProduit = tp.idProduit
-                                                                INNER JOIN taxonomie t on tp.idTaxonomie = t.idTaxonomie
-                                                                INNER JOIN categorie c on p.idCategorie = c.idCategorie
-                                                                WHERE p.idCategorie LIKE :categorie");
-                                    $requete2->bindValue('categorie', $categorie);
-                                    $requete2->execute();
-                                    $requete2 = $requete2->fetchAll();
-                                    foreach ($requete2 as $item2){
-                                        $prixSpecial=$item2['prix']-50;
+                                        $categorie = "%";
+                                    }
+                                    $requete1 = $db->prepare("select * FROM produit p
+                                                                INNER JOIN categorie c on p.id_categorie = c.id
+                                                                INNER JOIN carac_couleur cc on p.id_carac_couleur = cc.id
+                                                                INNER JOIN carac_matiere_cadre cmc on p.id_carac_matiere_cadre = cmc.id
+                                                                INNER JOIN carac_taille_cadre ctc on p.id_carac_taille_cadre = ctc.id
+                                                                INNER JOIN carac_taille_roues ctr on p.id_carac_taille_roues = ctr.id
+                                                                WHERE p.id_categorie LIKE :categorie");
+                                    $requete1->bindValue('categorie', $categorie);
+                                    $requete1->execute();
+                                    $requete1 = $requete1->fetchAll();
+                                    foreach ($requete1 as $item1){
+                                        echo'<div class="article_produits">
+                                            <div class="article_container">';
                                         ?>
-                                        <div class="article_produits">
-                                            <div class="article_container">
-                                                <img class="image" src="<?= $item2['image']; ?>" alt="image_produit_1">
-                                                <h3><?= $item2['designation']; ?></h3>
-                                                <h4><?= $prixSpecial ?>€ <strike><?= $item2['prix'] ?>€</strike></h4>
-                                                <p>Ce vélo <?php if ($item2['electrique']){echo ' électrique ';} echo"possède le dernier type de suspension ".$item2['type_suspension']." ainsi qu'un système de freinage ".$item2['type_frein'].". Le cadre en ".$item2['matiere_cadre']." est particulièrement indiqué pour vos sorties".$item2['nom'];?></p>
-
+                                                <img class="image" src="<?= $item1['image']; ?>" alt="image_produit_1">
+                                                <h3><?= $item1['nom']; ?></h3>
+                                                <h4><?php if($item1['reduction'] != 0){
+                                                            $prixSpecial = $item1['prix']/100*(100-$item1['reduction']);
+                                                            echo $prixSpecial.'€ <strike>'.$item1['prix'].'€</strike>';
+                                                        }else{
+                                                            echo $item1['prix'].'€';
+                                                        }?>
+                                                </h4>
+                                                <p><? = $item1['reduction'] ?></p>
                                             </div>
-                                            <a class="bouton_produit" href="#">Yatama</a>
+                                            <a class="bouton_produit" href="#">EN SAVOIR PLUS</a>
                                         </div>
                                     <?php }?>
 
+                                <?php if (isset($_GET['taxonomie']) !=0){
+                                    $taxonomie  = $_GET['taxonomie'];
+                                } else {
+                                    $taxonomie = "%";
+                                }
+                                $requete2 = $db->prepare("select * FROM produit p
+                                                                        INNER JOIN taxonomie_produit tp on p.id = tp.id_produit
+                                                                        INNER JOIN taxonomie t on tp.id_taxonomie = t.id
+                                                                        WHERE tp.id_taxonomie LIKE :taxonomie");
+                                $requete2->bindValue('taxonomie', $taxonomie);
+                                $requete2->execute();
+                                $requete2 = $requete2->fetchAll();
+                                foreach ($requete2 as $item2){
+                                echo'<div class="article_produits">
+                                                    <div class="article_container">';
+                                ?>
+                                <img class="image" src="<?= $item2['image']; ?>" alt="image_produit_1">
+                                <h3><?= $item2['designation']; ?></h3>
+                                <h4><?php if($item2['reduction'] != 0){
+                                        $prixSpecial = $item2['prix']/100*(100-$item2['reduction']);
+                                        echo $prixSpecial.'€ <strike>'.$item2['prix'].'€</strike>';
+                                    }else{
+                                        echo $item2['prix'].'€';
+                                    }?>
+                        </h4>
+                    </div>
+            <a class="bouton_produit" href="#">EN SAVOIR PLUS</a>
+        </div>
+        <?php }?>
                             </div>
                         </div>
                     </div>
