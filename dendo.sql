@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mar. 01 mars 2022 à 15:26
--- Version du serveur :  5.7.31
--- Version de PHP : 7.4.9
+-- Généré le : sam. 05 mars 2022 à 13:45
+-- Version du serveur : 5.7.36
+-- Version de PHP : 7.4.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -239,6 +239,7 @@ DROP TABLE IF EXISTS `produit`;
 CREATE TABLE IF NOT EXISTS `produit` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `reference` varchar(255) DEFAULT NULL,
+  `nom` varchar(30) DEFAULT NULL,
   `designation` varchar(255) DEFAULT NULL,
   `poids` int(4) DEFAULT NULL,
   `stock` int(4) DEFAULT NULL,
@@ -251,6 +252,7 @@ CREATE TABLE IF NOT EXISTS `produit` (
   `id_carac_matiere_cadre` int(11) NOT NULL,
   `id_carac_taille_cadre` int(11) NOT NULL,
   `id_carac_taille_roues` int(11) NOT NULL,
+  `accueil` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `produit_categorie_idCategorie_fk` (`id_categorie`)
 ) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
@@ -259,13 +261,13 @@ CREATE TABLE IF NOT EXISTS `produit` (
 -- Déchargement des données de la table `produit`
 --
 
-INSERT INTO `produit` (`id`, `reference`, `designation`, `poids`, `stock`, `prix`, `image`, `electrique`, `reduction`, `id_categorie`, `id_carac_couleur`, `id_carac_matiere_cadre`, `id_carac_taille_cadre`, `id_carac_taille_roues`) VALUES
-(1, 'VEL_AL_ROU_ROS_24_L', 'Vélo de route Rose pour homme. 24 pouces, taille L.', 5, 82, 1200, 'VEL_AL_ROU_ROS_24_L', 0, '0.00', 3, 10, 1, 4, 8),
-(2, 'VEL_AL_ROU_ROS_20_M', 'Vélo de route Rose pour homme. 20 pouces, taille M.', 4, 154, 1090, 'VEL_AL_ROU_ROS_20_M', 0, '0.00', 3, 10, 1, 3, 6),
-(3, 'VEL_AL_ROU_ORA_28_M', 'Vélo de route Orange pour homme et femme. 28 pouces, taille L.', 4, 154, 1290, 'VEL_AL_ROU_ORA_28_L', 0, '0.00', 3, 8, 1, 4, 10),
-(4, 'VEL_CA_ROU_NOI_26_M', 'Vélo de route Noir pour homme et femme. 26 pouces, taille L.', 6, 114, 1290, 'VEL_CA_ROU_NOI_26_M', 0, '10.00', 3, 4, 2, 3, 9),
-(5, 'VEL_AL_ROU_JAU_12_XS', 'Vélo de route Jaune pour enfant. 12 pouces, taille XS.', 4, 331, 800, 'VEL_AL_ROU_JAU_12_XS', 0, '20.00', 3, 7, 1, 1, 2),
-(6, 'VEL_AL_ROU_JAU_18_S', 'Vélo de route Jaune pour enfant et femme. 18 pouces, taille S.', 5, 54, 900, 'VEL_AL_ROU_JAU_18_XS', 0, '15.00', 3, 7, 1, 2, 5);
+INSERT INTO `produit` (`id`, `reference`, `nom`, `designation`, `poids`, `stock`, `prix`, `image`, `electrique`, `reduction`, `id_categorie`, `id_carac_couleur`, `id_carac_matiere_cadre`, `id_carac_taille_cadre`, `id_carac_taille_roues`, `accueil`) VALUES
+(1, 'VEL_AL_ROU_ROS_24_L', 'Sakura', 'Vélo de route Rose pour homme. 24 pouces, taille L.', 5, 82, 1200, 'VEL_AL_ROU_ROS_24_L', 0, '0.00', 3, 10, 1, 4, 8, 1),
+(2, 'VEL_AL_ROU_ROS_20_M', 'Sakura', 'Vélo de route Rose pour homme. 20 pouces, taille M.', 4, 154, 1090, 'VEL_AL_ROU_ROS_20_M', 0, '0.00', 3, 10, 1, 3, 6, 0),
+(3, 'VEL_AL_ROU_ORA_28_M', 'Yumamoto', 'Vélo de route Orange pour homme et femme. 28 pouces, taille L.', 4, 154, 1290, 'VEL_AL_ROU_ORA_28_L', 0, '0.00', 3, 8, 1, 4, 10, 1),
+(4, 'VEL_CA_ROU_NOI_26_M', 'Kyoto', 'Vélo de route Noir pour homme et femme. 26 pouces, taille L.', 6, 114, 1290, 'VEL_CA_ROU_NOI_26_M', 0, '10.00', 3, 4, 2, 3, 9, 0),
+(5, 'VEL_AL_ROU_JAU_12_XS', 'Osaka', 'Vélo de route Jaune pour enfant. 12 pouces, taille XS.', 4, 331, 800, 'VEL_AL_ROU_JAU_12_XS', 0, '20.00', 3, 7, 1, 1, 2, 1),
+(6, 'VEL_AL_ROU_JAU_18_S', 'Fukuoka', 'Vélo de route Jaune pour enfant et femme. 18 pouces, taille S.', 5, 54, 900, 'VEL_AL_ROU_JAU_18_XS', 0, '15.00', 3, 7, 1, 2, 5, 0);
 
 -- --------------------------------------------------------
 
