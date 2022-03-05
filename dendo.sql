@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : sam. 05 mars 2022 à 14:38
+-- Généré le : sam. 05 mars 2022 à 14:42
 -- Version du serveur : 5.7.36
 -- Version de PHP : 7.4.26
 
@@ -239,7 +239,7 @@ DROP TABLE IF EXISTS `produit`;
 CREATE TABLE IF NOT EXISTS `produit` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `reference` varchar(255) DEFAULT NULL,
-  `nom_velo` varchar(30) DEFAULT NULL,
+  `nom_produit` varchar(30) DEFAULT NULL,
   `designation` varchar(255) DEFAULT NULL,
   `poids` int(4) DEFAULT NULL,
   `stock` int(4) DEFAULT NULL,
@@ -261,7 +261,7 @@ CREATE TABLE IF NOT EXISTS `produit` (
 -- Déchargement des données de la table `produit`
 --
 
-INSERT INTO `produit` (`id`, `reference`, `nom_velo`, `designation`, `poids`, `stock`, `prix`, `image`, `electrique`, `reduction_produit`, `id_categorie`, `id_carac_couleur`, `id_carac_matiere_cadre`, `id_carac_taille_cadre`, `id_carac_taille_roues`, `accueil`) VALUES
+INSERT INTO `produit` (`id`, `reference`, `nom_produit`, `designation`, `poids`, `stock`, `prix`, `image`, `electrique`, `reduction_produit`, `id_categorie`, `id_carac_couleur`, `id_carac_matiere_cadre`, `id_carac_taille_cadre`, `id_carac_taille_roues`, `accueil`) VALUES
 (1, 'VEL_AL_ROU_ROS_24_L', 'Sakura', 'Vélo de route Rose pour homme. 24 pouces, taille L.', 5, 82, 1200, 'VEL_AL_ROU_ROS_24_L', 0, '0.00', 3, 10, 1, 4, 8, 1),
 (2, 'VEL_AL_ROU_ROS_20_M', 'Sakura', 'Vélo de route Rose pour homme. 20 pouces, taille M.', 4, 154, 1090, 'VEL_AL_ROU_ROS_20_M', 0, '0.00', 3, 10, 1, 3, 6, 0),
 (3, 'VEL_AL_ROU_ORA_28_M', 'Yumamoto', 'Vélo de route Orange pour homme et femme. 28 pouces, taille L.', 4, 154, 1290, 'VEL_AL_ROU_ORA_28_L', 0, '0.00', 3, 8, 1, 4, 10, 1),
