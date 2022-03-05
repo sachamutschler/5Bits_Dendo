@@ -33,8 +33,8 @@
                 <div class="article_accueil">
                     <div class="article_container">
                         <img class="image" src="public/images/produits/<?php echo($produits_accueil[$i]['image']) ?>" alt="produit_accueil_1">
-                        <h3><?php echo($produits_accueil[$i]['nom']) ?></h3>
-                        <?php if($produits_accueil[$i]['reduction'] != 0) {
+                        <h3><?php echo($produits_accueil[$i]['nom_produit']) ?></h3>
+                        <?php if($produits_accueil[$i]['reduction_produit'] != 0) {
                             ?><h4><?php echo($produits_accueil[$i]['prix']  * (1 - ($produits_accueil[$i]['reduction'] / 100) )) ?> € <strike><?php echo($produits_accueil[$i]['prix']) ?> €</strike></h4><?php
                         }
                         else {
