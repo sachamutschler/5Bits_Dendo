@@ -22,11 +22,12 @@ if(isset($_GET['id_produit'])) {
             <img src="public/images/produits/<?php echo($produit[0]['image']) ?>">
 
             <div id="caracteristiques">
+                <h2 id="nom_produit" class="caracteristiques_element"><?php echo($produit[0]['nom_produit']) ?></h2>
                 <h2 id="prix" class="caracteristiques_element">
                 <?php
-                if($produit[0]['reduction'] != 0) {
+                if($produit[0]['reduction_produit'] != 0) {
                     $prix_avant = $produit[0]['prix'];
-                    $prix_apres = $prix_avant * (1 - ($produit[0]['reduction'] / 100) );
+                    $prix_apres = $prix_avant * (1 - ($produit[0]['reduction_produit'] / 100) );
                     ?>
 
                     <strike id="prix_avant"><?php echo($prix_avant) ?></strike>

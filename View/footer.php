@@ -31,3 +31,5 @@
 
 </div>
 <script src = 'https: //www.google.com/recaptcha/api.js' différé asynchrone></script>
+
+<?php include ('public/js/navbar.php'); ?>
