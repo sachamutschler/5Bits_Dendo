@@ -4,7 +4,7 @@
 <div id="header">
     <?php include ('navbar.php'); ?>
     <link href="public/css/produit.css" rel="stylesheet">
-</div>
+</div>gi
 
 <?php
 
