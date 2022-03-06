@@ -138,9 +138,7 @@ function recuperationToken($name){
                                     $requeteFinale = $requeteFinale->fetchAll();
                                     #Avoir une variable nom d'article précédent pour éviter des doublons dans la recherche
                                     $nomPrecedent= "";
-                                    $i = 0;
                                     foreach ($requeteFinale as $itemRequete){
-                                        $i++;
                                         if ($nomPrecedent != $itemRequete['nom_produit']){
                                             echo'<div class="article_produits">
                                                 <div class="article_container">'; ?>
