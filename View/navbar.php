@@ -14,17 +14,17 @@ if (isset($_POST['deconnexion'])){
     <a class="navbar_link" href="contact.php">Contact</a>
     <a class="navbar_link" href="#">Qui sommes nous ?</a>
     <?php
-    if ($_SESSION['identifiant']){
+    if (isset($_SESSION['identifiant'])){
     ?>
     <a class="navbar_link" href="moncompte.php">Mon compte</a>
     <?php
     }
-    if (!$_SESSION['identifiant']){
+    if (!isset($_SESSION['identifiant'])){
         ?>
     <a class="navbar_link" href="connexion.php">Se connecter</a>
     <?php
     }
-    if ($_SESSION['identifiant']){
+    if (isset($_SESSION['identifiant'])){
         ?>
         <form action="index.php" method="post">
             <input type="submit" name="deconnexion" value="Deconnexion">
