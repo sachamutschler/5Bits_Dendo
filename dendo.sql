@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : sam. 05 mars 2022 à 14:42
--- Version du serveur : 5.7.36
--- Version de PHP : 7.4.26
+-- Généré le : Dim 06 mars 2022 à 09:27
+-- Version du serveur :  5.7.31
+-- Version de PHP : 7.4.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `carac_couleur` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `couleur` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `carac_couleur`
@@ -48,7 +48,8 @@ INSERT INTO `carac_couleur` (`id`, `couleur`) VALUES
 (7, 'Jaune'),
 (8, 'Orange'),
 (9, 'Gris'),
-(10, 'Rose');
+(10, 'Rose'),
+(11, 'Blanc');
 
 -- --------------------------------------------------------
 
@@ -237,7 +238,7 @@ CREATE TABLE IF NOT EXISTS `panier` (
 
 DROP TABLE IF EXISTS `produit`;
 CREATE TABLE IF NOT EXISTS `produit` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_produit` int(11) NOT NULL AUTO_INCREMENT,
   `reference` varchar(255) DEFAULT NULL,
   `nom_produit` varchar(30) DEFAULT NULL,
   `designation` varchar(255) DEFAULT NULL,
@@ -253,21 +254,27 @@ CREATE TABLE IF NOT EXISTS `produit` (
   `id_carac_taille_cadre` int(11) NOT NULL,
   `id_carac_taille_roues` int(11) NOT NULL,
   `accueil` tinyint(1) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`),
+  PRIMARY KEY (`id_produit`),
   KEY `produit_categorie_idCategorie_fk` (`id_categorie`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `produit`
 --
 
-INSERT INTO `produit` (`id`, `reference`, `nom_produit`, `designation`, `poids`, `stock`, `prix`, `image`, `electrique`, `reduction_produit`, `id_categorie`, `id_carac_couleur`, `id_carac_matiere_cadre`, `id_carac_taille_cadre`, `id_carac_taille_roues`, `accueil`) VALUES
-(1, 'VEL_AL_ROU_ROS_24_L', 'Sakura', 'Vélo de route Rose pour homme. 24 pouces, taille L.', 5, 82, 1200, 'VEL_AL_ROU_ROS_24_L', 0, '0.00', 3, 10, 1, 4, 8, 1),
-(2, 'VEL_AL_ROU_ROS_20_M', 'Sakura', 'Vélo de route Rose pour homme. 20 pouces, taille M.', 4, 154, 1090, 'VEL_AL_ROU_ROS_20_M', 0, '0.00', 3, 10, 1, 3, 6, 0),
-(3, 'VEL_AL_ROU_ORA_28_M', 'Yumamoto', 'Vélo de route Orange pour homme et femme. 28 pouces, taille L.', 4, 154, 1290, 'VEL_AL_ROU_ORA_28_L', 0, '0.00', 3, 8, 1, 4, 10, 1),
-(4, 'VEL_CA_ROU_NOI_26_M', 'Kyoto', 'Vélo de route Noir pour homme et femme. 26 pouces, taille L.', 6, 114, 1290, 'VEL_CA_ROU_NOI_26_M', 0, '10.00', 3, 4, 2, 3, 9, 0),
-(5, 'VEL_AL_ROU_JAU_12_XS', 'Osaka', 'Vélo de route Jaune pour enfant. 12 pouces, taille XS.', 4, 331, 800, 'VEL_AL_ROU_JAU_12_XS', 0, '20.00', 3, 7, 1, 1, 2, 1),
-(6, 'VEL_AL_ROU_JAU_18_S', 'Osaka', 'Vélo de route Jaune pour enfant et femme. 18 pouces, taille S.', 5, 54, 900, 'VEL_AL_ROU_JAU_18_XS', 0, '15.00', 3, 7, 1, 2, 5, 0);
+INSERT INTO `produit` (`id_produit`, `reference`, `nom_produit`, `designation`, `poids`, `stock`, `prix`, `image`, `electrique`, `reduction_produit`, `id_categorie`, `id_carac_couleur`, `id_carac_matiere_cadre`, `id_carac_taille_cadre`, `id_carac_taille_roues`, `accueil`) VALUES
+(1, 'VEL_AL_ROU_ROS_24_L', 'Sakura ROSE L', 'Vélo de route Rose pour homme. 24 pouces, taille L.', 5, 82, 1200, 'VEL_AL_ROU_ROS_24_L', 0, '0.00', 3, 10, 1, 4, 8, 1),
+(2, 'VEL_AL_ROU_ROS_20_M', 'Sakura ROSE M', 'Vélo de route Rose pour homme. 20 pouces, taille M.', 4, 154, 1090, 'VEL_AL_ROU_ROS_20_M', 0, '0.00', 3, 10, 1, 3, 6, 0),
+(3, 'VEL_AL_ROU_ORA_28_M', 'Yumamoto ORANGE M', 'Vélo de route Orange pour homme et femme. 28 pouces, taille L.', 4, 154, 1290, 'VEL_AL_ROU_ORA_28_L', 0, '0.00', 3, 8, 1, 4, 10, 1),
+(4, 'VEL_CA_ROU_NOI_26_M', 'Kyoto NOIR M', 'Vélo de route Noir pour homme et femme. 26 pouces, taille L.', 6, 114, 1290, 'VEL_CA_ROU_NOI_26_M', 0, '10.00', 3, 4, 2, 3, 9, 0),
+(5, 'VEL_AL_ROU_JAU_12_XS', 'Osaka JAUNE XS', 'Vélo de route Jaune pour enfant. 12 pouces, taille XS.', 4, 331, 800, 'VEL_AL_ROU_JAU_12_XS', 0, '20.00', 3, 7, 1, 1, 2, 1),
+(6, 'VEL_AL_ROU_JAU_18_S', 'Osaka JAUNE S', 'Vélo de route Jaune pour  femme ou enfant. 18 pouces, taille S.', 5, 54, 900, 'VEL_AL_ROU_JAU_18_S', 0, '15.00', 3, 7, 2, 2, 5, 0),
+(7, 'VEL_AL_VIL_BLA_20_M', 'Hokkaido BLANC M', 'Vélo de ville blanc pour Femme. 20 pouces, taille M.', 14, 123, 790, 'VEL_AL_VIL_BLA_20_M', 0, '0.00', 2, 11, 1, 3, 6, 0),
+(8, 'VEL_CA_VTT_GRI_24_L', 'Kobe GRIS L', 'Vélo tout terrain Gris pour homme. 24 pouces, taille L.', 10, 80, 1200, 'VEL_CA_VTT_GRI_24_L', 0, '10.00', 1, 5, 2, 4, 8, 0),
+(9, 'VEL_CA_VTT_ROU_20_M', 'Kobe Rouge M', 'Vélo tout terrain Rouge pour femme. 20 pouces, taille M.', 9, 43, 1150, 'VEL_CA_VTT_ROU_20_M', 0, '10.00', 1, 2, 2, 3, 6, 0),
+(10, 'VEL_AL_VTT_VER_12_XS', 'Okayama VERT XS', 'Vélo tout terrain Vert pour enfant. 12 pouces, taille XS.', 6, 155, 500, 'VEL_AL_VTT_VER_12_XS', 0, '10.00', 1, 3, 1, 1, 2, 0),
+(11, 'VEL_AL_VTT_BLA_12_XS', 'Okayama BLANC XS', 'Vélo tout terrain Blanc pour enfant. 12 pouces, taille XS.', 6, 134, 500, 'VEL_AL_VTT_BLA_12_XS', 0, '10.00', 1, 11, 1, 1, 2, 0),
+(12, 'VEL_CA_ROU_BLE_24_L', 'Honshu électrique BLEU L', 'Vélo Electrique de route Bleu pour homme et femme. 24 pouces, taille L.', 9, 23, 3090, 'VEL_CA_ROU_BLE_24_L', 1, '0.00', 3, 1, 2, 4, 8, 0);
 
 -- --------------------------------------------------------
 
@@ -310,16 +317,16 @@ CREATE TABLE IF NOT EXISTS `taxonomie` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom_taxonomie` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `taxonomie`
 --
 
 INSERT INTO `taxonomie` (`id`, `nom_taxonomie`) VALUES
-(1, 'homme'),
-(2, 'femme'),
-(3, 'enfant');
+(1, 'Homme'),
+(2, 'Femme'),
+(3, 'Enfant');
 
 -- --------------------------------------------------------
 
@@ -347,8 +354,15 @@ INSERT INTO `taxonomie_produit` (`id_taxonomie`, `id_produit`) VALUES
 (1, 4),
 (2, 4),
 (3, 5),
-(3, 5),
-(2, 5);
+(3, 6),
+(2, 6),
+(2, 7),
+(1, 8),
+(2, 9),
+(3, 10),
+(3, 11),
+(1, 12),
+(2, 12);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

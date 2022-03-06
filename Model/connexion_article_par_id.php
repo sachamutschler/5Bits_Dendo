@@ -10,7 +10,7 @@ catch(Exception $e){
 
 
 
-$sql = "SELECT * FROM produit WHERE id = :id_produit ";
+$sql = "SELECT * FROM produit WHERE id_produit = :id_produit ";
 
 $result = $conn->prepare($sql);
 

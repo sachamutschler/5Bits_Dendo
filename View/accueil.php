@@ -43,7 +43,7 @@
                         ?>
                         <p><?php echo($produits_accueil[$i]['designation']) ?></p>
                     </div>
-                    <a target="_blank" class="bouton_produit_accueil" href="produit.php?id_produit=<?php echo($produits_accueil[$i]['id']) ?>">Page produit</a>
+                    <a target="_blank" class="bouton_produit_accueil" href="produit.php?id_produit=<?php echo($produits_accueil[$i]['id_produit']) ?>">Page produit</a>
                 </div>
             <?php
             }

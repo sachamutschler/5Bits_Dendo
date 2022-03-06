@@ -1,9 +1,10 @@
-.recherche {
-    position: relative;
-        left: 22px;
-}
-
 /*catégories*/
+label {
+    color: white;
+}
+h3 {
+    font-size: 18px;
+}
 .colonnes_container {
     display: flex;
     flex-direction: row;
@@ -11,18 +12,19 @@
 .colonne_gauche {
     width: 200px;
     height: 100%;
+    margin: 20px;
 }
 table {
     margin: 20px;
 }
 button {
-    color: white;
-    border: 1px solid white;
-    padding: 10px;
+    color: black;
+    border: 1px solid grey;
+    padding: 5px;
+    margin-top: 10px;
+    border-radius: 4px;
 }
 button:hover {
-    color: black;
-    border: 1px solid white;
     background-color: #eac013;
 }
 
@@ -38,14 +40,16 @@ button:hover {
 .article_produits {
     width: calc(20% - 20px);
     padding: 10px;
-    background: rgba(0, 0, 0, 0.3);
+    /*background: rgba(0, 0, 0, 0.3);*/
     margin:10px;
     position: relative;
+    background-color: #bb990f;
 }
 .article_container {
     display: flex;
     flex-wrap: wrap;
     background: white;
+    height: 100%;
 }
 
 .article_produits img {
@@ -69,7 +73,7 @@ button:hover {
     text-align: right;
     color:#ff9e00;
 }
-.article_produits h4 strike {
+.article_produits h4 s {
     color:red;
 }
 .article_produits p {
