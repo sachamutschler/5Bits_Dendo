@@ -11,8 +11,9 @@
 <div class="cont_panier">
     <div class="cont_panier2">
         <?php
-
-            for ($i=0; $i < 4; $i++) { 
+            include('Model/connexion_bdd.php');
+            include('Model/model_panier.php');
+            for ($i=0; $i < intval($res_quantite['quantite']); $i++) { 
                 require('produit-panier.php');
             }
             $total= 0 + intval($res['prix']*$i);

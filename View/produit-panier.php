@@ -1,26 +1,8 @@
 <?php
 
-    $servername = "localhost";
-    $username = "root";
     $compteur_velo = 0;
-    try
-    {
-        $db = new PDO("mysql:host=$servername;dbname=dendo",$username,'');
-        $db ->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    }
-
-    catch(PDOException $e)
-    {
-        echo "Erreur de la connexion : " .$e->getMessage();
-        die();
-    }
-    
     $total = 0;
-    $requete = 'SELECT prix FROM `produit` WHERE id = 1';
-    $prix = $db->query($requete);
-    $prix->execute();
-    $prix->setFetchMode(PDO::FETCH_CLASS, 'prix');
-    $res = $prix->fetch();
+    
 
     if (isset($_POST['supprimer'])) {
         $compteur_velo -= 1;
