@@ -24,8 +24,6 @@ if (isset($_POST['deconnexion'])){
     <?php
     }
     if ($_SESSION['identifiant']){
-        echo $_SESSION['identifiant'];
-
         ?>
         <form action="index.php" method="post">
             <input type="submit" name="deconnexion" value="Deconnexion">
