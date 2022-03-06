@@ -134,46 +134,6 @@ if (isset($_POST['submit'])) {
         $query->bindValue('pays', htmlspecialchars($_POST['pays']));
         $query->bindValue('code_validation', $token);
         $query->execute();
-
-
-        $mail = new PHPMailer();
-
-        $mail->CharSet = 'UTF-8';
-        $mail->Encoding = 'base64';
-        $mail->IsSMTP();
-        $mail->Mailer = "smtp";
-
-        /*    $mail->SMTPDebug  = 1;*/
-        $mail->SMTPAuth = TRUE;
-        $mail->SMTPSecure = "tls";
-        $mail->SMTPDebug  = 1;
-        $mail->Port = 587;
-        $mail->Host = "smtp.gmail.com";
-        $mail->Username = "contactdendo@gmail.com";
-        $mail->Password = "contactdendo1234";
-
-        $mail->IsHTML(true);
-        $mail->ClearAddresses();
-
-        $mail->AddAddress($_POST['email'], $_POST['name'] . ' ' . $_POST['firstname']);
-
-        $mail->SetFrom("contactdendo@gmail.com", "Contact Dendo");
-        $mail->AddReplyTo("contactdendo@gmail.com", "Contact Dendo");
-
-        $msg = "
-        <p>Bonjour et merci pour votre inscription à notre site.</p>:q
-        <p>Ceci est un autre test de ma part</p>
-        <p>Afin de finaliser votre inscription veuillez cliquer sur ce lien afin de confirmer votre inscription : <a href='http://localhost:8889/tets/confirmation.php?token=" . $token . "'>http://localhost:8889/tets/confirmation.php?$token</a></p>";
-
-        $mail->Subject = "Votre inscription sur Dendo";
-
-        $mail->MsgHTML($msg);
-        if(!$mail->Send()) {
-            echo "Erreur lors de l'envoi du mail.";
-            //var_dump($mail);
-        } else {
-            echo "Mail bien envoyé";
-        }
     }
 }
 else{
