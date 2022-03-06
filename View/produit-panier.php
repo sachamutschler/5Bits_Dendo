@@ -1,12 +1,8 @@
 <?php
-
-    $compteur_velo = 0;
     $total = 0;
     
 
-    if (isset($_POST['supprimer'])) {
-        $compteur_velo -= 1;
-    }
+  
     
 ?>
 
