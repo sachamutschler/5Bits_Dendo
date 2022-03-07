@@ -8,6 +8,8 @@
 .div_produit img {
     padding: 10px;
     width: calc(60% - 20px);
+    height: fit-content;
+    margin: auto;
 }
 
 .div_produit #caracteristiques {
@@ -32,8 +34,31 @@
 .caracteristiques_element {
     margin-left: auto;
     padding: 5px;
+    text-align: right;
 }
 
 .xdebug-var-dump {
     background: white;
+}
+
+#input_ajout_panier, #bouton_ajout_panier {
+    width: 160px;
+}
+
+#input_ajout_panier {
+    height: 38px;
+    border-radius:3px;
+    border: 1px solid grey;
+}
+
+#form_ajout_panier, #form_connexion {
+    margin-left: auto;
+}
+
+#form_connexion {
+    display: flex;
+}
+
+#form_connexion * {
+    margin: auto;
 }
