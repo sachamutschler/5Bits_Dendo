@@ -27,6 +27,8 @@
 }
 .imagePanier{
     width: 30%;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 .quantity{
     display: flex;
@@ -44,7 +46,7 @@
 }
 .cont_buy{
     text-align: center;
-    margin-bottom: 1%;
+    
 }
 .delete_panier{
     margin-top: 3%;
@@ -63,3 +65,46 @@
     height: 50%;
     padding-top: 10%;
 }
+
+@media screen and (max-width: 600px) {
+    .cont_panier{
+        display: block;
+        height: 75%;
+    }
+    .total_buy {
+        width: 70%;
+        height: 25%;
+        margin-left: 15%;
+        margin-top: 20%;
+    }
+    .cont_panier2{
+        width: 85%;
+        margin-left: 7%;
+    }
+    .panier{
+        height: 30%;
+    }
+    .t_panier{
+        font-size: 20px;
+    }
+    
+  }
+  @media screen and (max-width: 900px) {
+    .cont_panier{
+        display: block;
+        height: 75%;
+    }
+    .cont_panier2{
+        width: 85%;
+        margin-left: 7%;
+    }
+    .total_buy {
+        width: 70%;
+        height: 25%;
+        margin-left: 15%;
+        margin-top: 20%;
+    }
+    .cont_total{
+        height: 35%;
+    }
+  }

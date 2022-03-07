@@ -61,3 +61,21 @@
 #form_connexion * {
     margin: auto;
 }
+
+@media screen and (max-width: 960px) {
+    .div_produit img, .div_produit #caracteristiques {
+        width: calc(100% - 20px)
+    }
+
+    .div_produit {
+        flex-wrap: wrap;
+    }
+
+    #form_connexion {
+        flex-direction: column;
+    }
+
+    #form_connexion .bouton {
+        margin-right: 0;
+    }
+}
