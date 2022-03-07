@@ -1,5 +1,9 @@
 <?php
 session_start();
+
+if(isset($_POST['qte_ajout_panier'])) {
+    include('Model/connexion_ajout_produit_au_panier.php');
+}
 ?>
 <head>
     <?php include ('head.php'); ?>
@@ -54,8 +58,10 @@ if(isset($_GET['id_produit'])) {
                 if(isset($_SESSION['identifiant'])) {
                     ?>
                     <form id="form_ajout_panier" method="POST">
-                        <input type="number" id="input_ajout_panier" max="<?php echo($produit[0]['stock']); ?>">
-                        <button type="button" id="bouton_ajout_panier" class="bouton">Ajouter au panier</button>
+                        <input type="number" id="qte_ajout_panier" max="<?php echo($produit[0]['stock']); ?>" value="1" name="qte_ajout_panier">
+                        <input type="hidden" id="id_produit_ajout_panier" name="id_produit_ajout_panier" value="<?php echo($produit[0]['id_produit']); ?>">
+                        <input type="hidden" id="id_utilisateur_ajout_panier" name="id_utilisateur_ajout_panier" value="<?php echo($_SESSION['identifiant']); ?>">
+                        <button type="submit" id="bouton_ajout_panier" class="bouton">Ajouter au panier</button>
                     </form>
                     <?php
                 }
