@@ -51,7 +51,7 @@ if (isset($_POST['modifInfo'])){
     $adresseDeuxClient = htmlspecialchars($_POST['adresseDeuxClient']);
     $villeClient = htmlspecialchars($_POST['villeClient']);
 
-    $updateInfo = $db->prepare('UPDATE compte_client SET mail=:mail, code_postal=:cp, telephone_port=:telpor, telephone_fixe=:telfix, adresse_1=:adresse1, adresse_2=:adresse2,ville=:ville');
+    $updateInfo = $db->prepare('UPDATE compte_client SET mail=:mail, code_postal=:cp, telephone_port=:telpor, telephone_fixe=:telfix, adresse_1=:adresse1, adresse_2=:adresse2,ville=:ville WHERE id=:id');
     $updateInfo->bindValue('mail', $adresseMail);
     $updateInfo->bindValue('cp', $codePostal);
     $updateInfo->bindValue('telpor', $telClient);
@@ -59,6 +59,7 @@ if (isset($_POST['modifInfo'])){
     $updateInfo->bindValue('adresse1', $adresseUneClient);
     $updateInfo->bindValue('adresse2', $adresseDeuxClient);
     $updateInfo->bindValue('ville', $villeClient);
+    $updateInfo->bindValue('id', $_SESSION['identifiant']);
     $updateInfo->execute();
 }
 
