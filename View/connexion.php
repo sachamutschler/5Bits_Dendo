@@ -44,11 +44,13 @@ if (isset($_POST['connexion']) && !empty($_POST['username']) && !empty($_POST['p
 }
 
 ?>
-<form action="connexion.php" method="post">
-    <label for="username">Identifiant : </label>
-    <input type="text" name="username" id="username">
-    <label for="password">Mot de passe :</label>
-    <input type="password" name="password" id="password">
-    <input type="submit" name="connexion" value="Connexion">
-</form>
-<p>Si vous n'avez pas encore de compte : <a href="inscription.php">inscrivez-vous</a></p>
+<div class="contenu">
+    <form action="connexion.php" method="post">
+        <label for="username">Identifiant : </label>
+        <input type="text" name="username" id="username">
+        <label for="password">Mot de passe :</label>
+        <input type="password" name="password" id="password">
+        <input type="submit" name="connexion" value="Connexion">
+    </form>
+    <p>Si vous n'avez pas encore de compte : <a href="inscription.php">inscrivez-vous</a></p>
+</div>
