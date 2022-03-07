@@ -13,12 +13,14 @@ session_start();
 <div class="cont_panier">
     <div class="cont_panier2">
         <?php
+            
             include('Model/connexion_bdd.php');
             include('Model/model_panier.php');
             for ($i=0; $i < intval($req_total['COUNT(id)']); $i++) { 
                 require('produit-panier.php');
             }
             $total= 0 + intval($res['prix']*$i);
+            
         ?>
     </div>
     

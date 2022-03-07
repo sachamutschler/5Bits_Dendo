@@ -13,7 +13,6 @@ session_start();
     <?php include ('navbar.php'); ?>
 </div>
 <?php
-    session_start();
     include ('post_contact.php');
 ?>
 

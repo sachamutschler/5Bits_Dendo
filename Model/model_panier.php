@@ -1,9 +1,9 @@
 <?php 
-
+    var_dump(intval($_SESSION['utilisateur']));
     //requete prix vélo
     $id_produit = "SELECT id_produit FROM panier WHERE id_compte_client = $id_compte_client";
-    $id_compte_client = $_SESSION['id_compte_client'];
-    $requete = 'SELECT prix FROM `produit`WHERE id_produit = 4';
+    $id_compte_client = intval($_SESSION['utilisateur']);
+    $requete = "SELECT prix FROM `produit`WHERE id_produit = $id_produit";
     $prix = $conn->query($requete);
     $prix->execute();
     $prix->setFetchMode(PDO::FETCH_CLASS, 'prix');
