@@ -52,20 +52,20 @@ if (isset($_POST['submit'])) {
     $errors = [];
 
     if  (isset($_POST['identifiant']) && !empty($_POST['identifiant'])){
+        $selectExistInBdd = $db->prepare('SELECT * FROM identifiant WHERE mail = "' . $_POST['identifiant'] . '"');
         if (!preg_match('/^[A-Za-z][A-Za-z0-9]{5,31}$/', $_POST['identifiant'])){
-            $selectExistInBdd = $db->prepare('SELECT * FROM identifiant WHERE mail = "' . $_POST['identifiant'] . '"');
-            if (!empty ($selectExistInBdd)){
-                $errors[] = "Cet identifiant est déjà utilisé";
-            }
-            $errors[] = "Votre nom d'utilisateur n'est pas conforme";
-            }
+            $errors[] = "Votre nom d'utilisateur n'est pas conforme, il doit contenir entre 5 et 31 charactères sans charactères spéciaux";
+        }elseif ($selectExistInBdd != NULL){
+            $errors[] = "Cet identifiant est déjà utilisé";
+        }
+
         }else{
         $errors[] = "Vous n'avez pas entré de nom d'utilisateur";
     }
 
     if  (isset($_POST['password']) && !empty($_POST['password'])){
         if (!preg_match('/^[A-Za-z][A-Za-z0-9]{5,31}$/', $_POST['password'])){
-            $errors[] = "Votre mot de passe n'est pas conforme";
+            $errors[] = "Votre mot de passe n'est pas conforme, il doit contenir entre 5 et 31 charactères sans charactères spéciaux";
             }
         }else{
         $errors[] = "Vous n'avez pas entré de mot de passe";
