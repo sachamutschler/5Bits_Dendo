@@ -1,4 +1,7 @@
 <?php
+session_start();
+?>
+<?php
 function connexionBase($nomBase){
     $servername="localhost";
     $username="root";

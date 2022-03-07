@@ -1,10 +1,7 @@
 <?php
-session_start();
 if (isset($_POST['deconnexion'])){
     $_SESSION['identifiant'] = "";
 }
-
-
 ?>
 <img id="icone_menu" onclick="afficher_navbar()" src="public/images/icone_menu.png" alt="menu">
 <div id="navbar">

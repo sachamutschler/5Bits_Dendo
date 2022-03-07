@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <head>
     <?php include ('head.php'); ?>
 </head>
