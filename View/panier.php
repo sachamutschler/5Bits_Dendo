@@ -19,6 +19,7 @@ session_start();
                 require('produit-panier.php');
             }
             $total= 0 + intval($res['prix']*$i);
+            
         ?>
     </div>
     

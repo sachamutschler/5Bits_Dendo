@@ -130,11 +130,20 @@ if (isset($_POST['submit'])) {
         $query->bindValue('pays', htmlspecialchars($_POST['pays']));
         $query->bindValue('code_validation', $token);
         $query->execute();
+
+        $id = $db->lastInsertId();
+        $_SESSION['identifiant'] = $id;
+
+        if(isset($_POST['id_produit_inscription'])) {
+            header('Location: produit.php?id_produit='.$_POST['id_produit_inscription']);
+        }
     }
 }
 else{
     echo("Bienvenue sur mon formulaire !");
 }
+
+
 
 ?>
 
@@ -208,6 +217,10 @@ else{
     <div class="form-example">
         <input type="submit" name="submit" value="Envoyer">
     </div><br>
+
+    <?php if(isset($_GET['id_produit_inscription'])) { ?>
+        <input type="hidden" name="id_produit_inscription" value="<?php echo($_GET['id_produit_inscription']); ?>">
+    <?php } ?>
 
 </form>
 

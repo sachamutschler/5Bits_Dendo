@@ -7,7 +7,7 @@ session_start();
 <div id="header">
     <?php include ('navbar.php'); ?>
     <link href="public/css/produit.css" rel="stylesheet">
-</div>gi
+</div>
 
 <?php
 
@@ -62,7 +62,7 @@ if(isset($_GET['id_produit'])) {
                 else {
                     ?>
                     <form id="form_connexion" method="POST" action="connexion.php">
-                        <input type="hidden" value="<?php echo($produit[0]['id_produit']); ?>">
+                        <input type="hidden" value="<?php echo($produit[0]['id_produit']); ?>" name="id_produit_connexion">
                         <p class="caracteristiques_element">Connectez vous pour ajouter cet article au panier</p>
                         <button type="submit" id="bouton_connexion" class="bouton">Connexion</button>
                     </form>

@@ -6,8 +6,7 @@ body {
     background-attachment: fixed;
     background-repeat: no-repeat;
     position: relative;
-    min-giheight: 100%;
-    margin-bottom: 60px;
+    min-height: 100%;
 }
 
 #header {
@@ -37,6 +36,7 @@ body {
     margin: auto;
     border-radius: 5px;
     padding: 20px;
+    margin-top: 80px;
 }
 
 p {
