@@ -2,6 +2,11 @@
 label {
     color: white;
 }
+h2 {
+    color: #eac013;
+    font-size: 30px;
+    font-family: 'Smooch Sans', sans-serif;
+}
 h3 {
     font-size: 18px;
 }
