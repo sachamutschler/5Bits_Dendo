@@ -40,12 +40,12 @@
     background: white;
 }
 
-#input_ajout_panier, #bouton_ajout_panier {
+#qte_ajout_panier, #bouton_ajout_panier {
     width: 160px;
 }
 
-#input_ajout_panier {
-    height: 38px;
+#qte_ajout_panier {
+    height: 37px;
     border-radius:3px;
     border: 1px solid grey;
 }
