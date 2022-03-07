@@ -10,8 +10,8 @@
 }
 
 #presentation img {
-    width: calc(50% - 40px);
-    padding: 20px;
+    width: calc(50% - 10px);
+    margin-left: 10px;
     height: fit-content;
 }
 
@@ -118,8 +118,8 @@
 #texte_presentation {
     flex-wrap: wrap;
     display: flex;
-    padding: 20px;
-    width: calc(50% - 40px);
+    margin-right: 10px;
+    width: calc(50% - 10px);
     margin-bottom: auto;
 }
 
@@ -178,7 +178,12 @@
 /* mode tablette */
 @media screen and (max-width: 960px) {
     #presentation img, #texte_presentation {
-        width:calc(100% - 40px);
+        width:100%;
+        margin: auto;
+    }
+
+    #presentation img {
+        margin-top: 20px;
     }
 
     #articles_accueil {
@@ -197,6 +202,10 @@
     .icones_accueil_liste {
         width: 70%;
         font-size: 1.4rem;
+    }
+
+    .contenu {
+        width: calc(90% - 40px);
     }
 }
 
