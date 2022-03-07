@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 if(isset($_POST['button'])) {
     $objet = $_POST['objet'];
     $message = $_POST['description'];

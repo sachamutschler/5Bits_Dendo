@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <head>
     <?php include ('head.php'); ?>
 </head>
@@ -41,11 +44,32 @@ if(isset($_GET['id_produit'])) {
                 <p class="caracteristiques_element">Taille de cadre : <?php echo($taille_cadre[0]['taille_cadre']) ?></p>
                 <p class="caracteristiques_element">Taille des roues : <?php echo($taille_roues[0]['taille_roues']) ?> kg</p>
                 <p class="caracteristiques_element">Couleur : <?php echo($couleur[0]['couleur']) ?></p>
+                <p class="caracteristiques_element">Stock : <?php echo($produit[0]['stock']) ?></p>
                 <br>
-                <p class="caracteristiques_element">Ce vélo <?php echo($categorie[0]['nom_categorie']) ?> <?php echo($produit[0]['nom_produit']) ?> de couleur <?php echo($couleur[0]['couleur']) ?> est au prix de <?php if($produit[0]['reduction_produit'] != 0) { echo($prix_apres .'€ au lieu de '.$prix_avant);  }else{ echo($produit[0]['prix']); } ?> €</p>
+                <p class="caracteristiques_element">Ce vélo <?php echo($categorie[0]['nom_categorie']) ?> <?php echo($produit[0]['nom_produit']) ?>  est au prix de <?php if($produit[0]['reduction_produit'] != 0) { echo($prix_apres .'€ au lieu de '.$prix_avant);  }else{ echo($produit[0]['prix']); } ?> € seulement !</p>
                 <br>
                 <p class="caracteristiques_element">Conceptualisé par nos soins, produit et assemblé par des partenaires de confiance, ce vélo est le fruit de dizaines d'années d'expérience dans le domaine du cyclisme.</p>
-                <button type="button" id="bouton_ajout_au_panier" class="bouton">Ajouter au panier</button>
+                <br>
+                <?php
+                if(isset($_SESSION['identifiant'])) {
+                    ?>
+                    <form id="form_ajout_panier" method="POST">
+                        <input type="number" id="input_ajout_panier" max="<?php echo($produit[0]['stock']); ?>">
+                        <button type="button" id="bouton_ajout_panier" class="bouton">Ajouter au panier</button>
+                    </form>
+                    <?php
+                }
+                else {
+                    ?>
+                    <form id="form_connexion" method="POST" action="connexion.php">
+                        <input type="hidden" value="<?php echo($produit[0]['id_produit']); ?>">
+                        <p class="caracteristiques_element">Connectez vous pour ajouter cet article au panier</p>
+                        <button type="submit" id="bouton_connexion" class="bouton">Connexion</button>
+                    </form>
+                    <?php
+                }
+                ?>
+
             </div>
         </div>
     <?php
@@ -64,3 +88,4 @@ if(isset($_GET['id_produit'])) {
 
 
 <?php include ('footer.php'); ?>
+<?php include ('public/js/produit.php');
