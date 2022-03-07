@@ -14,11 +14,16 @@ h3 {
     display: flex;
     flex-direction: row;
 }
-.colonne_gauche {
+.open_button {
+    display: none;
+
+}
+.colonne_tri {
     width: 200px;
     height: 100%;
     margin: 20px;
 }
+
 table {
     margin: 20px;
 }
@@ -143,9 +148,21 @@ button:hover {
 }
 
 @media only screen and (max-width: 800px) {
-    .colonne_gauche {
+    .open_button {
+        display: unset;
+    }
+    .colonne_tri {
         display: none;
-        justify-content: center;
+        justify-content: left;
+        position:absolute;
+                left: 5%;
+                top: 212px;
+        height: 250px;
+        padding: 10px;
+        border: solid 1px grey;
+        border-radius: 4px;
+        z-index: 1;
+        background-color: #161616;
     }
 
     .colonne_droite {
@@ -161,10 +178,10 @@ button:hover {
     .article_produits {
         width: 80%;
     }
-    .colonne_gauche {
+    /*.colonne_tri {
         display: none;
         justify-content: center;
-    }
+    }*/
     .colonne_droite {
         width: 100%;
     }

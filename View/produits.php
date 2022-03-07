@@ -40,8 +40,9 @@ function recuperationToken($name){
         </div>
         <div class="contenu">
             <h1 class="titre_page">Nos produits</h1>
+                <button class="open_button" onclick="openTri()">Recherche</button>
                     <div class="colonnes_container">
-                        <div class="colonne_gauche">
+                        <div class="colonne_tri" id="popupTri">
                             <!-- Boutons de tri + requêtage -->
                                  <?php $db = connexionBase('dendo');
                                     #Récupération des noms dans les tables pour créer les listes déroulantes
@@ -100,7 +101,7 @@ function recuperationToken($name){
                                             <option value="1" name="electrique">Oui</option>
                                         </select>
                                         <br>
-                                        <button type="submit">Lancer la recherche</button>
+                                        <button type="submit" onclick="closeTri()">Lancer la recherche</button>
                                     </form>
                         </div>
                         <div class="colonne_droite">
@@ -171,5 +172,14 @@ function recuperationToken($name){
         <?php
         include ('footer.php');
         ?>
+        <script>
+            function openTri() {
+                document.getElementById("popupTri").style.display = "block";
+            }
+
+            function closeTri() {
+                document.getElementById("popupTri").style.display = "none";
+            }
+        </script>
     </body>
 </html>
