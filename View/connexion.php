@@ -35,7 +35,14 @@ if (isset($_POST['connexion']) && !empty($_POST['username']) && !empty($_POST['p
         echo "connexion reussi";
         session_start();
         $_SESSION['identifiant'] = $selectUsername['id'];
-        header('Location: index.php');
+
+        if(isset($_POST['id_produit_connexion'])) {
+            header('Location: produit.php?id_produit='.$_POST['id_produit_connexion']);
+            echo'oui';
+        }
+        else {
+            header('Location: index.php');
+        }
     }else{
         foreach ($errors as $error) {
             echo $error;
@@ -44,11 +51,26 @@ if (isset($_POST['connexion']) && !empty($_POST['username']) && !empty($_POST['p
 }
 
 ?>
-<form action="connexion.php" method="post">
-    <label for="username">Identifiant : </label>
-    <input type="text" name="username" id="username">
-    <label for="password">Mot de passe :</label>
-    <input type="password" name="password" id="password">
-    <input type="submit" name="connexion" value="Connexion">
-</form>
-<p>Si vous n'avez pas encore de compte : <a href="inscription.php">inscrivez-vous</a></p>
+<div class="contenu">
+    <form action="connexion.php" method="post">
+        <label for="username">Identifiant : </label>
+        <input type="text" name="username" id="username">
+        <label for="password">Mot de passe :</label>
+        <input type="password" name="password" id="password">
+
+        <?php if(isset($_POST['id_produit_connexion'])) { // ajouté par nihad ?>
+            <input type="hidden" name="id_produit_connexion" value="<?php echo($_POST['id_produit_connexion']); ?>">
+        <?php } ?>
+
+        <input type="submit" name="connexion" value="Connexion">
+
+    </form>
+
+    <?php if(isset($_POST['id_produit_connexion'])) { // ajouté par nihad ?>
+        <p>Si vous n'avez pas encore de compte : <a target="_blank" href="inscription.php?id_produit_inscription=<?php echo($_POST['id_produit_connexion']) ?>">inscrivez-vous</a></p>
+    <?php }
+    else{
+        ?><p>Si vous n'avez pas encore de compte : <a href="inscription.php">inscrivez-vous</a></p>
+    <?php } ?>
+</div>
+
