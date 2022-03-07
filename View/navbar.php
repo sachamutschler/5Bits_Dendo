@@ -1,6 +1,7 @@
 <?php
 if (isset($_POST['deconnexion'])){
     session_destroy();
+    header("Refresh:0");
 }
 ?>
 <img id="icone_menu" onclick="afficher_navbar()" src="public/images/icone_menu.png" alt="menu">
