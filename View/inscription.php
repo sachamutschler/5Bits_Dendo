@@ -144,11 +144,11 @@ else{
     <form class="row g-3" action="inscription.php" method="post">
         <div class="col-md-6">
             <label for="validationDefault01" class="form-label">Nom <span style="color:red;">*</span></label>
-            <input type="text" name="name" class="form-control" id="validationDefault01" value="Mark" required>
+            <input type="text" name="name" class="form-control" id="validationDefault01" required>
         </div>
         <div class="col-md-6">
             <label for="validationDefault02" class="form-label">Prenom <span style="color:red;">*</span></label>
-            <input type="text" name="firstname"class="form-control" id="validationDefault02" value="Otto" required>
+            <input type="text" name="firstname"class="form-control" id="validationDefault02" required>
         </div>
         <div class="col-md-4">
             <label for="validationDefault03" class="form-label">Identifiant <span style="color:red;">*</span></label>
