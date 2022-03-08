@@ -27,7 +27,7 @@ if(isset($_GET['id_produit'])) {
         <h1 class="titre_page"><?php echo($produit[0]['designation']) ?></h1>
 
         <div class="div_produit">
-            <img src="public/images/produits/<?php echo($produit[0]['image']) ?>">
+            <img src="public/images/produits/<?php echo($produit[0]['image']) ?>.png">
 
             <div id="caracteristiques">
                 <h2 id="nom_produit" class="caracteristiques_element"><?php echo($produit[0]['nom_produit']) ?></h2>

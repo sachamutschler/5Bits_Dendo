@@ -1,24 +1,12 @@
 <?php
 session_start();
-$servername = "localhost";
-$username = "root";
-$pass = "";
 
-try
-{
-    $db = new PDO("mysql:host=$servername;dbname=dendo",$username,$pass);
-    $db ->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-}
-catch(PDOException $e)
-{
-    echo "Erreur de la connexion : " .$e->getMessage();
-    die();
-}
+require_once ('Model/connexion_bdd.php');
 
 if (isset($_POST['connexion']) && !empty($_POST['username']) && !empty($_POST['password'])){
     $errors = [];
     $identifiant = htmlspecialchars($_POST['username']);
-    $selectUsername = $db->prepare("SELECT * FROM compte_client WHERE identifiant = :username");
+    $selectUsername = $conn->prepare("SELECT * FROM compte_client WHERE identifiant = :username");
     $selectUsername->bindValue('username', $identifiant);
     $selectUsername->execute();
     $selectUsername = $selectUsername->fetch();

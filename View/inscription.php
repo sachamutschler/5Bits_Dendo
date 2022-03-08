@@ -2,6 +2,7 @@
 session_start();
 include ('head.php');
 include('navbar.php');
+require_once ('Model/connexion_bdd.php')
 ?>
 
 <!DOCTYPE html>
@@ -30,21 +31,6 @@ function generateToken($len){
     return $token;
 }
 
-$servername = "localhost";
-$username = "root";
-$pass = "";
-
-//On se connecte à la base de donnée
-try
-{
-    $db = new PDO("mysql:host=$servername;dbname=dendo",$username,$pass);
-    $db ->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-}
-catch(PDOException $e)
-{
-    echo "Erreur de la connexion : " .$e->getMessage();
-    die();
-}
 
 //si on clique sur le bouton envoyer
 if (isset($_POST['submit'])) {
@@ -52,7 +38,7 @@ if (isset($_POST['submit'])) {
     $errors = [];
 
     if  (isset($_POST['identifiant']) && !empty($_POST['identifiant'])){
-        $selectExistInBdd = $db->prepare('SELECT * FROM compte_client WHERE identifiant = :identifiant');
+        $selectExistInBdd = $conn->prepare('SELECT * FROM compte_client WHERE identifiant = :identifiant');
         $selectExistInBdd->bindValue('identifiant', $_POST['identifiant']);
         $selectExistInBdd->execute();
         $selectExistInBdd = $selectExistInBdd->fetch();
@@ -117,7 +103,7 @@ if (isset($_POST['submit'])) {
     }else{
         $token = generateToken(30);
         $passwordHash = password_hash($_POST['password'], PASSWORD_BCRYPT);
-        $query = $db->prepare("INSERT INTO Compte_client(identifiant, mot_de_passe, nom_client, prenom, mail, telephone_port, telephone_fixe, adresse_1, adresse_2, ville, code_postal, pays, code_validation)
+        $query = $conn->prepare("INSERT INTO Compte_client(identifiant, mot_de_passe, nom_client, prenom, mail, telephone_port, telephone_fixe, adresse_1, adresse_2, ville, code_postal, pays, code_validation)
                                     VALUES(:identifiant, :mdp, :nom, :prenom, :email, :telephone_port, :telephone_fixe, :adresse1, :adresse2, :ville, :cp, :pays, :code_validation)");
         $query->bindValue('identifiant', htmlspecialchars($_POST['identifiant']));
         $query->bindValue('mdp', $passwordHash);
@@ -134,7 +120,7 @@ if (isset($_POST['submit'])) {
         $query->bindValue('code_validation', $token);
         $query->execute();
 
-        $id = $db->lastInsertId();
+        $id = $conn->lastInsertId();
         $_SESSION['identifiant'] = $id;
 
         if(isset($_POST['id_produit_inscription'])) {
