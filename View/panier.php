@@ -50,13 +50,13 @@ session_start();
                 </div>
                 <?php
             }
-
-            if ($prix==0) {
+            $total= 0 ;
+            if ($prix==0 || $total ==0) {
             
                 echo "<style> div.cont_buy{ display: none;} </style>";
                 
             }
-            $total= 0 + $prix*$i;
+            
             
         ?>
     </div>

@@ -40,7 +40,7 @@
         $total->execute();
         $total->setFetchMode(PDO::FETCH_CLASS, 'COUNT(id)');
         $req_total = $total->fetch(); */
-
+        //$delete_ligne_panier = "";
 }
 else {
     echo ('');
