@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : Dim 06 mars 2022 à 09:27
+-- Généré le : mar. 08 mars 2022 à 21:58
 -- Version du serveur :  5.7.31
 -- Version de PHP : 7.4.9
 
@@ -191,7 +191,14 @@ CREATE TABLE IF NOT EXISTS `compte_client` (
   `code_validation` varchar(255) DEFAULT NULL,
   `etat` varchar(255) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `compte_client`
+--
+
+INSERT INTO `compte_client` (`id`, `identifiant`, `mot_de_passe`, `nom_client`, `prenom`, `mail`, `telephone_port`, `telephone_fixe`, `adresse_1`, `adresse_2`, `ville`, `code_postal`, `pays`, `code_validation`, `etat`) VALUES
+(3, 'costa1', '$2y$10$lxKETgvKhuYZeAN2VHphHO4YO2RwS3D65wvquxUwWb4mjUPYslmHe', 'costa', 'aurelien', 'costa@outlook.com', '0311111111', '', '1 rue gospel', '', 'STRASBOURG', '67700', 'France', 'rX0l4UkPnf3dEJ6Y7y17PxTI4bYlWB', '0');
 
 -- --------------------------------------------------------
 
@@ -228,7 +235,14 @@ CREATE TABLE IF NOT EXISTS `panier` (
   `id_compte_client` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `panier_produit_idProduit_fk` (`id_produit`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `panier`
+--
+
+INSERT INTO `panier` (`id`, `quantite`, `id_produit`, `id_compte_client`) VALUES
+(3, 6, 7, 3);
 
 -- --------------------------------------------------------
 
@@ -267,14 +281,14 @@ INSERT INTO `produit` (`id_produit`, `reference`, `nom_produit`, `designation`, 
 (2, 'VEL_AL_ROU_ROS_20_M', 'Sakura ROSE M', 'Vélo de route Rose pour homme. 20 pouces, taille M.', 4, 154, 1090, 'VEL_AL_ROU_ROS_20_M', 0, '0.00', 3, 10, 1, 3, 6, 0),
 (3, 'VEL_AL_ROU_ORA_28_M', 'Yumamoto ORANGE M', 'Vélo de route Orange pour homme et femme. 28 pouces, taille L.', 4, 154, 1290, 'VEL_AL_ROU_ORA_28_L', 0, '0.00', 3, 8, 1, 4, 10, 1),
 (4, 'VEL_CA_ROU_NOI_26_M', 'Kyoto NOIR M', 'Vélo de route Noir pour homme et femme. 26 pouces, taille L.', 6, 114, 1290, 'VEL_CA_ROU_NOI_26_M', 0, '10.00', 3, 4, 2, 3, 9, 0),
-(5, 'VEL_AL_ROU_JAU_12_XS', 'Osaka JAUNE XS', 'Vélo de route Jaune pour enfant. 12 pouces, taille XS.', 4, 331, 800, 'VEL_AL_ROU_JAU_12_XS', 0, '20.00', 3, 7, 1, 1, 2, 1),
+(5, 'VEL_AL_ROU_JAU_12_XS', 'Osaka JAUNE XS', 'Vélo de route Jaune pour enfant. 12 pouces, taille XS.', 4, 331, 800, 'VEL_AL_ROU_JAU_12_XS', 0, '20.00', 3, 7, 1, 1, 2, 0),
 (6, 'VEL_AL_ROU_JAU_18_S', 'Osaka JAUNE S', 'Vélo de route Jaune pour  femme ou enfant. 18 pouces, taille S.', 5, 54, 900, 'VEL_AL_ROU_JAU_18_S', 0, '15.00', 3, 7, 2, 2, 5, 0),
-(7, 'VEL_AL_VIL_BLA_20_M', 'Hokkaido BLANC M', 'Vélo de ville blanc pour Femme. 20 pouces, taille M.', 14, 123, 790, 'VEL_AL_VIL_BLA_20_M', 0, '0.00', 2, 11, 1, 3, 6, 0),
-(8, 'VEL_CA_VTT_GRI_24_L', 'Kobe GRIS L', 'Vélo tout terrain Gris pour homme. 24 pouces, taille L.', 10, 80, 1200, 'VEL_CA_VTT_GRI_24_L', 0, '10.00', 1, 5, 2, 4, 8, 0),
+(7, 'VEL_AL_VIL_BLA_20_M', 'Hokkaido BLANC M', 'Vélo de ville blanc pour Femme. 20 pouces, taille M.', 14, 123, 790, 'VEL_AL_VIL_BLA_20_M', 0, '0.00', 2, 11, 1, 3, 6, 1),
+(8, 'VEL_CA_VTT_GRI_24_L', 'Kobe GRIS L', 'Vélo tout terrain Gris pour homme. 24 pouces, taille L.', 10, 80, 1200, 'VEL_CA_VTT_GRI_24_L', 0, '20.00', 1, 5, 2, 4, 8, 0),
 (9, 'VEL_CA_VTT_ROU_20_M', 'Kobe Rouge M', 'Vélo tout terrain Rouge pour femme. 20 pouces, taille M.', 9, 43, 1150, 'VEL_CA_VTT_ROU_20_M', 0, '10.00', 1, 2, 2, 3, 6, 0),
-(10, 'VEL_AL_VTT_VER_12_XS', 'Okayama VERT XS', 'Vélo tout terrain Vert pour enfant. 12 pouces, taille XS.', 6, 155, 500, 'VEL_AL_VTT_VER_12_XS', 0, '10.00', 1, 3, 1, 1, 2, 0),
-(11, 'VEL_AL_VTT_BLA_12_XS', 'Okayama BLANC XS', 'Vélo tout terrain Blanc pour enfant. 12 pouces, taille XS.', 6, 134, 500, 'VEL_AL_VTT_BLA_12_XS', 0, '10.00', 1, 11, 1, 1, 2, 0),
-(12, 'VEL_CA_ROU_BLE_24_L', 'Honshu électrique BLEU L', 'Vélo Electrique de route Bleu pour homme et femme. 24 pouces, taille L.', 9, 23, 3090, 'VEL_CA_ROU_BLE_24_L', 1, '0.00', 3, 1, 2, 4, 8, 0);
+(10, 'VEL_AL_VTT_VER_12_XS', 'Okayama VERT XS', 'Vélo tout terrain Vert pour enfant. 12 pouces, taille XS.', 6, 155, 500, 'VEL_AL_VTT_VER_12_XS', 0, '20.00', 1, 3, 1, 1, 2, 0),
+(11, 'VEL_AL_VTT_BLA_12_XS', 'Okayama BLANC XS', 'Vélo tout terrain Blanc pour enfant. 12 pouces, taille XS.', 6, 134, 500, 'VEL_AL_VTT_BLA_12_XS', 0, '20.00', 1, 11, 1, 1, 2, 0),
+(12, 'VEL_CA_ROU_BLE_24_L', 'Honshu électrique BLEU L', 'Vélo Electrique de route Bleu pour homme et femme. 24 pouces, taille L.', 9, 23, 3090, 'VEL_CA_ROU_BLE_24_L', 1, '0.00', 3, 1, 2, 4, 8, 1);
 
 -- --------------------------------------------------------
 

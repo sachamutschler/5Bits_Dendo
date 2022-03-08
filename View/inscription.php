@@ -54,7 +54,7 @@ if (isset($_POST['submit'])) {
     if  (isset($_POST['password']) && !empty($_POST['password'])){
         $pattern = '/^(?=.*[!@#$%^+&*-])(?=.*[0-9])(?=.*[A-Z]).{8,31}$/';
         if (!preg_match($pattern, $_POST['password'])){
-            $errors[] = "Votre mot de passe n'est pas conforme, il doit contenir entre 8 et 31 charactères avec un symbole";
+            $errors[] = "Votre mot de passe n'est pas conforme, il doit contenir entre 8 et 31 charactères, avec une majuscule et un caractère spécial.";
             }
         }else{
         $errors[] = "Vous n'avez pas entré de mot de passe";
@@ -98,7 +98,7 @@ if (isset($_POST['submit'])) {
 
     if ($errors){
         foreach ($errors as $error) {
-            echo $error . '<br>';
+            echo '<p style="color:white">' . $error . '</p><br>';
         }
     }else{
         $token = generateToken(30);

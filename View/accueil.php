@@ -30,7 +30,7 @@ session_start();
         </div>
         <img src="public/images/accueil/accueil_1.jpg" alt="accueil_1">
     </div>
-
+<!-- Une section qui affiche les éléments choisis en base de donnée qui ont pour valeur 1 dans le champ accueil-->
     <?php include ('Model/connexion_articles_accueil.php');
 
     if(isset($produits_accueil)) { ?>
@@ -44,7 +44,7 @@ session_start();
                         <img class="image" src="public/images/produits/<?php echo($produits_accueil[$i]['image']) ?>.png" alt="produit_accueil_1">
                         <h3><?php echo($produits_accueil[$i]['nom_produit']) ?></h3>
                         <?php if($produits_accueil[$i]['reduction_produit'] != 0) {
-                            ?><h4><?php echo($produits_accueil[$i]['prix']  * (1 - ($produits_accueil[$i]['reduction_produit'] / 100) )) ?> € <strike><?php echo($produits_accueil[$i]['prix']) ?> €</strike></h4><?php
+                            ?><h4><?php echo($produits_accueil[$i]['prix']  * (1 - ($produits_accueil[$i]['reduction_produit'] / 100) )) ?> € <s><?php echo($produits_accueil[$i]['prix']) ?> €</s></h4><?php
                         }
                         else {
                             ?><h4><?php echo($produits_accueil[$i]['prix']) ?> €</h4><?php
@@ -65,7 +65,7 @@ session_start();
     <div id="icones_accueil">
         <div class="icones_accueil_liste">
             <div class="une_icone">
-                <a href="produit.php"><span class="iconify" data-icon="gis:bicycle"></span> Des vélos de qualité artisanale</a>
+                <a href="produits.php"><span class="iconify" data-icon="gis:bicycle"></span> Des vélos de qualité artisanale</a>
             </div>
             <div class="une_icone">
                 <a href="#"><span class="iconify" data-icon="ri:tools-fill"></span> Un atelier de réparation dernier cri</a>
@@ -80,17 +80,46 @@ session_start();
                 <a href="#"><span class="iconify" data-icon="bx:leaf"></span> Une démarche écologique</a>
             </div>
             <div class="une_icone">
-                <a href="produit.php"><span class="iconify" data-icon="gis:measure"></span> Des vélos sur mesure</a>
+                <a href="produits.php"><span class="iconify" data-icon="gis:measure"></span> Des vélos sur mesure</a>
             </div>
             <div class="une_icone">
-                <a href="produit.php"><span class="iconify" data-icon="eos-icons:performance"></span> Optimisés pour les performances!</a>
+                <a href="produits.php"><span class="iconify" data-icon="eos-icons:performance"></span> Optimisés pour les performances!</a>
             </div>
         </div>
     </div>
-
+    <!-- Une section promotion qui affiche les articles dès 20% de réduction-->
+    <?php include ('Model/connexion_articles_promo.php');
+    if(isset($reduction_produit)) { ?>
+        <h1 class="titre_page">Offres promotionnelles du moment:</h1>
+        <div id="articles_accueil">
+            <?php for($i=0; $i<4; $i++) {
+                if($reduction_produit[$i]['reduction_produit'] >= 20) {
+                    ?>
+                    <div class="article_accueil">
+                        <div class="article_container">
+                            <img class="image" src="public/images/produits/<?php echo($reduction_produit[$i]['image']) ?>.png" alt="produit_accueil_1">
+                            <h3><?php echo($reduction_produit[$i]['nom_produit']) ?></h3>
+                            <?php if($reduction_produit[$i]['reduction_produit'] != 0) {
+                                ?><h4><?php echo($reduction_produit[$i]['prix']  * (1 - ($reduction_produit[$i]['reduction_produit'] / 100) )) ?> € <s><?php echo($reduction_produit[$i]['prix']) ?> €</s></h4><?php
+                            }
+                            else {
+                                ?><h4><?php echo($reduction_produit[$i]['prix']) ?> €</h4><?php
+                            }
+                            ?>
+                            <p><?php echo($reduction_produit[$i]['designation']) ?></p>
+                        </div>
+                        <a class="bouton_produit_accueil" href="produit.php?id_produit=<?php echo($reduction_produit[$i]['id_produit']) ?>">Détails</a>
+                    </div>
+                    <?php
+                }
+            } ?>
+        </div>
+    <?php }
+    include ('footer.php'); ?>
 </div>
 
-<?php include ('footer.php'); ?>
+
+
 <script src="https://code.iconify.design/2/2.1.2/iconify.min.js"></script>
 </body>
 

@@ -1,8 +1,7 @@
 .cont_footer{
     background-color: #161616;
-    margin-top: 0%;
-    bottom: 0;
     position:relative;
+        bottom: -100px;
     width: 100%;
 }
 .footer{
