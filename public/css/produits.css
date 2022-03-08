@@ -14,6 +14,8 @@ h2 {
     width: 200px;
     height: 100%;
     margin: 20px;
+    position: relative;
+        left: -10px;
 }
 .colonne_droite {
     width: 75%;
@@ -62,11 +64,6 @@ button:hover {
     justify-content: center;
 }
 /*Mise en forme de chaque carte article*/
-.article_produits {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
 .article_produits {
     width: calc(20% - 20px);
     padding: 10px;
@@ -162,15 +159,15 @@ button:hover {
         width: 40%;
     }
 }
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 850px) {
     .open_button {
         display: unset;
     }
     .close_button{
         display: unset;
         position: absolute;
-        top: -7px;
-        left: 192px;
+        top: -5px;
+        left: 182px;
         color: white;
         background-color: black;
     }
@@ -180,8 +177,8 @@ button:hover {
         justify-content: left;
         position:absolute;
                 left: 5%;
-                top: 212px;
-        height: 250px;
+                top: 209px;
+        height: 280px;
         padding: 10px;
         border: solid 1px grey;
         border-radius: 4px;

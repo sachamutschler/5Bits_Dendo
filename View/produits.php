@@ -2,10 +2,7 @@
 session_start();
 ?>
 <?php
-function connexionBase($nomBase){
-    require_once ('Model/connexion_bdd.php');
-    return $conn;
-}
+require_once ('Model/connexion_bdd.php');
 function recuperationToken($name){
     if (isset($_GET[$name]) !=0){
         $resultat = $_GET[$name];
@@ -35,7 +32,7 @@ function recuperationToken($name){
                         <div class="colonne_tri" id="popupTri">
                             <button class="close_button" onclick="closeTri()"><span class="iconify" data-icon="clarity:window-close-line"></span></button>
                             <!-- Boutons de tri + requêtage -->
-                                 <?php $conn = connexionBase('dendo');
+                                 <?php
                                     #Récupération des noms dans les tables pour créer les listes déroulantes
                                     $listeCategories = $conn->query("SELECT id, nom_categorie FROM categorie");
                                     $listeCategories = $listeCategories->fetchAll();
