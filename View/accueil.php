@@ -30,7 +30,7 @@ session_start();
         </div>
         <img src="public/images/accueil/accueil_1.jpg" alt="accueil_1">
     </div>
-
+<!-- Une section qui affiche les éléments choisis en base de donnée qui ont pour valeur 1 dans le champ accueil-->
     <?php include ('Model/connexion_articles_accueil.php');
 
     if(isset($produits_accueil)) { ?>
@@ -87,6 +87,7 @@ session_start();
             </div>
         </div>
     </div>
+    <!-- Une section promotion qui affiche les articles dès 20% de réduction-->
     <?php include ('Model/connexion_articles_promo.php');
     if(isset($reduction_produit)) { ?>
         <h1 class="titre_page">Offres promotionnelles du moment:</h1>
