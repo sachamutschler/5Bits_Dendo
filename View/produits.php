@@ -47,7 +47,7 @@ function recuperationToken($name){
                                     <form method="get">
                                         <label for="categorie">Type:</label>
                                         <br>
-                                        <select id="select" name="categorie" id="categorie">
+                                        <select name="categorie" id="categorie">
                                             <option value="%" name="categorie">Tout</option>
                                             <!--Chercher les données en base pour les afficher dans la liste-->
                                             <?php foreach ($listeCategories as $itemCategorie){
@@ -57,7 +57,7 @@ function recuperationToken($name){
                                         <br>
                                         <label for="couleur">Couleur:</label>
                                         <br>
-                                        <select id="couleur">
+                                        <select name="couleur" id="couleur">
                                             <option value="%" name="couleur">Tout</option>
                                             <?php foreach ($listeCouleurs as $itemCouleur){
                                                 echo '<option value="'.$itemCouleur['id'].'" name="'.$itemCouleur['couleur'].'">'.$itemCouleur['couleur'].'</option>';
