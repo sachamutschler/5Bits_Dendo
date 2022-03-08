@@ -1,8 +1,7 @@
 <?php
 session_start();
-include ('head.php');
-include ('navbar.php');
- require_once ('Model/connexion_bdd.php');
+
+require_once ('Model/connexion_bdd.php');
 if (isset($_POST['modifMdp'])){
     $errors = [];
     $selectOldMdp = $conn->prepare('SELECT mot_de_passe, id FROM compte_client WHERE id=:id ');
@@ -17,7 +16,7 @@ if (isset($_POST['modifMdp'])){
             $updatePassword->bindValue('mdp', $newMdp);
             $updatePassword->bindValue('id', $_SESSION['identifiant']);
             $updatePassword->execute();
-            echo "Mot de passe modifié";
+            echo "<div class='validation' id='validation'>Mot de passe modifié</div>";
         }else{
             $errors[] = "Votre ancien mot de passe ne correspond pas ou votre nouveau mot de passe n'est pas le même que la confirmation de mot de passe";
         }
@@ -48,6 +47,8 @@ if (isset($_POST['modifInfo'])){
     $updateInfo->bindValue('ville', $villeClient);
     $updateInfo->bindValue('id', $_SESSION['identifiant']);
     $updateInfo->execute();
+
+    echo "<div class='validation' id='validation'>Informations modifiés</div>";
 }
 
 $selectUserInfo = $conn->prepare('SELECT * FROM compte_client WHERE ID= :id');
@@ -57,6 +58,15 @@ $selectUserInfo = $selectUserInfo->fetch();
 
 
 ?>
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <?php include ('head.php'); ?>
+    <link href="public/css/accueil.css" rel="stylesheet">
+
+</head>
+<body>
 <style>
     h1{
         color:white;
@@ -64,56 +74,98 @@ $selectUserInfo = $selectUserInfo->fetch();
     p{
         color: white;
     }
-
+    .validation{
+        position: absolute;
+        width: 100%;
+        background-color: rgba(0,128,0,0.5);
+        padding: 27px;
+        text-align: center;
+        color : white;
+        top: 80px;
+    }
 </style>
-<div class="contenu">
+<div id="header">
+    <?php include ('navbar.php'); ?>
+</div>
+<div class="contenu p-5">
 
     <h1>Mon compte</h1>
 
     <h2>Vos informations</h2>
-    <form action="moncompte.php" method="post">
+    <form class="row g-3" action="moncompte.php" method="post">
         <p>Nom : <?= $selectUserInfo['nom_client']?> </p>
+        <br>
         <p>Prenom : <?= $selectUserInfo['prenom']?> </p>
+        <br>
+        <div class="col-md-6">
+            <label for="telClient" class="form-label">Numéro de télèphone portable : </label>
+            <input type="number" class="form-control" name="telClient" value="<?= $selectUserInfo['telephone_port']?>" id="telClient">
+        </div>
+        <div class="col-md-6">
+            <label for="telFixClient" class="form-label">Numéro de télèphone fixe : </label>
+            <input type="number" class="form-control" name="telFixClient" value="<?= $selectUserInfo['telephone_fixe']?>" id="telFixClient">
+        </div>
+        <div class="col-md-8">
+            <label for="mailClient" class="form-label">Adrese mail : </label>
+            <input class="form-control" type="email" name="mailClient" value = "<?= $selectUserInfo['mail']?>" id="mailClient">
+        </div>
 
-        <label for="mailClient">Adrese mail : </label>
-        <input type="email" name="mailClient" value = "<?= $selectUserInfo['mail']?>" id="mailClient"><br><br>
-
-        <label for="cpClient">Code postal : </label>
-        <input type="number" name="cpClient" value="<?= $selectUserInfo['code_postal']?>" id="cpClient"><br><br>
-
-        <label for="telClient">Numéro de télèphone portable : </label>
-        <input type="text" name="telClient" value="<?= $selectUserInfo['telephone_port']?>" id="telClient"><br><br>
-
-        <label for="telFixClient">Numéro de télèphone fixe : </label>
-        <input type="text" name="telFixClient" value="<?= $selectUserInfo['telephone_fixe']?>" id="telFixClient"><br><br>
-
-        <label for="adresseUneClient">Adresse 1 : </label>
-        <input type="text" name="adresseUneClient" value="<?= $selectUserInfo['adresse_1']?>" id="adresseUneClient"><br><br>
-
-        <label for="adresseDeuxClient">Adresse 2 : </label>
-        <input type="text" name="adresseDeuxClient" value="<?= $selectUserInfo['adresse_2']?>" id="adresseDeuxClient"><br><br>
-
-        <label for="villeClient">Ville : </label>
-        <input type="text" name="villeClient" value="<?= $selectUserInfo['ville']?>" id="villeClient"><br><br>
-
-        <input type="submit" name="modifInfo" value="Modifier informations">
+        <div class="col-md-4">
+            <label for="cpClient" class="form-label">Code postal : </label>
+            <input type="number" class="form-control" name="cpClient" value="<?= $selectUserInfo['code_postal']?>" id="cpClient">
+        </div>
+        <div class="col-md-4">
+            <label for="adresseUneClient" class="form-label">Adresse 1 : </label>
+            <input type="text" class="form-control" name="adresseUneClient" value="<?= $selectUserInfo['adresse_1']?>" id="adresseUneClient">
+        </div>
+        <div class="col-md-4">
+            <label for="adresseDeuxClient" class="form-label">Adresse 2 : </label>
+            <input type="text" class="form-control" name="adresseDeuxClient" value="<?= $selectUserInfo['adresse_2']?>" id="adresseDeuxClient">
+        </div>
+        <div class="col-md-4">
+            <label for="villeClient" class="form-label">Ville : </label>
+            <input type="text" class="form-control" name="villeClient" value="<?= $selectUserInfo['ville']?>" id="villeClient">
+        </div>
+        <div class="form-example">
+            <input type="submit" name="modifInfo" value="Modifier informations" class="bouton">
+        </div><br>
     </form>
 
     <?php
     if ($selectUserInfo['etat'] == 0){
-        echo 'Vous n\'avez pas confirmé votre compte, veuillez le confirmer sur ce lien : <a href="confirmation.php?token=' . $selectUserInfo['code_validation'] . '"> Confirmer le mail </a>';
+        echo '<p>Vous n\'avez pas confirmé votre compte, veuillez le confirmer sur ce lien : <a href="confirmation.php?token=' . $selectUserInfo['code_validation'] . '"> Confirmer le mail </a></p>';
     }
     ?>
 
     <h2>Changer de mot de passe : </h2>
     <form action="moncompte.php" method="post">
-        <label for="mdpClient">Votre ancien mot de passe : </label>
-        <input type="password" name="mdpActuel" id="mdpClient">
-        <br><br>
-        <label for="newMdp">Nouveau mot de passe : </label>
-        <input type="password" name="newMdp" id="newMdp">
-        <label for="newMdpConfirm">Confirmez votre mot de passe : </label>
-        <input type="password" name="newMdpConfirm" id="newMdpConfirm"><br><br>
-        <input type="submit" name="modifMdp" value="Modifier">
+        <div class="row g-3">
+            <div class="col-md-4">
+                <label class="form-label" for="mdpClient">Votre ancien mot de passe : </label>
+                <input class="form-control" type="password" name="mdpActuel" id="mdpClient">
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-4">
+                <label class="form-label" for="newMdp">Nouveau mot de passe : </label>
+                <input class="form-control" type="password" name="newMdp" id="newMdp">
+            </div>
+            <div class="col-md-4">
+                <label class="form-label" for="newMdpConfirm">Confirmez votre mot de passe : </label>
+                <input class="form-control" type="password" name="newMdpConfirm" id="newMdpConfirm"><br><br>
+            </div>
+        </div>
+        <div class="form-example">
+            <input type="submit" name="modifMdp" value="Modifier" class="bouton">
+        </div><br>
     </form>
 </div>
+<script>
+    function dnone(){
+        let validation = document.getElementById('validation');
+        validation.style.display = "none";
+    }
+    setTimeout(dnone,4000);
+
+</script>
