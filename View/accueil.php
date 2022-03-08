@@ -65,31 +65,25 @@ session_start();
     <div id="icones_accueil">
         <div class="icones_accueil_liste">
             <div class="une_icone">
-                <img src="public/images/accueil/icone_velo.png" alt="icone_velo">
-                <p>Des vélos de qualité artisanale</p>
+                <a href="produit.php"><span class="iconify" data-icon="gis:bicycle"></span> Des vélos de qualité artisanale</a>
             </div>
             <div class="une_icone">
-                <img src="public/images/accueil/icone_outils.png" alt="icone_velo">
-                <p>Un atelier de réparation dernier cri</p>
+                <a href="#"><span class="iconify" data-icon="ri:tools-fill"></span> Un atelier de réparation dernier cri</a>
             </div>
             <div class="une_icone">
-                <img src="public/images/accueil/icone_service.png" alt="icone_velo">
-                <p>Un problème ? Contactez nous !</p>
+                <a href="contact.php"><span class="iconify" data-icon="bi:headset"></span> Un problème ? Contactez nous !</a>
             </div>
         </div>
 
         <div class="icones_accueil_liste">
             <div class="une_icone">
-                <p>Une démarche écologique</p>
-                <img src="public/images/accueil/icone_nature.png" alt="icone_velo">
+                <a href="#"><span class="iconify" data-icon="bx:leaf"></span> Une démarche écologique</a>
             </div>
             <div class="une_icone">
-                <p>Des vélos sur mesure !</p>
-                <img src="public/images/accueil/icone_metre.png" alt="icone_velo">
+                <a href="produit.php"><span class="iconify" data-icon="gis:measure"></span> Des vélos sur mesure</a>
             </div>
             <div class="une_icone">
-                <p>Optimisés pour les performances</p>
-                <img src="public/images/accueil/icone_performance.png" alt="icone_velo">
+                <a href="produit.php"><span class="iconify" data-icon="eos-icons:performance"></span> Optimisés pour les performances!</a>
             </div>
         </div>
     </div>
@@ -97,7 +91,7 @@ session_start();
 </div>
 
 <?php include ('footer.php'); ?>
-
+<script src="https://code.iconify.design/2/2.1.2/iconify.min.js"></script>
 </body>
 
 </html>

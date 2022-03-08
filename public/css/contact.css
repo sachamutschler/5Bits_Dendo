@@ -1,6 +1,6 @@
 .conteneur-form{
 
-    background-color: #161616;
+    background-color: rgba(0,0,0,0.8);
     width: 70%;
     margin-left: 15%;
     margin-top: 3%;
@@ -8,6 +8,7 @@
     color: white;
     height: 50%;
     padding-bottom: 5%;
+    border-radius: 5px;
 }
 .form-control{
     width: 100%;

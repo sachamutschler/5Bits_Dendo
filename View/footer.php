@@ -1,4 +1,4 @@
-<!-- 
+
 <div class="cont_footer">
 
 <footer class="footer">
@@ -30,7 +30,7 @@
 </div>
 
 
-</div> -->
+</div>
 
 
 <?php include ('public/js/navbar.php'); ?>
