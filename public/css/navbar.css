@@ -28,8 +28,8 @@
 }
 
 #icone_dendo {
-    width: 60px;
-    padding: 10px;
+    width: 56px;
+    padding: 12px;
     position: absolute;
 }
 
@@ -84,5 +84,4 @@
     #header {
         flex-direction: row;
     }
-
 }
