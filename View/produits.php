@@ -46,20 +46,21 @@ function recuperationToken($name){
                                     $listeTaxonomies = $conn->query("SELECT id, nom_taxonomie FROM taxonomie");
                                     $listeTaxonomies = $listeTaxonomies->fetchAll();
                                     ?>
-                                    <!-- Formulaire de tri -->
+                                    <!-- Formulaire de tri (5 listes + bouton submit)-->
                                     <form method="get">
-                                        <label for="categorie">Type vélo:</label>
+                                        <label for="categorie">Type:</label>
                                         <br>
-                                        <select name="categorie" id="categorie">
+                                        <select id="select" name="categorie" id="categorie">
                                             <option value="%" name="categorie">Tout</option>
+                                            <!--Chercher les données en base pour les afficher dans la liste-->
                                             <?php foreach ($listeCategories as $itemCategorie){
                                                 echo '<option value="'.$itemCategorie['id'].'" name="'.$itemCategorie['nom_categorie'].'">'.$itemCategorie['nom_categorie'].'</option>';
                                             }?>
                                         </select>
                                         <br>
-                                        <label for="couleur">Couleur vélo:</label>
+                                        <label for="couleur">Couleur:</label>
                                         <br>
-                                        <select name="couleur" id="couleur">
+                                        <select id="couleur">
                                             <option value="%" name="couleur">Tout</option>
                                             <?php foreach ($listeCouleurs as $itemCouleur){
                                                 echo '<option value="'.$itemCouleur['id'].'" name="'.$itemCouleur['couleur'].'">'.$itemCouleur['couleur'].'</option>';
@@ -95,6 +96,7 @@ function recuperationToken($name){
                                         <button type="submit" onclick="closeTri()">Lancer la recherche</button>
                                     </form>
                         </div>
+                        <!--Partie où les articles apparaissent en fonction de la recherche-->
                         <div class="colonne_droite">
                             <div id="articles_produits">
                                 <?php
@@ -164,17 +166,13 @@ function recuperationToken($name){
         include ('footer.php');
         ?>
         <script>
+                /*Ouverture et fermeture de la partie tri article*/
                 function openTri() {
-                    document.getElementById("popupTri").style.display = "unset";
+                    document.getElementById("popupTri").classList.add ("force_display");
                 }
-
                 function closeTri() {
-                    document.getElementById("popupTri").style.display = "none";
+                    document.getElementById("popupTri").classList.remove ("force_display");
                 }
-
-                //if (window.matchMedia("(min-width: 801px)").matches {
-                //    document.getElementById("popupTri").style.display = "unset";
-                //}
         </script>
         <script src="https://code.iconify.design/2/2.1.2/iconify.min.js"></script>
     </body>

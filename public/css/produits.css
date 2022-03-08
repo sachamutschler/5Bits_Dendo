@@ -1,34 +1,13 @@
-/*body{
-    background-image: none;
-    background-color: #052e46;
-}
-.contenu{
-    background: rgba(0, 0, 0, 0.3);
-}*/
 /*Titre page*/
 h2 {
     color: #eac013;
     font-size: 30px;
     font-family: 'Smooch Sans', sans-serif;
 }
-
-h3 {
-    font-size: 18px;
-}
-
-label {
-    color: white;
-}
+/*Sections de page*/
 .colonnes_container {
     display: flex;
     flex-direction: row;
-}
-.open_button {
-    display: none;
-
-}
-.close_button{
-    display: none;
 }
 .colonne_tri {
     display: unset;
@@ -36,25 +15,54 @@ label {
     height: 100%;
     margin: 20px;
 }
-table {
-    margin: 20px;
+.colonne_droite {
+    width: 75%;
+}
+/*Partie tri produits*/
+label {
+    color: white;
+    font-size: 14px;
+}
+select {
+    color: white;
+    border: 1px;
+    border-radius: 2px;
+    background-color: #20738d;
+    padding: 3px;
+    margin: 3px 0px;
+    width: 80px;
+}
+option:hover {
+    background-color: #bb990f;
 }
 button {
-    color: black;
+    color: white;
+    background-color: #20738d;
     border: 1px solid grey;
-    padding: 5px;
-    margin-top: 10px;
+    padding: 10px;
+    margin-top: 7px;
     border-radius: 4px;
 }
 button:hover {
     background-color: #eac013;
+    color: black;
 }
-
-/*Articles*/
-.colonne_droite {
-    width: 75%;
+/*Boutons de recherche sur petits écrans, caché sur les grands écrans*/
+.open_button {
+    display: none;
 }
+.close_button{
+    display: none;
+}
+/*Partie articles*/
+/*Centrage et wrapping des éléments*/
 #articles_produits {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+/*Mise en forme de chaque carte article*/
+.article_produits {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -62,7 +70,6 @@ button:hover {
 .article_produits {
     width: calc(20% - 20px);
     padding: 10px;
-    /*background: rgba(0, 0, 0, 0.3);*/
     margin:10px;
     position: relative;
     background-color: white;
@@ -75,7 +82,7 @@ button:hover {
     background: white;
     height: 100%;
 }
-
+/*Image vélo*/
 .article_produits img {
     max-width: 100%;
     margin-top: 20px;
@@ -85,7 +92,9 @@ button:hover {
     transition: .5s ease;
     backface-visibility: hidden;
 }
+/*Nom produit*/
 .article_produits h3 {
+    font-size: 18px;
     width: calc(40% - 20px);
     padding:10px;
     margin-right: auto;
@@ -95,27 +104,24 @@ button:hover {
     padding:10px;
     margin-left: auto;
     text-align: right;
-    color:#ff9e00;
+    color:#20738d;
 }
+/*prix barré*/
 .article_produits h4 s {
     color:red;
 }
+/*Extrait de la désignation*/
 .article_produits p {
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
     padding: 10px;
 }
-
 .bouton_produit {
-    padding: 10px;
-    padding-left: 25px;
-    padding-right: 25px;
+    padding: 10px 25px;
     color: white;
     text-decoration: none;
-}
-
-.bouton_produit {
+    border-radius: 2px;
     opacity: 0;
     transition: .5s ease;
     position: absolute;
@@ -126,19 +132,16 @@ button:hover {
     text-align: center;
     background: #eac013;
 }
-
-.article_produits:hover .article_container {
-    opacity: 0.5;
-}
-
-.article_produits:hover .bouton_produit {
-    opacity: 1;
-}
-
 .bouton_produit:hover {
     background:#bb990f;
 }
-
+/*Effets de transparence au survol*/
+.article_produits:hover .article_container {
+    opacity: 0.5;
+}
+.article_produits:hover .bouton_produit {
+    opacity: 1;
+}
 #accueil_2 {
     width:100%;
     margin-top:20px;
@@ -155,18 +158,10 @@ button:hover {
 
 /* responsive */
 @media only screen and (max-width: 1400px) {
-    
     .article_produits {
         width: 40%;
     }
 }
-
-@media only screen and (min-width: 800px) {
-    .colonne_tri {
-        display: block;
-    }
-}
-
 @media only screen and (max-width: 800px) {
     .open_button {
         display: unset;
@@ -178,8 +173,8 @@ button:hover {
         left: 192px;
         color: white;
         background-color: black;
-
     }
+    /*Affichage du tri sous forme de popup pour les petits écrans*/
     .colonne_tri {
         display: none;
         justify-content: left;
@@ -193,33 +188,25 @@ button:hover {
         z-index: 1;
         background-color: #161616;
     }
-
     .colonne_droite {
         width: 100%;
     }
-
     .colonnes_container {
         justify-content: center;
-
+    }
+    /*Overwrite du CSS en mode large pour avoir à nouveau la colonne de tri*/
+    .force_display {
+        display: block;
     }
 }
 @media only screen and (max-width: 600px) {
     .article_produits {
         width: 80%;
     }
-    /*.colonne_tri {
-        display: none;
-        justify-content: center;
-    }*/
     .colonne_droite {
         width: 100%;
     }
     .colonnes_container {
         justify-content: center;  
-    }
-}
-@media only screen and (min-width: 800px) {
-    .colonne_tri {
-        display: unset;
     }
 }
