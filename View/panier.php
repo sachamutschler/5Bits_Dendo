@@ -83,7 +83,12 @@ if(isset($_POST['deleteItem'])){
             <p class="txt_total">Le montant total est de : </br> <?php echo("$total"); ?> €</p>
         </div>
         <div class="cont_buy">
-            <a href="https://buy.stripe.com/test_8wMdRba3LdAN5KUdQR"><input type="button" value="Paiement" name="livraison_panier" class="panier_livraison bouton"></a>
+            <a href="checkout.php"><input type="button" value="Paiement" name="livraison_panier" class="panier_livraison bouton"></a>
         </div>
     </div>
+<?php 
+$_SESSION['total'] = $total; 
+include ('footer.php'); 
+
+?>
 
