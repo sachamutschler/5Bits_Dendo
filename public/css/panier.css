@@ -1,5 +1,5 @@
 .cont_panier{
-    background-color: #161616;
+    background-color: rgba(0,0,0,0.8);
     border-radius: 15px;
     padding-top: 1%;
     overflow: auto;
@@ -67,7 +67,7 @@
     padding-bottom: 10px;
 }
 .total_buy{
-    background-color: #161616;
+    background-color: rgba(0,0,0,0.9);
     border-radius: 10px;
     position: fixed;
     right: 40px;
@@ -97,7 +97,6 @@
     .cont_panier{
         height: 65%;
         width: 60%;
-
     }
     .total_buy{
         margin-top: 3%;
@@ -105,6 +104,7 @@
         right: 0;
         top: 0;
         position:unset;
+        background-color: rgba(0,0,0,0.8);
     }
   }
 @media screen and (max-width: 600px) {
