@@ -100,6 +100,12 @@ $selectUserInfo = $selectUserInfo->fetch();
 
     </form>
 
+    <?php
+    if ($selectUserInfo['etat'] == 0){
+        echo 'Vous n\'avez pas confirmé votre compte, veuillez le confirmer sur ce lien : <a href="confirmation.php?token=' . $selectUserInfo['code_validation'] . '"> Confirmer le mail </a>';
+    }
+    ?>
+
     <h2>Changer de mot de passe : </h2>
     <form action="moncompte.php" method="post">
         <label for="mdpClient">Votre ancien mot de passe : </label>

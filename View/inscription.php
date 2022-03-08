@@ -121,6 +121,7 @@ if (isset($_POST['submit'])) {
         $query->execute();
 
         $id = $conn->lastInsertId();
+
         $_SESSION['identifiant'] = $id;
 
         if(isset($_POST['id_produit_inscription'])) {
