@@ -1,8 +1,7 @@
 <?php
 session_start();
-include ('head.php');
-include ('navbar.php');
- require_once ('Model/connexion_bdd.php');
+
+require_once ('Model/connexion_bdd.php');
 if (isset($_POST['modifMdp'])){
     $errors = [];
     $selectOldMdp = $conn->prepare('SELECT mot_de_passe, id FROM compte_client WHERE id=:id ');
@@ -59,6 +58,15 @@ $selectUserInfo = $selectUserInfo->fetch();
 
 
 ?>
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <?php include ('head.php'); ?>
+    <link href="public/css/accueil.css" rel="stylesheet">
+
+</head>
+<body>
 <style>
     h1{
         color:white;
@@ -73,9 +81,12 @@ $selectUserInfo = $selectUserInfo->fetch();
         padding: 27px;
         text-align: center;
         color : white;
-
+        top: 80px;
     }
 </style>
+<div id="header">
+    <?php include ('navbar.php'); ?>
+</div>
 <div class="contenu p-5">
 
     <h1>Mon compte</h1>
