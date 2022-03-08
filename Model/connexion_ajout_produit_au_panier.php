@@ -7,7 +7,6 @@ $result_select_panier->bindValue(':id_produit', $_POST['id_produit_ajout_panier'
 $result_select_panier->execute();
 $tableau_select_panier = $result_select_panier->fetchAll(PDO::FETCH_ASSOC);
 $result_select_panier->closeCursor();
-var_dump($tableau_select_panier);
 
 if(count($tableau_select_panier) == 0) {
     $requete_produit = "INSERT INTO panier (quantite, id_produit, id_compte_client) VALUES (:quantite, :id_produit, :id_compte_client)";
