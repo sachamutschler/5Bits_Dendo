@@ -45,7 +45,7 @@
     
 }
 else {
-    echo ('');
+    echo ("<div><h2>Votre panier est vide</h2></div>");
 }
 
 ?>

@@ -67,7 +67,7 @@ if(isset($_POST['deleteItem'])){
             
             if ($prix==0 || $total ==0) {
             
-                echo "<style> div.cont_buy{ display: none;} </style>";
+                echo "<style> .total_buy{ display: none;} </style>";
                 
             }
             
