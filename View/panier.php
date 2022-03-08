@@ -4,6 +4,17 @@ use Mockery\Undefined;
 use PhpParser\Node\Stmt\Echo_;
 
 session_start();
+include('Model/connexion_bdd.php');
+
+if(isset($_POST['deleteItem'])){
+    $id_client = $_SESSION['identifiant'];
+    $id_produit = $_POST['deleteItem'];
+    $req_delete = "DELETE FROM panier WHERE id_produit = ".$id_produit." AND id_compte_client = ".$id_client;
+
+    $req_delete = $conn->query($req_delete);
+    $req_delete->execute();
+}
+                                
 ?>
 
 
@@ -18,7 +29,6 @@ session_start();
     <div class="cont_panier2">
         <?php
         $prix = 0;
-            include('Model/connexion_bdd.php');
             include('Model/model_panier.php');
             $total = 0;
             for($i=0; $i<count($tableau_id_produit); $i++) {
@@ -27,7 +37,7 @@ session_start();
                     <img class="imagePanier" src="public/images/produits/<?php echo $tableau_produit[$i]['image'];?>" alt="produit_accueil">
                     <div class="text_panier">
                         <!-- Création d'un formulaire -->
-                        <form action="panier.php" class="quantity" method="post">
+                        <form action="" class="quantity" method="post">
                             <!-- Affichage du nom du produit avec la ligne $i puis la colonne -->
                             <label for="title_panier" class="t_panier"><?php echo $tableau_produit[$i]['nom_produit']; ?></label>
                             <!-- Affichage de la quantité de vélo sélectionnée avec la ligne $i puis la colonne -->
@@ -44,7 +54,10 @@ session_start();
                             ?>
 
                             <label class="t_panier">Prix : <?php echo $prix; ?></label>
-                            <input type="submit" value="Supprimer" name="supprimer" class="delete_panier">
+                            
+                            <button type="submit" value="<?php echo($tableau_produit[$i]['id_produit']) ?>" name="deleteItem" class="bouton delete_panier">Supprimer</button>
+                            
+                            
 
                         </form> 
                     </div>
