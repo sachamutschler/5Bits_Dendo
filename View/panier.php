@@ -34,7 +34,7 @@ if(isset($_POST['deleteItem'])){
             for($i=0; $i<count($tableau_id_produit); $i++) {
                 ?>
                 <div class="panier">
-                    <img class="imagePanier" src="public/images/produits/<?php echo $tableau_produit[$i]['image'];?>" alt="produit_accueil">
+                    <img class="imagePanier" src="public/images/produits/<?php echo $tableau_produit[$i]['image'];?>.png" alt="produit_accueil">
                     <div class="text_panier">
                         <!-- Création d'un formulaire -->
                         <form action="" class="quantity" method="post">
