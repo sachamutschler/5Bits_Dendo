@@ -31,6 +31,7 @@ if(isset($_POST['deleteItem'])){
         $prix = 0;
             include('Model/model_panier.php');
             $total = 0;
+            var_dump($tableau_produit);
             for($i=0; $i<count($tableau_id_produit); $i++) {
                 ?>
                 <div class="panier">
