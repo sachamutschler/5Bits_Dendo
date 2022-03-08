@@ -24,7 +24,7 @@ session_start();
             for($i=0; $i<count($tableau_id_produit); $i++) {
                 ?>
                 <div class="panier">
-                    <img class="imagePanier" src="public/images/accueil/image_accueil_3.png" alt="produit_accueil_3">
+                    <img class="imagePanier" src="public/images/produits/<?php echo $tableau_produit[$i]['image'];?>" alt="produit_accueil">
                     <div class="text_panier">
                         <!-- Création d'un formulaire -->
                         <form action="panier.php" class="quantity" method="post">
