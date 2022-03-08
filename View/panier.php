@@ -20,7 +20,7 @@ session_start();
         $prix = 0;
             include('Model/connexion_bdd.php');
             include('Model/model_panier.php');
-            
+            $total = 0;
             for($i=0; $i<count($tableau_id_produit); $i++) {
                 ?>
                 <div class="panier">
@@ -40,6 +40,7 @@ session_start();
                                 /* Sinon on affiche le prix */
                                 $prix = $tableau_produit[$i]['prix'];
                             }
+                            $total = $total + ($prix * $tableau_id_produit[$i]['quantite']);
                             ?>
 
                             <label class="t_panier">Prix : <?php echo $prix; ?></label>
@@ -50,7 +51,7 @@ session_start();
                 </div>
                 <?php
             }
-            $total= 0 ;
+            
             if ($prix==0 || $total ==0) {
             
                 echo "<style> div.cont_buy{ display: none;} </style>";
