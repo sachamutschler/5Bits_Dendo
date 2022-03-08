@@ -150,7 +150,7 @@ function recuperationToken($name){
                                                 </h4>
                                                 <p><?= $itemRequete['designation'] ?></p>
                                                 </div>
-                                            <a target="_blank" class="bouton_produit" href="produit.php?id_produit=<?=$itemRequete['id_produit'] ?>">Page produit</a>
+                                            <a class="bouton_produit" href="produit.php?id_produit=<?=$itemRequete['id_produit'] ?>">Page produit</a>
                                             </div>
                                     <?php }
                                         $nomPrecedent = $itemRequete['nom_produit'];
