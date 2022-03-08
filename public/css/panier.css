@@ -17,7 +17,7 @@
 }
 .panier{
     background-color: white;
-    height: 35%;
+    height: 160px;
     display: flex;
     margin-bottom: 2%;
     margin-top: 2%;
@@ -34,7 +34,7 @@
 .quantity{
     display: flex;
     flex-direction: column;
-    margin-top: 5%;
+    margin-top: 2%;
 }
 .t_panier{
     font-size: 25px;
@@ -50,7 +50,7 @@
     
 }
 .delete_panier{
-    margin-top: 3%;
+    background-color: crimson!important;
 }
 .text_panier{
     margin-right: 10%;
@@ -86,9 +86,6 @@
         width: 85%;
         margin-left: 7%;
     }
-    .panier{
-        height: 30%;
-    }
     .t_panier{
         font-size: 20px;
     }
@@ -119,4 +116,10 @@
     .quantity{
         margin-top: 10%;
     }
+  }
+  @media screen and (max-height: 650px) {
+    
+  }
+  @media screen and (max-height: 550px) {
+    
   }
