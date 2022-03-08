@@ -11,7 +11,7 @@ if (isset($_POST['deconnexion'])){
     <a class="navbar_link" href="index.php">Accueil</a>
     <a class="navbar_link" href="produits.php">Produits</a>
     <a class="navbar_link" href="contact.php">Contact</a>
-    <a class="navbar_link" href="#">Qui sommes nous ?</a>
+    <a class="navbar_link" href="dendo_jitensha.php">Qui sommes nous ?</a>
     <?php
     if (isset($_SESSION['identifiant'])){
     ?>
