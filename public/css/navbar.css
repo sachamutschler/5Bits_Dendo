@@ -27,6 +27,42 @@
     display: flex!important;
 }
 
+#icone_dendo {
+    width: 56px;
+    padding: 12px;
+    position: absolute;
+    cursor:pointer;
+}
+
+#header {
+    height: 80px;
+}
+
+#div_panier {
+    position: relative;
+    display: flex;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+#div_panier img {
+    width: 50px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+#div_panier p {
+    position: absolute;
+    top: 5px;
+    right: -5px;
+    background: red;
+    color: white;
+    font-weight: bold;
+    border-radius: 50%;
+    font-size: 14px;
+    padding: 6px;
+}
+
 /* mode tablette */
 
 @media screen and (max-width: 960px) {
@@ -51,8 +87,21 @@
     }
 
     #header {
-        height: auto;
         flex-direction: column;
+    }
+
+    #icone_dendo {
+        margin-left: auto;
+        margin-right: auto;
+        left: 0;
+        right: 0;
+        text-align: center;
+    }
+
+    #div_panier {
+        position: absolute;
+        right: 0;
+        top: 15px;
     }
 }
 
@@ -71,5 +120,4 @@
     #header {
         flex-direction: row;
     }
-
 }

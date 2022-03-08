@@ -121,6 +121,7 @@ if (isset($_POST['submit'])) {
         $query->execute();
 
         $id = $conn->lastInsertId();
+
         $_SESSION['identifiant'] = $id;
 
         if(isset($_POST['id_produit_inscription'])) {
@@ -140,72 +141,63 @@ else{
 
 <div class="contenu">
 
-    <form action="inscription.php" method="post" class="form-example">
+    <form class="row g-3" action="inscription.php" method="post">
+        <div class="col-md-6">
+            <label for="validationDefault01" class="form-label">Nom <span style="color:red;">*</span></label>
+            <input type="text" name="name" class="form-control" id="validationDefault01" required>
+        </div>
+        <div class="col-md-6">
+            <label for="validationDefault02" class="form-label">Prenom <span style="color:red;">*</span></label>
+            <input type="text" name="firstname"class="form-control" id="validationDefault02" required>
+        </div>
+        <div class="col-md-4">
+            <label for="validationDefault03" class="form-label">Identifiant <span style="color:red;">*</span></label>
+            <input type="text" name="identifiant"class="form-control" id="validationDefault03" required>
+        </div>
+        <div class="col-md-4">
+            <label for="validationDefault04" class="form-label">Mot de passe <span style="color:red;">*</span></label>
+            <input type="password" name="password" class="form-control" id="validationDefault04" required>
+        </div>
+        <div class="col-md-4">
+            <label for="validationDefault05" class="form-label">Confirmer mot de passe <span style="color:red;">*</span></label>
+            <input type="password" name="confirmPassword"class="form-control" id="validationDefault05" required>
+        </div>
+        <div class="col-md-8">
+            <label for="mail" class="form-label">E-mail <span style="color:red;">*</span></label>
+            <input type="email" name="email" class="form-control" id="mail"  aria-describedby="inputGroupPrepend2" required>
+        </div>
+        <div class="col-md-6">
+            <label for="telPortable" class="form-label">Téléphone portable <span style="color:red;">*</span></label>
+            <input type="number" name="telPort" class="form-control" id="telPortable" required>
+        </div>
+        <div class="col-md-6">
+            <label for="telFixe" class="form-label">Téléphone fixe</label>
+            <input type="number" name="tel" class="form-control" id="telFixe"  aria-describedby="inputGroupPrepend2">
+        </div>
+        <div class="col-md-6">
+            <label for="adresseUn" class="form-label">Adresse 1 <span style="color:red;">*</span></label>
+            <input type="text" name="adresse" class="form-control" id="adresseUn"  aria-describedby="inputGroupPrepend2" required>
+        </div>
+        <div class="col-md-6">
+            <label for="adresseDeux" class="form-label">Adresse 2 </label>
+            <input type="text" name="adresse2" class="form-control" id="adresseDeux"  aria-describedby="inputGroupPrepend2">
+        </div>
+        <div class="col-md-4">
+            <label for="ville" class="form-label">Ville <span style="color:red;">*</span></label>
+            <input type="text" name="ville" class="form-control" id="ville" required>
+        </div>
+        <div class="col-md-4">
+            <label for="codePostal" class="form-label">Code Postal <span style="color:red;">*</span></label>
+            <input type="text" name="cp" class="form-control" id="codePostal" required>
+        </div>
+        <div class="col-md-4">
+            <label for="pays" class="form-label">Pays <span style="color:red;">*</span></label>
+            <input type="text" name="pays" class="form-control" id="pays" required>
+        </div>
 
-        <div class="form-example">
-            <label for="name">Nom </label>
-            <input type="text" name="name" id="name" class="form-control">
-        </div><br>
-
-        <div class="form-example">
-            <label for="firstname">Prénom </label>
-            <input type="text" name="firstname" id="firstname" class="form-control">
-        </div><br>
-
-        <div class="form-example">
-            <label for="identifiant">Identifiant </label>
-            <input type="text" name="identifiant" id="identifiant" class="form-control">
-        </div><br>
-
-        <div class="form-example">
-            <label for="password">Mot de passe </label>
-            <input type="password" name="password" id="password" class="form-control">
-        </div><br>
-
-        <div class="form-example">
-            <label for="confirmPassword">Confirmer le mot de passe </label>
-            <input type="password" name="confirmPassword" id="confirmPassword" class="form-control">
-        </div><br>
-
-        <div class="form-example">
-            <label for="email">E-mail </label>
-            <input type="email" name="email" id="email" class="form-control">
-        </div><br>
-
-        <div class="form-example">
-            <label for="telPort"> Téléphone portable</label>
-            <input type="tel" name="telPort" id="telPort" class="form-control">
-        </div><br>
-
-        <div class="form-example">
-            <label for="tel"> Téléphone</label>
-            <input type="tel" name="tel" id="tel" class="form-control">
-        </div><br>
-
-        <div class="form-example">
-            <label for="adresse">Adresse </label>
-            <input type="text" name="adresse" id="adresse" class="form-control">
-        </div><br>
-
-        <div class="form-example">
-            <label for="adresse2">Adresse 2</label>
-            <input type="text" name="adresse2" id="adresse2" class="form-control">
-        </div><br>
-
-        <div class="form-example">
-            <label for="ville">Ville</label>
-            <input type="text" name="ville" id="ville" class="form-control">
-        </div><br>
-
-        <div class="form-example">
-            <label for="cp">Code Postal</label>
-            <input type="number" name="cp" id="cp" class="form-control">
-        </div><br>
-
-        <div class="form-example">
-            <label for="pays">Pays</label>
-            <input type="text" name="pays" id="pays" class="form-control">
-        </div><br>
+        <i style="color:white;"><span style="color:red;">*</span> Champs obligatoires</i>
+        <br>
+        <br>
 
         <div class="form-example">
             <input type="submit" name="submit" value="Envoyer" class="bouton">
@@ -214,7 +206,6 @@ else{
         <?php if(isset($_GET['id_produit_inscription'])) { ?>
             <input type="hidden" name="id_produit_inscription" value="<?php echo($_GET['id_produit_inscription']); ?>">
         <?php } ?>
-
     </form>
 </div>
 

@@ -41,9 +41,11 @@
         $total->setFetchMode(PDO::FETCH_CLASS, 'COUNT(id)');
         $req_total = $total->fetch(); */
         //$delete_ligne_panier = "";
+
+    
 }
 else {
-    echo ('');
+    echo ("<div><h2>Votre panier est vide</h2></div>");
 }
 
 ?>
