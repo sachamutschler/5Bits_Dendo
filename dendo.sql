@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mar. 08 mars 2022 à 21:58
--- Version du serveur :  5.7.31
--- Version de PHP : 7.4.9
+-- Généré le : mar. 08 mars 2022 à 22:49
+-- Version du serveur : 5.7.36
+-- Version de PHP : 7.4.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -191,14 +191,7 @@ CREATE TABLE IF NOT EXISTS `compte_client` (
   `code_validation` varchar(255) DEFAULT NULL,
   `etat` varchar(255) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
-
---
--- Déchargement des données de la table `compte_client`
---
-
-INSERT INTO `compte_client` (`id`, `identifiant`, `mot_de_passe`, `nom_client`, `prenom`, `mail`, `telephone_port`, `telephone_fixe`, `adresse_1`, `adresse_2`, `ville`, `code_postal`, `pays`, `code_validation`, `etat`) VALUES
-(3, 'costa1', '$2y$10$lxKETgvKhuYZeAN2VHphHO4YO2RwS3D65wvquxUwWb4mjUPYslmHe', 'costa', 'aurelien', 'costa@outlook.com', '0311111111', '', '1 rue gospel', '', 'STRASBOURG', '67700', 'France', 'rX0l4UkPnf3dEJ6Y7y17PxTI4bYlWB', '0');
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -235,14 +228,7 @@ CREATE TABLE IF NOT EXISTS `panier` (
   `id_compte_client` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `panier_produit_idProduit_fk` (`id_produit`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
-
---
--- Déchargement des données de la table `panier`
---
-
-INSERT INTO `panier` (`id`, `quantite`, `id_produit`, `id_compte_client`) VALUES
-(3, 6, 7, 3);
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
