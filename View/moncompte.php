@@ -101,7 +101,6 @@ $selectUserInfo = $selectUserInfo->fetch();
         <input type="text" name="villeClient" value="<?= $selectUserInfo['ville']?>" id="villeClient"><br><br>
 
         <input type="submit" name="modifInfo" value="Modifier informations">
-
     </form>
 
     <h2>Changer de mot de passe : </h2>
