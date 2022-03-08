@@ -86,5 +86,4 @@ if(isset($_POST['deleteItem'])){
             <a href="https://buy.stripe.com/test_8wMdRba3LdAN5KUdQR"><input type="button" value="Paiement" name="livraison_panier" class="panier_livraison bouton"></a>
         </div>
     </div>
-<?php include ('footer.php'); ?>
 
