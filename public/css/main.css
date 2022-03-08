@@ -10,7 +10,6 @@ body {
 }
 
 #header {
-    height: 80px;
     display: flex;
     background: #161616;
 

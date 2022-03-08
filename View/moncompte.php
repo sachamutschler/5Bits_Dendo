@@ -2,23 +2,10 @@
 session_start();
 include ('head.php');
 include ('navbar.php');
-$servername = "localhost";
-$username = "root";
-$pass = "";
-
-try
-{
-    $db = new PDO("mysql:host=$servername;dbname=dendo",$username,$pass);
-    $db ->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-}
-catch(PDOException $e)
-{
-    echo "Erreur de la connexion : " .$e->getMessage();
-    die();
-}
+ require_once ('Model/connexion_bdd.php');
 if (isset($_POST['modifMdp'])){
     $errors = [];
-    $selectOldMdp = $db->prepare('SELECT mot_de_passe, id FROM compte_client WHERE id=:id ');
+    $selectOldMdp = $conn->prepare('SELECT mot_de_passe, id FROM compte_client WHERE id=:id ');
     $selectOldMdp->bindValue('id',$_SESSION['identifiant']);
     $selectOldMdp->execute();
     $selectOldMdp = $selectOldMdp->fetch();
@@ -26,7 +13,7 @@ if (isset($_POST['modifMdp'])){
     if (isset($_POST['mdpActuel']) && !empty($_POST['mdpActuel']) && password_verify($_POST['mdpActuel'], $selectOldMdp['mot_de_passe'])){
         if (isset($_POST['newMdp']) && isset($_POST['newMdpConfirm']) && !empty($_POST['newMdp']) && !empty($_POST['newMdpConfirm']) && $_POST['newMdp'] == $_POST['newMdpConfirm']){
             $newMdp = password_hash($_POST['newMdp'], PASSWORD_BCRYPT);
-            $updatePassword = $db->prepare('UPDATE compte_client SET mot_de_passe = :mdp WHERE id=:id');
+            $updatePassword = $conn->prepare('UPDATE compte_client SET mot_de_passe = :mdp WHERE id=:id');
             $updatePassword->bindValue('mdp', $newMdp);
             $updatePassword->bindValue('id', $_SESSION['identifiant']);
             $updatePassword->execute();
@@ -51,7 +38,7 @@ if (isset($_POST['modifInfo'])){
     $adresseDeuxClient = htmlspecialchars($_POST['adresseDeuxClient']);
     $villeClient = htmlspecialchars($_POST['villeClient']);
 
-    $updateInfo = $db->prepare('UPDATE compte_client SET mail=:mail, code_postal=:cp, telephone_port=:telpor, telephone_fixe=:telfix, adresse_1=:adresse1, adresse_2=:adresse2,ville=:ville WHERE id=:id');
+    $updateInfo = $conn->prepare('UPDATE compte_client SET mail=:mail, code_postal=:cp, telephone_port=:telpor, telephone_fixe=:telfix, adresse_1=:adresse1, adresse_2=:adresse2,ville=:ville WHERE id=:id');
     $updateInfo->bindValue('mail', $adresseMail);
     $updateInfo->bindValue('cp', $codePostal);
     $updateInfo->bindValue('telpor', $telClient);
@@ -63,13 +50,22 @@ if (isset($_POST['modifInfo'])){
     $updateInfo->execute();
 }
 
-$selectUserInfo = $db->prepare('SELECT * FROM compte_client WHERE ID= :id');
+$selectUserInfo = $conn->prepare('SELECT * FROM compte_client WHERE ID= :id');
 $selectUserInfo->bindValue('id', $_SESSION['identifiant']);
 $selectUserInfo->execute();
 $selectUserInfo = $selectUserInfo->fetch();
 
 
 ?>
+<style>
+    h1{
+        color:white;
+    }
+    p{
+        color: white;
+    }
+
+</style>
 <div class="contenu">
 
     <h1>Mon compte</h1>
@@ -101,7 +97,6 @@ $selectUserInfo = $selectUserInfo->fetch();
         <input type="text" name="villeClient" value="<?= $selectUserInfo['ville']?>" id="villeClient"><br><br>
 
         <input type="submit" name="modifInfo" value="Modifier informations">
-
     </form>
 
     <h2>Changer de mot de passe : </h2>

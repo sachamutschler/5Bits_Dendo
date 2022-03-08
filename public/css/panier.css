@@ -17,13 +17,14 @@
 }
 .panier{
     background-color: white;
-    height: 30%;
+    height: 35%;
     display: flex;
     margin-bottom: 2%;
     margin-top: 2%;
     border: solid black;
     width: 100%;
     justify-content: space-between;
+    border-radius: 10px;
 }
 .imagePanier{
     width: 30%;
@@ -33,7 +34,7 @@
 .quantity{
     display: flex;
     flex-direction: column;
-    margin-top: 10%;
+    margin-top: 5%;
 }
 .t_panier{
     font-size: 25px;
@@ -59,11 +60,15 @@
     background-color: white;
     height: 30%;
     margin-top: 10%;
+    border-radius: 10px;
 }
 .cont_total{
     text-align: center;
     height: 50%;
-    padding-top: 10%;
+    padding-top: 5%;
+}
+.panier_vide{
+    color: white;
 }
 
 @media screen and (max-width: 600px) {
@@ -87,6 +92,9 @@
     .t_panier{
         font-size: 20px;
     }
+    .quantity{
+        margin-top: 10%;
+    }
     
   }
   @media screen and (max-width: 900px) {
@@ -106,5 +114,9 @@
     }
     .cont_total{
         height: 35%;
+        margin-top: 5%!important;
+    }
+    .quantity{
+        margin-top: 10%;
     }
   }

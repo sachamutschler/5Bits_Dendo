@@ -3,18 +3,8 @@ session_start();
 ?>
 <?php
 function connexionBase($nomBase){
-    $servername="localhost";
-    $username="root";
-    $password="";
-    try {
-        $db = new PDO("mysql:host=$servername;dbname=$nomBase;charset=utf8", $username, $password);
-        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    }
-    catch(PDOException $e) {
-        echo "Error of connection: " .$e->getMessage();
-        die();
-    }
-    return $db;
+    require_once ('Model/connexion_bdd.php');
+    return $conn;
 }
 function recuperationToken($name){
     if (isset($_GET[$name]) !=0){
@@ -45,15 +35,15 @@ function recuperationToken($name){
                         <div class="colonne_tri" id="popupTri">
                             <button class="close_button" onclick="closeTri()"><span class="iconify" data-icon="clarity:window-close-line"></span></button>
                             <!-- Boutons de tri + requêtage -->
-                                 <?php $db = connexionBase('dendo');
+                                 <?php $conn = connexionBase('dendo');
                                     #Récupération des noms dans les tables pour créer les listes déroulantes
-                                    $listeCategories = $db->query("SELECT id, nom_categorie FROM categorie");
+                                    $listeCategories = $conn->query("SELECT id, nom_categorie FROM categorie");
                                     $listeCategories = $listeCategories->fetchAll();
-                                    $listeCouleurs = $db->query("SELECT id, couleur FROM carac_couleur");
+                                    $listeCouleurs = $conn->query("SELECT id, couleur FROM carac_couleur");
                                     $listeCouleurs = $listeCouleurs->fetchAll();
-                                    $listeTailles = $db->query("SELECT id, taille_cadre FROM carac_taille_cadre");
+                                    $listeTailles = $conn->query("SELECT id, taille_cadre FROM carac_taille_cadre");
                                     $listeTailles = $listeTailles->fetchAll();
-                                    $listeTaxonomies = $db->query("SELECT id, nom_taxonomie FROM taxonomie");
+                                    $listeTaxonomies = $conn->query("SELECT id, nom_taxonomie FROM taxonomie");
                                     $listeTaxonomies = $listeTaxonomies->fetchAll();
                                     ?>
                                     <!-- Formulaire de tri -->
@@ -132,7 +122,7 @@ function recuperationToken($name){
                                         $electrique = recuperationToken('electrique');
                                     }
                                     #Et injection dans la requête préparée
-                                    $requeteFinale = $db->prepare($preparationRequete);
+                                    $requeteFinale = $conn->prepare($preparationRequete);
                                     $requeteFinale->bindValue('categorie', $categorie);
                                     $requeteFinale->bindValue('couleur', $couleur);
                                     $requeteFinale->bindValue('taille', $taille);

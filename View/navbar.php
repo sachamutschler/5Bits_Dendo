@@ -4,6 +4,7 @@ if (isset($_POST['deconnexion'])){
     header("Refresh:0");
 }
 ?>
+
 <img id="icone_menu" onclick="afficher_navbar()" src="public/images/icone_menu.png" alt="menu">
 <div id="navbar">
     <a class="navbar_link" href="index.php">Accueil</a>
@@ -23,10 +24,7 @@ if (isset($_POST['deconnexion'])){
     }
     if (isset($_SESSION['identifiant'])){
         ?>
-        <form action="index.php" method="post">
-            <input type="submit" name="deconnexion" value="Deconnexion">
-        </form>
-
+        <a class="navbar_link" href="deconnexion.php">Deconnexion</a>
     <?php
     }
     ?>

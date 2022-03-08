@@ -7,7 +7,6 @@ if(isset($_POST['button'])) {
     $mail = $_POST['email'];
     $headers = 'FROM: '. $mail;
     mail('contactdendo@gmail.com', $objet, $message, $headers);
-    echo('Le mail a été envoyé avec succès.');
 }
 elseif(isset($_POST['button'])){
     echo('Une erreur est survenue');
