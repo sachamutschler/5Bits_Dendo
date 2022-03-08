@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+
 if(isset($_POST['qte_ajout_panier'])) {
     include('Model/connexion_ajout_produit_au_panier.php');
 }

@@ -145,7 +145,7 @@ if (isset($_POST['submit'])) {
     }
 }
 else{
-    echo("Bienvenue sur mon formulaire !");
+//    echo("Bienvenue sur mon formulaire !");
 }
 
 
@@ -222,7 +222,7 @@ else{
         </div><br>
 
         <div class="form-example">
-            <input type="submit" name="submit" value="Envoyer">
+            <input type="submit" name="submit" value="Envoyer" class="bouton">
         </div><br>
 
         <?php if(isset($_GET['id_produit_inscription'])) { ?>
@@ -232,6 +232,6 @@ else{
     </form>
 </div>
 
-
+<?php include ('footer.php'); ?>
 </body>
 </html>

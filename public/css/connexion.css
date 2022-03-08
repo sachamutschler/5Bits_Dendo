@@ -1,0 +1,54 @@
+#contenu_connexion {
+    width: 40%;
+}
+
+#contenu_connexion form {
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+    margin: auto;
+    height: 150px;
+}
+
+#contenu_connexion form label {
+    margin-right: auto;
+}
+
+#contenu_connexion form input, #contenu_connexion form label {
+    margin-top: auto;
+    margin-bottom: auto;
+    width: calc(50% - 10px);
+}
+
+#contenu_connexion form input {
+    margin-left: auto;
+    height: 37px;
+    border-radius: 3px;
+    border: 1px solid grey;
+}
+
+#bouton_connexion {
+    margin-left: auto;
+    width: 100%!important;
+    cursor: pointer;
+}
+
+#contenu_connexion p {
+    color: white;
+    text-align: center;
+    margin-top: 20px;
+}
+
+#contenu_connexion a {
+    color: #0eb2ba;
+}
+
+@media screen and (max-width: 960px) {
+    #contenu_connexion form {
+        width: 100%!important;
+    }
+
+    #contenu_connexion {
+        width: calc(90% - 40px);
+    }
+}

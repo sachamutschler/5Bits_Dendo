@@ -1,7 +1,5 @@
 <?php
 session_start();
-include ('head.php');
-include ('navbar.php');
 $servername = "localhost";
 $username = "root";
 $pass = "";
@@ -51,7 +49,18 @@ if (isset($_POST['connexion']) && !empty($_POST['username']) && !empty($_POST['p
 }
 
 ?>
-<div class="contenu">
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <?php include ('head.php'); ?>
+    <link href="public/css/connexion.css" rel="stylesheet">
+</head>
+<body>
+
+<?php include ('navbar.php'); ?>
+
+<div class="contenu" id="contenu_connexion">
     <form action="connexion.php" method="post">
         <label for="username">Identifiant : </label>
         <input type="text" name="username" id="username">
@@ -62,7 +71,7 @@ if (isset($_POST['connexion']) && !empty($_POST['username']) && !empty($_POST['p
             <input type="hidden" name="id_produit_connexion" value="<?php echo($_POST['id_produit_connexion']); ?>">
         <?php } ?>
 
-        <input type="submit" name="connexion" value="Connexion">
+        <input type="submit" name="connexion" value="Connexion" id="bouton_connexion" class="bouton">
 
     </form>
 
@@ -73,4 +82,7 @@ if (isset($_POST['connexion']) && !empty($_POST['username']) && !empty($_POST['p
         ?><p>Si vous n'avez pas encore de compte : <a href="inscription.php">inscrivez-vous</a></p>
     <?php } ?>
 </div>
+<?php include ('footer.php'); ?>
+</body>
+</html>
 
