@@ -1,14 +1,23 @@
-/*catégories*/
-label {
-    color: white;
+/*body{
+    background-image: none;
+    background-color: #052e46;
 }
+.contenu{
+    background: rgba(0, 0, 0, 0.3);
+}*/
+/*Titre page*/
 h2 {
     color: #eac013;
     font-size: 30px;
     font-family: 'Smooch Sans', sans-serif;
 }
+
 h3 {
     font-size: 18px;
+}
+
+label {
+    color: white;
 }
 .colonnes_container {
     display: flex;
@@ -18,12 +27,15 @@ h3 {
     display: none;
 
 }
+.close_button{
+    display: none;
+}
 .colonne_tri {
+    display: unset;
     width: 200px;
     height: 100%;
     margin: 20px;
 }
-
 table {
     margin: 20px;
 }
@@ -53,7 +65,9 @@ button:hover {
     /*background: rgba(0, 0, 0, 0.3);*/
     margin:10px;
     position: relative;
-    background-color: #bb990f;
+    background-color: white;
+    border: 2px solid grey;
+    border-radius: 4px;
 }
 .article_container {
     display: flex;
@@ -147,9 +161,24 @@ button:hover {
     }
 }
 
+@media only screen and (min-width: 800px) {
+    .colonne_tri {
+        display: block;
+    }
+}
+
 @media only screen and (max-width: 800px) {
     .open_button {
         display: unset;
+    }
+    .close_button{
+        display: unset;
+        position: absolute;
+        top: -7px;
+        left: 192px;
+        color: white;
+        background-color: black;
+
     }
     .colonne_tri {
         display: none;
@@ -187,5 +216,10 @@ button:hover {
     }
     .colonnes_container {
         justify-content: center;  
+    }
+}
+@media only screen and (min-width: 800px) {
+    .colonne_tri {
+        display: unset;
     }
 }

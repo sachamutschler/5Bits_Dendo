@@ -43,6 +43,7 @@ function recuperationToken($name){
                 <button class="open_button" onclick="openTri()">Recherche</button>
                     <div class="colonnes_container">
                         <div class="colonne_tri" id="popupTri">
+                            <button class="close_button" onclick="closeTri()"><span class="iconify" data-icon="clarity:window-close-line"></span></button>
                             <!-- Boutons de tri + requêtage -->
                                  <?php $db = connexionBase('dendo');
                                     #Récupération des noms dans les tables pour créer les listes déroulantes
@@ -173,13 +174,18 @@ function recuperationToken($name){
         include ('footer.php');
         ?>
         <script>
-            function openTri() {
-                document.getElementById("popupTri").style.display = "block";
-            }
+                function openTri() {
+                    document.getElementById("popupTri").style.display = "unset";
+                }
 
-            function closeTri() {
-                document.getElementById("popupTri").style.display = "none";
-            }
+                function closeTri() {
+                    document.getElementById("popupTri").style.display = "none";
+                }
+
+                //if (window.matchMedia("(min-width: 801px)").matches {
+                //    document.getElementById("popupTri").style.display = "unset";
+                //}
         </script>
+        <script src="https://code.iconify.design/2/2.1.2/iconify.min.js"></script>
     </body>
 </html>
