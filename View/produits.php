@@ -18,11 +18,10 @@ function recuperationToken($name){
         <meta charset="UTF-8">
         <title>Products</title>
         <?php include ('head.php'); ?>
+        <link href="public/css/produits.css" rel="stylesheet">
     </head>
     <body>
         <div id="header">
-            <link href="../public/css/produits.css" rel="stylesheet">
-            <link href="public/css/produits.css" rel="stylesheet">
             <?php include ('navbar.php'); ?>
         </div>
         <div class="contenu">

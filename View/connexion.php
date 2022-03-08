@@ -41,13 +41,15 @@ if (isset($_POST['connexion']) && !empty($_POST['username']) && !empty($_POST['p
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <meta charset="UTF-8">
+    <title>Connexion</title>
     <?php include ('head.php'); ?>
     <link href="public/css/connexion.css" rel="stylesheet">
 </head>
 <body>
-
+<div id="header">
 <?php include ('navbar.php'); ?>
-
+</div>
 <div class="contenu" id="contenu_connexion">
     <form action="connexion.php" method="post">
         <label for="username">Identifiant : </label>
