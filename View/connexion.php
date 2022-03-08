@@ -64,7 +64,7 @@ if (isset($_POST['connexion']) && !empty($_POST['username']) && !empty($_POST['p
     </form>
 
     <?php if(isset($_POST['id_produit_connexion'])) { // ajouté par nihad ?>
-        <p>Si vous n'avez pas encore de compte : <a target="_blank" href="inscription.php?id_produit_inscription=<?php echo($_POST['id_produit_connexion']) ?>">inscrivez-vous</a></p>
+        <p>Si vous n'avez pas encore de compte : <a href="inscription.php?id_produit_inscription=<?php echo($_POST['id_produit_connexion']) ?>">inscrivez-vous</a></p>
     <?php }
     else{
         ?><p>Si vous n'avez pas encore de compte : <a href="inscription.php">inscrivez-vous</a></p>

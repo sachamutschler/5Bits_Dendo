@@ -137,7 +137,7 @@ a {
     background-repeat: no-repeat;
     background-position: center;
     width:100%;
-    height:580px;
+    height:auto;
     margin-top: 20px;
     display: flex;
     flex-direction: column;
@@ -243,8 +243,9 @@ a {
     .une_icone a{
         font-size: 0.9rem;
     }
-    .iconify{
-        color:#20738d;
-        font-size:1.6rem;
+    .iconify {
+        color: #20738d;
+        font-size: 1.6rem;
+    }
 }
 
