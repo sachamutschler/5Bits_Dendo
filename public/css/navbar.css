@@ -27,6 +27,16 @@
     display: flex!important;
 }
 
+#icone_dendo {
+    width: 60px;
+    padding: 10px;
+    position: absolute;
+}
+
+#header {
+    height: 80px;
+}
+
 /* mode tablette */
 
 @media screen and (max-width: 960px) {
@@ -51,8 +61,11 @@
     }
 
     #header {
-        height: auto;
         flex-direction: column;
+    }
+
+    #icone_dendo {
+        right:0;
     }
 }
 
