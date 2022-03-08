@@ -52,7 +52,7 @@ session_start();
                         ?>
                         <p><?php echo($produits_accueil[$i]['designation']) ?></p>
                     </div>
-                    <a class="bouton_produit_accueil" href="produit.php?id_produit=<?php echo($produits_accueil[$i]['id_produit']) ?>">Page produit</a>
+                    <a class="bouton_produit_accueil" href="produit.php?id_produit=<?php echo($produits_accueil[$i]['id_produit']) ?>">Détails</a>
                 </div>
             <?php
             }

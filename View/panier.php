@@ -53,7 +53,7 @@ if(isset($_POST['deleteItem'])){
                             $total = $total + ($prix * $tableau_id_produit[$i]['quantite']);
                             ?>
 
-                            <label class="t_panier">Prix : <?php echo $prix; ?></label>
+                            <label class="t_panier">Prix : <?php echo $prix; ?> €</label>
                             
                             <button type="submit" value="<?php echo($tableau_produit[$i]['id_produit']) ?>" name="deleteItem" class="bouton delete_panier">Supprimer</button>
                             

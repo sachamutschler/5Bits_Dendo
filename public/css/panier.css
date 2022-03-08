@@ -1,40 +1,36 @@
 .cont_panier{
-    height: 60%;
     background-color: #161616;
-    margin-left: 5%;
-    margin-right: 5%;
-    margin-bottom: 2%;
-    margin-top: 2%;
     border-radius: 15px;
     padding-top: 1%;
     overflow: auto;
     display: flex;
+    width: 50%;
+    margin: auto;
+    margin-top: 50px;
 }
 .cont_panier2{
-    width: 60%;
-    margin-left: 10%;
-    margin-right: 5%;
+    width: calc(100% - 40px);
+    margin-left: 20px;
 }
 .panier{
     background-color: white;
-    height: 160px;
     display: flex;
-    margin-bottom: 2%;
-    margin-top: 2%;
+    margin-bottom: 20px;
     border: solid black;
     width: 100%;
     justify-content: space-between;
     border-radius: 10px;
 }
 .imagePanier{
-    width: 30%;
+    width: 25%;
     margin-top: auto;
     margin-bottom: auto;
 }
 .quantity{
     display: flex;
     flex-direction: column;
-    margin-top: 2%;
+    margin: 0;
+    text-align: right;
 }
 .t_panier{
     font-size: 25px;
@@ -50,17 +46,33 @@
     
 }
 .delete_panier{
-    background-color: crimson!important;
+    background-color: crimson;
+    width: 130px;
+    margin-left: auto;
+    cursor: pointer;
 }
+
+.delete_panier:hover {
+    background: #bd1030;
+    color: white;
+}
+
+
 .text_panier{
-    margin-right: 10%;
+    margin-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 .total_buy{
-    width: 20%;
     background-color: white;
-    height: 30%;
-    margin-top: 10%;
     border-radius: 10px;
+    position: fixed;
+    right: 40px;
+    width: fit-content;
+    padding: 20px;
+    top: 130px;
+    margin: auto;
+    height: fit-content;
 }
 .cont_total{
     text-align: center;
