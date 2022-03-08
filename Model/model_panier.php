@@ -43,7 +43,7 @@
 
 }
 else {
-    // le panier est vide
+    echo ('');
 }
 
 ?>

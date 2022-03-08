@@ -1,4 +1,8 @@
 <?php
+
+use Mockery\Undefined;
+use PhpParser\Node\Stmt\Echo_;
+
 session_start();
 ?>
 
@@ -13,25 +17,31 @@ session_start();
 <div class="cont_panier">
     <div class="cont_panier2">
         <?php
+        $prix = 0;
             include('Model/connexion_bdd.php');
             include('Model/model_panier.php');
-            // for ($i=0; $i < intval($req_total['COUNT(id)']); $i++) { 
-               // require('produit-panier.php');
-            // }
+            
             for($i=0; $i<count($tableau_id_produit); $i++) {
                 ?>
                 <div class="panier">
                     <img class="imagePanier" src="public/images/accueil/image_accueil_3.png" alt="produit_accueil_3">
                     <div class="text_panier">
+                        <!-- Création d'un formulaire -->
                         <form action="panier.php" class="quantity" method="post">
+                            <!-- Affichage du nom du produit avec la ligne $i puis la colonne -->
                             <label for="title_panier" class="t_panier"><?php echo $tableau_produit[$i]['nom_produit']; ?></label>
+                            <!-- Affichage de la quantité de vélo sélectionnée avec la ligne $i puis la colonne -->
                             <label class="t_panier">Quantité : <?php echo $tableau_id_produit[$i]['quantite']; ?> </label>
+                            <!-- Si la reduction est différente de 0 alors on calcule la réduction -->
                             <?php if($tableau_produit[$i]['reduction_produit'] != 0) {
                                 $prix = $tableau_produit[$i]['prix']  * (1 - ($tableau_produit[$i]['reduction_produit'] / 100) );
                             }
                             else {
+                                /* Sinon on affiche le prix */
                                 $prix = $tableau_produit[$i]['prix'];
-                            } ?>
+                            }
+                            ?>
+
                             <label class="t_panier">Prix : <?php echo $prix; ?></label>
                             <input type="submit" value="Supprimer" name="supprimer" class="delete_panier">
 
@@ -39,6 +49,12 @@ session_start();
                     </div>
                 </div>
                 <?php
+            }
+
+            if ($prix==0) {
+            
+                echo "<style> div.cont_buy{ display: none;} </style>";
+                
             }
             $total= 0 + $prix*$i;
             
